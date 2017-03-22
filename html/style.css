@@ -59,7 +59,7 @@ iframe {
     width: 49%;
     /*border: 0;*/
     height: 800px;
-    /*border: 1px;*/
+    border: 1px solid black;
 }
 
 #map {
