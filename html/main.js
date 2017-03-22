@@ -34,22 +34,24 @@ function initTab(tab) {
 function update() {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '/status', true);
-    xhr.onreadystatechange = function () {
+    xhr.onreadystatechange = onReply;
+    xhr.send();
+
+    function onReply() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var lines = xhr.responseText.split('\n');
-            var date = lines[0] + lines[1];
+            var dateString = lines[0] + lines[1];
 
-            if (diff(date, new Date()) > 120000) { // 2 min
-                console.log("outdated");
-                return;
-            }
+           if (diff(dateString, new Date()) > 120000) { // 2 min
+               console.log("outdated");
+               return;
+           }
 
             handleStatusResponse(lines.filter(function (el, i) {
                 return i > 7 && i < lines.length - 6;
             }));
         }
-    };
-    xhr.send();
+    }
 }
 
 function initCircle(circle) {
@@ -76,12 +78,13 @@ function handleStatusResponse(lines) {
 
     forEachSelector('circle', function (circle) {
         var ip = circle.getAttribute('ip');
-        lines.forEach(function (line) {
-            var splitted = line.split(": ");
-            if (splitted.length > 1 && splitted[1].split(ip)[1] == "") {
-                circle.setAttribute('fill', line.indexOf('timed out') > -1 ? 'red' : 'green');
+        lines.forEach(handleLine);
+
+        function handleLine(line) {
+            if (line.split(": ")[0].split(ip)[1] == "") {
+                circle.setAttribute('fill', line.indexOf('Reply') > -1 ? 'green' : 'red');
             }
-        });
+        }
     });
 
     lines.forEach(function (line) {

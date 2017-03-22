@@ -45,8 +45,9 @@ circle {
 
 iframe {
     width: 49%;
-    border: 0;
+    /*border: 0;*/
     height: 800px;
+    /*border: 1px;*/
 }
 
 #map {

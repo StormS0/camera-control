@@ -1,23 +1,21 @@
 @echo off
 
-echo Starting web server
+echo Stopping web server ...
+taskkill /im %nginx.exe /f
 
+echo Starting web server ...
 cd nginx
-mkdir temp
-mkdir logs
-
+mkdir temp > nul 2> nul
+mkdir logs > nul 2> nul
 start nginx.exe
 
-echo ... Ok
-
+echo Starting ping service loop ...
 cd ../fping
-
-echo Starting ping service
-
 :loop
-  date /T > status.log
-  time /T >> status.log
-  fping -T -n1 -i -p -H hosts.txt >> status.log
+  date /t > status.log
+  time /t >> status.log
+  rem       count ICMP pool timeout file_with_hosts
+  fping.exe -n1   -i   -p   -w4000  -H hosts.txt >> status.log
   type status.log > status.txt
   sleep 5 > nul
 goto loop
