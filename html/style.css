@@ -19,7 +19,7 @@ circle {
     width: 100%;
 }
 
-.tab {
+div.tab {
     display: inline-block;
     text-align: center;
     width: 100px;
@@ -27,6 +27,18 @@ circle {
     line-height: 50px;
     background-color: #aaaaaa;
     cursor: pointer;
+}
+
+div.tab:hover {
+    background-color: #999999;
+}
+
+div.tab:active {
+    background-color: #666666;
+}
+
+div.tab.selected {
+    background-color: #666666;
 }
 
 #pages {

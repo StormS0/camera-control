@@ -23,13 +23,16 @@ function initTab(tab) {
             p.classList.add('hidden')
         });
 
+        forEachSelector('.tab', function (t) {
+            t.classList.remove('selected');
+        });
+
         var id = tab.id.split("_")[1];
         var page = document.querySelector("#page_" + id);
-        page.classList.remove('hidden')
+        page.classList.remove('hidden');
+        tab.classList.add('selected');
     };
 }
-
-
 
 function update() {
     var xhr = new XMLHttpRequest();
