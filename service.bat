@@ -3,6 +3,8 @@
 echo Starting web server
 
 cd nginx
+mkdir temp
+mkdir logs
 
 start nginx.exe
 

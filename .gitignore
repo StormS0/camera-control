@@ -1,1 +1,4 @@
-.idea
+.idea/*
+nginx/temp/
+nginx/logs/
+fping/status.*
