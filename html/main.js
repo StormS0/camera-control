@@ -7,76 +7,24 @@ syncState('cam2_state', 'cam2_80', 'DIV_REC_STOP');
 forEachSelector('circle', initCircle);
 forEachSelector('.tab', initTab);
 
-setInterval(updateStatus, 3000);
+setInterval(request.bind(null, '/status', onStatusReply), 3000);
 
-function initTab(tab) {
-    tab.onclick = function () {
-        forEachSelector('.page', function (p) {
-            p.classList.add('hidden')
-        });
+function onStatusReply(response) {
+    var lines = response.split('\n');
+    var statusDate = parseDate(lines[0] + lines[1]);
+    var delta = new Date().getTime() - statusDate.getTime();
 
-        forEachSelector('.tab', function (t) {
-            t.classList.remove('selected');
-        });
-
-        var id = tab.id.split("_")[1];
-        var page = document.querySelector("#page_" + id);
-        page.classList.remove('hidden');
-        tab.classList.add('selected');
-    };
-}
-
-function updateStatus() {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', '/status', true);
-    xhr.onreadystatechange = onReply;
-    xhr.send();
-
-    function onReply() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            var lines = xhr.responseText.split('\n');
-            var statusDate = parseDate(lines[0] + lines[1]);
-
-            var delta = new Date().getTime() - statusDate.getTime();
-
-            if (delta > 120000) { // 2 min
-                console.log("outdated");
-                return;
-            }
-
-            handleStatusResponse(lines.filter(function (el, i) {
-                return i > 7 && i < lines.length - 6;
-            }));
-        }
+    if (delta > 120000) { // 2 min
+        console.log("outdated");
+        return;
     }
+
+    applyStatus(lines.filter(function (el, i) {
+        return i > 7 && i < lines.length - 6;
+    }));
 }
 
-function initCircle(circle) {
-    var title = document.createElementNS("http://www.w3.org/2000/svg", "title");
-    title.innerHTML = circle.getAttribute('title') + " " + circle.getAttribute('ip');
-    circle.appendChild(title);
-}
-
-function diffInSeconds(dateString, date1) {
-
-
-    var deltaInMs = date1.getTime() - parseDate(dateString).getTime();
-    return deltaInMs / 1000;
-}
-
-function parseDate(dateString) {
-    var d = dateString.split(" ").join(".").split(":").join(".").split('.');
-    return new Date(d[2], d[1] - 1, d[0], d[3], d[4]);
-}
-
-function forEachSelector(selector, func) {
-    Array.prototype.forEach.call(
-        document.querySelectorAll(selector),
-        func
-    );
-}
-
-function handleStatusResponse(lines) {
+function applyStatus(lines) {
     var status = document.querySelector('#status');
     status.innerHTML = "";
 
@@ -94,6 +42,29 @@ function handleStatusResponse(lines) {
     lines.forEach(function (line) {
         status.innerHTML += line + '<br>';
     });
+}
+
+function initCircle(circle) {
+    var title = document.createElementNS("http://www.w3.org/2000/svg", "title");
+    title.innerHTML = circle.getAttribute('title') + " " + circle.getAttribute('ip');
+    circle.appendChild(title);
+}
+
+function initTab(tab) {
+    tab.onclick = function () {
+        forEachSelector('.page', function (p) {
+            p.classList.add('hidden')
+        });
+
+        forEachSelector('.tab', function (t) {
+            t.classList.remove('selected');
+        });
+
+        var id = tab.id.split("_")[1];
+        var page = document.querySelector("#page_" + id);
+        page.classList.remove('hidden');
+        tab.classList.add('selected');
+    };
 }
 
 function syncButtons(sourceId, framePort, targetId, func) {
@@ -123,6 +94,4 @@ function getButtons(port, selector) {
     ];
 }
 
-function getFrameElement(frameId, selector) {
-    return document.getElementById(frameId).contentDocument.querySelector(selector);
-}
+
