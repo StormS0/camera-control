@@ -1,12 +1,12 @@
 @echo off
-Y
-cd bin
 
 echo Stopping web server ...
 taskkill /im nginx.exe /f
 
 echo Starting web server ...
-
+mkdir temp > nul 2> nul
+mkdir logs > nul 2> nul
+cd bin
 start nginx.exe -p ..
 
 echo Starting ping service loop ...
