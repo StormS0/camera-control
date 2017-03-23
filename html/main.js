@@ -1,21 +1,13 @@
-var state = document.querySelector('#state');
-
-var frames = ['cam1_80', 'cam1_8080', 'cam2_80', 'cam2_8080'];
-frames.forEach(listenFrameLoad);
-
-var loaded = [];
-
-syncButtons('start', 80, 'DIV_REC_START', start);
-syncButtons('stop', 80, 'DIV_REC_STOP', stop);
+syncButtons('start', 80, 'DIV_REC_START', click);
+syncButtons('stop', 80, 'DIV_REC_STOP', click);
 
 syncState('cam1_state', 'cam1_80', 'DIV_REC_STOP');
 syncState('cam2_state', 'cam2_80', 'DIV_REC_STOP');
 
 forEachSelector('circle', initCircle);
-
-setInterval(update, 3000);
-
 forEachSelector('.tab', initTab);
+
+setInterval(updateStatus, 3000);
 
 function initTab(tab) {
     tab.onclick = function () {
@@ -34,7 +26,7 @@ function initTab(tab) {
     };
 }
 
-function update() {
+function updateStatus() {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '/status', true);
     xhr.onreadystatechange = onReply;
@@ -43,12 +35,14 @@ function update() {
     function onReply() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var lines = xhr.responseText.split('\n');
-            var dateString = lines[0] + lines[1];
+            var statusDate = parseDate(lines[0] + lines[1]);
 
-           if (diff(dateString, new Date()) > 120000) { // 2 min
-               console.log("outdated");
-               return;
-           }
+            var delta = new Date().getTime() - statusDate.getTime();
+
+            if (delta > 120000) { // 2 min
+                console.log("outdated");
+                return;
+            }
 
             handleStatusResponse(lines.filter(function (el, i) {
                 return i > 7 && i < lines.length - 6;
@@ -59,13 +53,20 @@ function update() {
 
 function initCircle(circle) {
     var title = document.createElementNS("http://www.w3.org/2000/svg", "title");
-    title.innerHTML = circle.getAttribute('title') + " "+ circle.getAttribute('ip');
+    title.innerHTML = circle.getAttribute('title') + " " + circle.getAttribute('ip');
     circle.appendChild(title);
 }
 
-function diff(dateString, date) {
+function diffInSeconds(dateString, date1) {
+
+
+    var deltaInMs = date1.getTime() - parseDate(dateString).getTime();
+    return deltaInMs / 1000;
+}
+
+function parseDate(dateString) {
     var d = dateString.split(" ").join(".").split(":").join(".").split('.');
-    return date.getTime() - new Date(d[2], d[1] - 1, d[0], d[3], d[4]).getTime();
+    return new Date(d[2], d[1] - 1, d[0], d[3], d[4]);
 }
 
 function forEachSelector(selector, func) {
@@ -108,18 +109,9 @@ function syncState(sourceId, frameId, targetId) {
     }
 }
 
-function start(btn) {
-    console.log("start " + btn);
-    click(btn);
-}
-
-function stop(btn) {
-    console.log("stop " + btn);
-    click(btn);
-}
-
 function click(btn) {
     if (btn) {
+        console.log("click " + btn);
         btn.click();
     }
 }
@@ -133,15 +125,4 @@ function getButtons(port, selector) {
 
 function getFrameElement(frameId, selector) {
     return document.getElementById(frameId).contentDocument.querySelector(selector);
-}
-
-function updateState() {
-    state.innerHTML = loaded;
-}
-
-function listenFrameLoad(frameId) {
-    document.getElementById(frameId).addEventListener('load', function () {
-        loaded.push(frameId);
-        updateState();
-    });
 }

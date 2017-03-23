@@ -1,8 +1,16 @@
 body {
-    margin: 0 auto;
+    margin: 0;
     font-family: Tahoma, Verdana, Arial, sans-serif;
     padding: 0;
     overflow: hidden;
+}
+
+iframe {
+    float: left;
+    width: 50%;
+    height: 800px;
+    border: 0;
+    background-color: #eeeeee;
 }
 
 circle {
@@ -13,20 +21,25 @@ circle {
     display: none;
 }
 
-#tabs {
-    margin: 10px;
-    height: 50px;
+.w100 {
     width: 100%;
 }
 
+#tabs {
+    margin: 5px 10px 0;
+}
+
 div.tab {
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
     display: inline-block;
     text-align: center;
     width: 100px;
-    height: 50px;
-    line-height: 50px;
+    height: 30px;
+    line-height: 30px;
     background-color: #aaaaaa;
     cursor: pointer;
+    transition: 300ms;
 }
 
 div.tab:hover {
@@ -52,28 +65,13 @@ div.tab.selected {
 }
 
 #controls {
-    margin: 10px;
-}
-
-iframe {
-    width: 49%;
-    /*border: 0;*/
-    height: 800px;
-    border: 1px solid black;
+    margin: 5px 10px;
 }
 
 #map {
     background-image: url(scheme.jpg);
     background-size: cover;
     margin: 20px;
-}
-
-.state {
-    display: inline-block;
-    height: 50px;
-    line-height: 50px;
-    padding-left: 10px;
-    cursor: default;
 }
 
 div.button {
@@ -92,4 +90,24 @@ div.button:hover {
 
 div.button:active {
     background-color: #666666;
+}
+
+.state {
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 10px;
+    cursor: default;
+}
+
+.state.unknown {
+    color: gray;
+}
+
+.state.recording {
+    color: red;
+}
+
+.state.idle {
+    color: green;
 }
