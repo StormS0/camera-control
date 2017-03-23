@@ -1,4 +1,3 @@
-.idea/*
-nginx/temp/
-nginx/logs/
-fping/status.*
+.idea/
+temp/*
+logs/*

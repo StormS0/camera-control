@@ -1,21 +1,22 @@
 @echo off
+Y
+cd bin
 
 echo Stopping web server ...
-taskkill /im %nginx.exe /f
+taskkill /im nginx.exe /f
 
 echo Starting web server ...
-cd nginx
-mkdir temp > nul 2> nul
-mkdir logs > nul 2> nul
-start nginx.exe
+
+start nginx.exe -p ..
 
 echo Starting ping service loop ...
-cd ../fping
+
 :loop
-  date /t > status.log
-  time /t >> status.log
+  date /t > ../logs/status.log
+  time /t >> ../logs/status.log
   rem       count ICMP pool timeout file_with_hosts
-  fping.exe -n1   -i   -p   -w4000  -H hosts.txt >> status.log
-  type status.log > status.txt
+  fping.exe -n1   -i   -p   -w4000  -H "../conf/hosts.txt">> ../logs/status.log
+  cd ../logs && type status.log > ../temp/status.txt
   sleep 5 > nul
+  cd ../bin
 goto loop
