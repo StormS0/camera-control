@@ -16,7 +16,8 @@ var RecordCtrl = {
 	RecorderOpen : function() 
 	{
         var params = [];
-        var id = client.clip.recorder.Open({params: params,	onresponse: function(resp){}});
+        client.clip.recorder.Open({params: params,	onresponse: function(resp){}});
+        client_two.clip.recorder.Open({params: params,	onresponse: function(resp){}});
     },
 							
 	//Get RecordStatus Functions
@@ -456,17 +457,15 @@ var RecordCtrl = {
 	RecorderStopRecord : function()
 	{
 		var params = [];
-        var id = client.clip.recorder.Stop({params: params, onresponse: function(resp){
-                                               
-        }});
+        client.clip.recorder.Stop({params: params, onresponse: function(resp){}});
+        client_two.clip.recorder.Stop({params: params, onresponse: function(resp){}});
 	},
 		
 	RecorderStartRecord : function()
 	{
 		var params = [];
-        var id = client.clip.recorder.Start({params: params, onresponse: function(resp){
-                                               
-        }});
+        client.clip.recorder.Start({params: params, onresponse: function(resp){}});
+        client_two.clip.recorder.Start({params: params, onresponse: function(resp){}});
 	},	
 /**************************************************
 *  Sever Notify Functions
