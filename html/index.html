@@ -12,6 +12,7 @@
 		<div id="tab_cam-2" class="tab">Sony 2</div>
 		<div id="tab_cam-3" class="tab">Canon</div>
 		<div id="tab_scheme" class="tab">Схема</div>
+		<div id="tab_settings" class="tab">Настройки</div>
 	</div>
 
 	<div id="pages">
@@ -65,17 +66,17 @@
 		</div>
 
 		<div id="page_cam-1" class="page hidden">
-			<iframe id='cam1_80' src='/cam1_80/'></iframe>
-			<iframe id='cam1_8080' src='/cam1_8080/'></iframe>
+			<iframe id='cam1_80' src='http://localhost:8081/'></iframe>
+			<iframe id='cam1_8080' src='http://localhost:8082/'></iframe>
 		</div>
 
 		<div id="page_cam-2" class="page hidden">
-			<iframe id='cam2_80' src='/cam2_80/'></iframe>
-			<iframe id='cam2_8080' src='/cam2_8080/'></iframe>
+			<iframe id='cam2_80' src='http://localhost:8083/'></iframe>
+			<iframe id='cam2_8080' src='http://localhost:8084/'></iframe>
 		</div>
 
 		<div id="page_cam-3" class="page hidden">
-			<iframe id='cam3' src='/cam3/' class="w100"></iframe>
+			<!--<iframe id='cam3' src='/cam3/' class="w100"></iframe>-->
 		</div>
 
 		<div id="page_scheme" class="page hidden">
@@ -107,9 +108,12 @@
 			<div id='status'></div>
 		</div>
 
+		<div id="page_settings" class="page hidden">
+
+		</div>
+
 	</div>
 
-	<script src='utils.js'></script>
 	<script src='main.js'></script>
 
 </body></html>

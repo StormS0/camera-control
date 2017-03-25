@@ -1,0 +1,131 @@
+// variables
+
+$default-ffamily: 'PT Sans',Arial,Helvetica,sans-serif;
+$default-fsize: 14px;
+$default-fweight: 400;
+$default-lheight: 1;
+
+$default-txtcolor: #000;
+$light-txtcolor: #666;
+$title-color: $default-txtcolor;
+$title-font: $default-ffamily;
+
+$success-txtcolor: #11a352;
+$error-txtcolor: #d93a40;
+
+$no-dec: none;
+$default-display: block;
+
+// mixins
+	
+@mixin fsize-fweight($default-fsize,$default-fweight) {
+	font-size: $default-fsize;
+	font-weight: $default-fweight;
+	}
+	
+@mixin fsize-lheight($default-fsize,$default-lheight) {
+	font-size: $default-fsize;
+	line-height: $default-lheight;
+	}
+	
+@mixin lheight-fweight($default-lheight,$default-fweight) {
+	line-height: $default-lheight;
+	font-weight: $default-fweight;
+	}
+	
+@mixin fsize-fweight-lheight($default-fsize,$default-fweight,$default-lheight) {
+	font-size: $default-fsize;
+	font-weight: $default-fweight;
+	line-height: $default-lheight;
+	}
+	
+@mixin fsize-txtcolor($default-fsize,$color) {
+	font-size: $default-fsize;
+	color: $color;
+	}
+	
+@mixin size($width,$height) {
+	width: $width;
+	height: $height;
+	}
+	
+@mixin offset($margin,$padding) {
+	margin: $margin;
+	padding: $padding;
+	}
+	
+@mixin item-position($pos,$top,$left) {
+	position: $pos;
+	top: $top;
+	left: $left;
+}
+	
+@mixin no-dec($no-dec) {
+	text-decoration: $no-dec;
+}
+	
+@mixin inline-block($default-display: inline-block) {
+	display: $default-display;
+	vertical-align: top;
+}	
+	
+@mixin inline-block-middle($default-display: inline-block) {
+	display: $default-display;
+	vertical-align: middle;
+}	
+	
+@mixin background-features {
+	background: {
+		position: center center;
+		repeat: no-repeat;
+		size: cover;
+	}
+}
+	
+@mixin border($width,$style,$color) {
+	border: {
+		width: $width;
+		style: $style;
+		color: $color;
+	}
+}
+	
+@mixin nowrap {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+	
+@mixin i-transition {
+	transition: all 0.5s ease 0s;
+	-moz-transition: all 0.5s ease 0s;
+	-webkit-transition: all 0.5s ease 0s;
+	-o-transition: all 0.5s ease 0s;
+}
+	
+@mixin top-transition {
+	transition: top 0.5s ease 0s;
+	-moz-transition: top 0.5s ease 0s;
+	-webkit-transition: top 0.5s ease 0s;
+	-o-transition: top 0.5s ease 0s;
+}
+	
+@mixin prefixes($property, $value){
+	#{-webkit-}#{$property}: #{$value};
+	   #{-moz-}#{$property}: #{$value};
+	    #{-ms-}#{$property}: #{$value};
+	     #{-o-}#{$property}: #{$value};
+	           #{$property}: #{$value};
+}
+
+@mixin blur($value){
+	@include prefixes('filter', blur($value));
+}
+
+@mixin transform($value){
+	@include prefixes('transform', rotate($value));
+}
+
+@mixin box-shadow($value){
+	@include prefixes('box-shadow', $value);
+}

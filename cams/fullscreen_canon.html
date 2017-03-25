@@ -1,0 +1,117 @@
+﻿<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<title>Canon</title>
+	<meta name="keywords" content="Главная"/>
+	<meta name="description" content="Главная"/>
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=EDGE" /> 
+	<meta http-equiv="X-Frame-Options" content="deny">
+	
+	<link rel="stylesheet" href="tpl/css_/styles.min.css" media="all"/>
+	<link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&amp;subset=cyrillic-ext" rel="stylesheet">		
+</head>
+<body class="i-fullscreen">
+	<div class="container">
+		<div class="camerabox camerabox-enabled col-md-10 valign-bottom">
+			<div class="camerabox_title">
+				<div class="camerabox_title__left">
+					Камера поста №1
+					<span class="camerabox_title__left-indicator"></span>
+				</div>	<!-- /.camerabox_title__left -->
+				
+				<div class="camerabox_title__right">
+					<a class="camerabox_title__right-icon i-exitfullscreen" href="#"></a>
+					<a class="camerabox_title__right-icon i-playlist" href="#"></a>
+					<a class="camerabox_title__right-icon i-settings" href="#"></a>
+				</div>	<!-- /.camerabox_title__right -->
+			</div>	<!-- /.camerabox_title -->
+			<div class="camerabox_inner">
+				<div id="ID1200" style="width: 1040px; height: 480px; background-size: contain; background-repeat: no-repeat;"><img id="liveview" src="" width="100%"></div>
+				<canvas id="ID1202" style="visibility: hidden; display: none;"></canvas>                
+				<canvas id="ID1203" style="visibility: hidden; display: none;"></canvas>
+			</div>	
+
+		</div>	<!-- /.camerabox -->
+			
+		<div class="col-md-2 text-center">
+			<ul class="control">
+				<li class="control">
+					<a class="control_btn control-play" href="#">Воспроизведение</a>
+				</li>
+				<li class="control">
+					<a class="control_btn control-pc" href="#">Контроль</a>
+				</li>
+				<li class="control">
+					<a id="rec" class="control_btn control-stop" href="#">Старт/стоп</a>
+				</li>
+			</ul>			
+		</div>
+	</div>	<!-- /.container -->
+	
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>	
+	<script src="tpl/js/main.js"></script>
+	<script src="../cmn/js/cmn.js" type="text/javascript"></script>
+	<script src="jsc/advanced.js" type="text/javascript"></script>
+	<script src="jsc/rccommon.js" type="text/javascript"></script>
+	<script src="jsc/control.js" type="text/javascript"></script>
+	<script src="jsc/status.js" type="text/javascript"></script>
+	<script src="jsc/view.js" type="text/javascript"></script>	
+	
+	
+	<script type="text/javascript">
+		var j = jQuery.noConflict();
+		
+		j(document).ready(function() {					
+			var xhr;
+			xhr = new XMLHttpRequest();
+			xhr.withCredentials = true;
+			xhr.open('POST', 'http://127.0.0.1:55555', true)
+			xhr.send();			
+			if (xhr.status != 200) {			  
+				console.log( xhr.status + ': ' + xhr.statusText );
+				var xhr_two;
+				xhr_two = new XMLHttpRequest();
+				xhr_two.withCredentials = true;
+				xhr_two.open('POST', 'http://127.0.0.1:55555/api/cam/lv?cmd=start&sz=1', true)
+				xhr_two.send();			
+				if (xhr_two.status != 200) {			  
+					j('#ID1258').click();
+					console.log( xhr_two.status + ': ' + xhr_two.statusText );
+					
+					var interRand = 0;
+					var viewSpeed = 200;
+					setInterval(function() { 						
+						interRand = Math.random();						
+						j('#ID1200').delay(viewSpeed).css('backgroundImage', 'url(http://127.0.0.1:55555/api/cam/lvgetimg?baba=' + interRand + ')');
+						j('#liveview').attr('src', 'http://127.0.0.1:55555/api/cam/lvgetimg?baba=' + interRand);
+					}, viewSpeed)			
+				} else {			  
+					console.log( xhr_two.responseText );
+				}
+			} else {			  
+				console.log( xhr.responseText );
+			}			
+				
+			
+			var clicker = 0; //щёлкатель
+			j('html').on('click', '#rec', function(){
+				j.ajax({
+					type: "GET",
+					url: "http://127.0.0.1:55555/api/cam/rec?cmd=trig",				
+					dataType: 'json',
+					success: function(msg) {									
+						console.log(msg);					
+					}
+				});				
+			});
+		});
+		
+		
+
+	</script>
+</body>
+</html>

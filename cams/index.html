@@ -1,0 +1,514 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<title>Canon</title>
+	<meta name="keywords" content="Главная"/>
+	<meta name="description" content="Главная"/>
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=EDGE" /> 
+	<meta http-equiv="X-Frame-Options" content="deny">
+	
+	<link rel="stylesheet" href="tpl/css/styles.min.css" media="all"/>
+	<link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&amp;subset=cyrillic-ext" rel="stylesheet"> 
+</head>
+<body>
+	<div class="container">
+		<div class="camerabox camerabox-enabled col-lg-6">
+			<div class="camerabox_title">
+				<div class="camerabox_title__left">
+					Камера поста №1
+					<span class="camerabox_title__left-indicator"></span>
+				</div>	<!-- /.camerabox_title__left -->
+				
+				<div class="camerabox_title__right">
+					<a class="camerabox_title__right-fullscreen" href="fullscreen_canon.html" target="_blank"></a>
+					<a class="camerabox_title__right-settings" href="#"></a>
+				</div>	<!-- /.camerabox_title__right -->
+			</div>	<!-- /.camerabox_title -->			
+			<div class="camerabox_inner">
+				<!--div id="ID1200" style="width: 600px; height: 400px;"></div-->
+				<div id="ID1200" style="width: 600px; height: 400px; background-size: contain; background-repeat: no-repeat;"><img id="liveview" src="" width="100%"></div>
+				<canvas id="ID1202" style="visibility: hidden; display: none;"></canvas>                
+				<canvas id="ID1203" style="visibility: hidden; display: none;"></canvas>
+				
+				<!-- /.CANON HIDE CONTROL -->			
+				<div style="display: none;">
+					<div class="message-box" style="visibility: visible; display: block; width: auto; left: 349px; top: 329px;"></div>
+					<div id="ID_Control" style="visibility: visible; display: block;">
+						<div id="ID_Menu"></div>
+						<div id="ID_LiveView">
+							<img id="ID1250" class="fstr" width="35" height="10" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FNearCn.gif" style="visibility: visible; display: block;"></img>
+							<img id="ID1251" class="fstr" width="43" height="10" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FChn.gif" style="visibility: visible; display: block;"></img>
+							<img id="ID1252" class="fstr" width="25" height="10" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FFarCn.gif" style="visibility: visible; display: block;"></img>
+							<img id="ID1211" class="fbtn" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FNear3n.gif" style="visibility: visible; display: block;"></img>
+							<img id="ID1212" class="fbtn" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FNear2n.gif" style="visibility: visible; display: block;"></img>
+							<img id="ID1213" class="fbtn" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FNear1n.gif" style="visibility: visible; display: block;"></img>
+							<img id="ID1214" class="fbtn" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FFar1n.gif" style="visibility: visible; display: block;"></img>
+							<img id="ID1215" class="fbtn" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FFar2n.gif" style="visibility: visible; display: block;"></img>
+							<img id="ID1216" class="fbtn" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FFar3n.gif" style="visibility: visible; display: block;"></img>
+							<div id="ID9100" class="layer" style="visibility: hidden; display: none;"></div>
+							<img id="ID1253" width="56" height="10" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/IrCn.gif" style="visibility: visible; display: block;"></img>
+							<img id="ID1217" class="ibtn" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/IrMn.gif" style="visibility: visible; display: block;"></img>
+							<img id="ID1218" class="ibtn" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/IrPn.gif" style="visibility: visible; display: block;"></img>
+							<div id="ID9101" class="layer" style="visibility: hidden; display: none;"></div>
+							<img id="ID1258" width="127" height="10" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/LvCn.gif" style="visibility: visible; display: block;"></img>
+							<img id="ID1223" class="vbtn" width="100" height="32" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/Butt_n.gif" style="visibility: visible; display: block;"></img>
+							<div id="ID9102" class="vbtn layer" style="visibility: hidden; display: none;"></div>
+							<img id="ID1259" width="88" height="10" src="./images/StStCn.gif" style="visibility: visible; display: block;"></img>
+							<img id="ID1224" width="80" height="80" src="./images/StStn.gif" style="visibility: visible; display: block;"></img>
+						</div>
+						<div id="ID_Status_Setting"></div>
+						<div id="ID_Copyright"></div>
+					</div>
+					<div id="ID_Lang" class="layer"></div>	
+				</div>
+				<!-- /.END CANON HIDE CONTROL -->			
+				
+			</div>	<!-- /.camerabox_inner -->
+		</div>	<!-- /.camerabox -->
+		
+		<div class="camerabox camerabox-disabled col-lg-6">
+			<div class="camerabox_title">
+				<div class="camerabox_title__left">
+					Камера поста №2
+					<span class="camerabox_title__left-indicator"></span>
+				</div>	<!-- /.camerabox_title__left -->
+				
+				<div class="camerabox_title__right">
+					<a class="camerabox_title__right-fullscreen" href="fullscreen_sony_1.html" target="_blank"></a>
+					<a class="camerabox_title__right-settings" href="#"></a>
+				</div>	<!-- /.camerabox_title__right -->
+			</div>	<!-- /.camerabox_title -->
+			<div class="camerabox_inner">
+				<OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921"
+					 codebase="http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab"
+					 width="600" height="400" id="vlc" events="True">
+				   <param name="Src" value="rtp://192.168.111.79:5678" />
+				   <param name="ShowDisplay" value="True" />
+				   <param name="AutoLoop" value="False" />
+				   <param name="AutoPlay" value="True" />
+				   <embed id="vlcEmb"  type="application/x-google-vlc-plugin" version="VideoLAN.VLCPlugin.2" autoplay="yes" loop="no" width="600" height="400"
+					 target="rtp://192.168.111.79:5678" ></embed>
+				</OBJECT>
+
+
+				<div class="containernew" style="display: none;">
+					<div class="status">
+						<div id="DIV_WIFI_STATUS_D" class="status-icon status-icon--d"></div>
+						<div id="DIV_WIFI_STATUS_C" class="status-icon status-icon--c"></div>
+						<div id="TEXT_WIFI_STATUS" class="status-label">Disconnected</div>
+					</div>
+
+					<div class="rec-control">
+						<div id="DIV_REC_STOP" class="rec-btn rec-stop" style="width:100px;"></div>
+						<div id="DIV_REC_START" class="rec-btn rec-start" style="width:100px;"></div>
+					</div>
+
+					<div class="clear"></div>
+				</div>				
+			</div>	<!-- /.camerabox_inner -->
+		</div>	<!-- /.camerabox -->
+		
+		<div class="camerabox camerabox-recorded col-lg-6">
+			<div class="camerabox_title">
+				<div class="camerabox_title__left">
+					Камера поста №3
+					<span class="camerabox_title__left-indicator"></span>
+				</div>	<!-- /.camerabox_title__left -->
+				
+				<div class="camerabox_title__right">
+					<a class="camerabox_title__right-fullscreen" href="fullscreen_sony_2.html" target="_blank"></a>
+					<a class="camerabox_title__right-settings" href="#"></a>
+				</div>	<!-- /.camerabox_title__right -->
+			</div>	<!-- /.camerabox_title -->
+			<div class="camerabox_inner">
+				<OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921"
+					 codebase="http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab"
+					 width="600" height="400" id="vlc1" events="True">
+				   <param name="Src" value="rtp://192.168.111.79:1234" />
+				   <param name="ShowDisplay" value="True" />
+				   <param name="AutoLoop" value="False" />
+				   <param name="AutoPlay" value="True" />
+				   <embed id="vlcEmb1"  type="application/x-google-vlc-plugin" version="VideoLAN.VLCPlugin.2" autoplay="yes" loop="no" width="600" height="400"
+					 target="rtp://192.168.111.79:1234" ></embed>
+				</OBJECT>
+			</div>	<!-- /.camerabox_inner -->
+		</div>	<!-- /.camerabox -->
+		
+		<ul class="col-lg-6">
+			<li class="control">
+				<a class="control_btn control-settings" href="#">Интерфейс</a>
+				<div class="control_cameras">
+					<a class="control_cameras__link enabled" href="#">Камера поста №1</a>
+					<a class="control_cameras__link enabled" href="#">Камера поста №2</a>
+					<a class="control_cameras__link" href="#">Камера поста №3</a>
+				</div>
+			</li>
+			<li class="control">
+				<a class="control_btn control-pc" href="#">Контроль</a>
+			</li>
+			<li class="control">
+				<a id="rec" class="control_btn control-stop" href="#">Старт/стоп</a>
+			</li>
+		</ul>
+	</div>	<!-- /.container -->
+	
+	<div>
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+	<!--script src="tpl/js/jquery-1.11.2.min.js"></script-->
+	<!--script src="tpl/js/main.js"></script-->
+
+	<!--SONY-->
+	
+	<script type="text/javascript" src="js/savona.min.js"></script>
+	<script type="text/javascript" src="js/savona_two.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/button.js"></script>
+	<script type="text/javascript" src="js/click.js"></script>
+	<script type="text/javascript" src="js/commmonDefine.js"></script>
+	<script type="text/javascript" src="js/rec_button.js"></script>
+	<script type="text/javascript" src="js/record_connection.js"></script>
+	<script type="text/javascript" src="js/audio_connection.js"></script>
+	<script type="text/javascript" src="js/assign_connection.js"></script>
+	<script type="text/javascript" src="js/mainfile_connection.js"></script>
+	<script type="text/javascript" src="js/SQFPS_connection.js"></script>
+	<script type="text/javascript" src="js/mainbttery_connection.js"></script>
+	<script type="text/javascript" src="js/meidacard_connection.js"></script>
+	<script type="text/javascript" src="js/shutter_connection.js"></script>
+	<script type="text/javascript" src="js/presetwhite_connection.js"></script>
+	<script type="text/javascript" src="js/gamma_connection.js"></script>
+	<script type="text/javascript" src="js/autoShutter_connection.js"></script>
+	<script type="text/javascript" src="js/autoIris_connection.js"></script>
+	<script type="text/javascript" src="js/ATW_connection.js"></script>
+	<script type="text/javascript" src="js/AGC_connection.js"></script>
+	<script type="text/javascript" src="js/colorbars_connection.js"></script>
+	<script type="text/javascript" src="js/iris_connection.js"></script>
+	<script type="text/javascript" src="js/focus_connection.js"></script>
+	<script type="text/javascript" src="js/zoom_connection.js"></script>
+	<script type="text/javascript" src="js/autoWhiteBalance_connection.js"></script>
+	<script type="text/javascript" src="js/autoBlackBalance_connection.js"></script>
+	<script type="text/javascript" src="js/ClipInfo_connection.js"></script>
+	<script type="text/javascript" src="js/GrayedInfo_connection.js"></script>
+	<script type="text/javascript" src="js/Gain_connection.js"></script>
+	<script type="text/javascript" src="js/MLUT_connection.js"></script>
+	<script type="text/javascript" src="js/hashtable.js"></script>
+	<script type="text/javascript" src="js/clipname_connection.js"></script>
+	<script type="text/javascript" src="js/white_connection.js"></script>
+	<script type="text/javascript" src="js/LensMount_connection.js"></script>
+	
+	
+	<script src="jsc/cmn.js" type="text/javascript"></script>
+	<script src="jsc/advanced.js" type="text/javascript"></script>
+	<script src="jsc/rccommon.js" type="text/javascript"></script>
+	<script src="jsc/control.js" type="text/javascript"></script>
+	<script src="jsc/status.js" type="text/javascript"></script>
+	<script src="jsc/view.js" type="text/javascript"></script>
+	</div>
+	
+
+	
+	
+	<script type="text/javascript">
+		var j = jQuery.noConflict();
+
+		var client = new savona.client();
+		var client_two = new savona_two.client();
+		
+		client.onconnect = client_two.onconnect = connectionStateHandler;
+		client.ondisconnect = client_two.ondisconnect = connectionStateHandler;
+		client.onnotify = client_two.onnotify = sonyConnectionNotifyHandler;
+		
+		var g_OldObject = null;
+		var g_objABStatusDlg = j("DIV_BALANCE_STATUS_DLG");
+		var g_objRecStop = j("DIV_REC_STOP");
+		var g_objRecStart = j("DIV_REC_START");		
+		
+		j('.control_btn').each(function(){
+			j(this).click(function(e){
+				//e.preventDefault();
+				j(this).toggleClass('active');
+				j(this).next('.control_cameras').toggle();
+			});
+		});
+		
+		initClicker();
+		
+		//InitMainData();
+		
+		connect();
+		connect_two();
+		
+		function sonyConnectionNotifyHandler(event){
+			var jsonstring;
+			var objArrItems;
+			if (typeof JSON !== 'undefined') {
+				jsonstring = JSON.stringify(event.data);
+			} else { // sorry, IE does not have JSON.stringify
+				jsonstring = event.data;
+			}
+			if (event.name == "Notify.Property.Value.Changed") {
+				objArrItems = JSON.parse(jsonstring)[0];
+				ShutterCtrl.NotifySetShutterData(objArrItems);
+				RecordCtrl.NotifySetRecorderData(objArrItems);
+				AssignCtrl.NotifySetAssignData(objArrItems);
+				ColorBarsCtrl.NotifySetColorBarsData(objArrItems);
+				SQFPSCtrl.NotifySetSQFPSData(objArrItems);
+				WhiteCtrl.NotifySetClrTempData(objArrItems);
+				GammaCtrl.NotifySetGammaData(objArrItems);
+				MLUTCtrl.NotifySetMLUTData(objArrItems);
+				SetCardNotifyData(objArrItems); //Card Notify
+				MainBtteryNotifyData(objArrItems); //MainBattery Notify
+				SetAudioNotifyData(objArrItems); //Audio
+				SetClipNotifyData(objArrItems); //Clip number
+				AutoIrisCtrl.NotifySetAutoIrisData(objArrItems);
+				AutoShutterCtrl.NotifySetAutoShutterData(objArrItems);
+				AGCCtrl.NotifySetAGCData(objArrItems);
+				ATWCtrl.NotifySetATWData(objArrItems);
+				GainCtrl.NotifySetGainData(objArrItems);
+				AWBCtrl.NotifySetAWBData(objArrItems);
+				ABBCtrl.NotifySetABBData(objArrItems);
+				LensMountCtrl.NotifySetLensMountData(objArrItems);
+				FocusCtrl.NotifySetFocusData(objArrItems);
+				ZoomCtrl.NotifySetZoomData(objArrItems);
+				IrisCtrl.NotifySetIrisData(objArrItems);
+				MainFileNotifyData(objArrItems); //Main File
+				SetShootModeNotifyData(objArrItems); //Shooting Mode Notify
+				ClipNameCtrl.NotifySetClipNameData(objArrItems);
+			} else if (event.name == "Notify.Property.Status.Changed") {
+				objArrItems = JSON.parse(jsonstring)[0];
+				NotifyMessagePopupProperties(objArrItems);
+				ShutterCtrl.NotifyShutterStatusData(objArrItems);
+			} else if (event.name == "Notify.Process.ErrorOccurred") {
+				objArrItems = JSON.parse(jsonstring)[0];
+				if (objArrItems == "Camera.WhiteBalance") {
+					g_objABStatusDlg.userData.SetTitle("Auto White");
+					g_objABStatusDlg.userData.SetText("Auto White Balance", "NG");
+					g_objABStatusDlg.userData.ShowDialog();
+				}
+				if (objArrItems == "Camera.BlackBalance") {
+					g_objABStatusDlg.userData.SetTitle("Auto Black");
+					g_objABStatusDlg.userData.SetText("Auto Black Balance", "NG");
+					g_objABStatusDlg.userData.ShowDialog();
+				}
+			} else if (event.name == "Notify.Process.Completed") {
+				objArrItems = JSON.parse(jsonstring)[0];
+				if (objArrItems == "Camera.WhiteBalance") {
+					g_objABStatusDlg.userData.SetTitle("Auto White");
+					g_objABStatusDlg.userData.SetText("Auto White Balance", "OK");
+					g_objABStatusDlg.userData.ShowDialog();
+				}
+				if (objArrItems == "Camera.BlackBalance") {
+					g_objABStatusDlg.userData.SetTitle("Auto Black");
+					g_objABStatusDlg.userData.SetText("Auto Black Balance", "OK");
+					g_objABStatusDlg.userData.ShowDialog();
+				}
+			} else if (event.name == "Notify.Process.Started") {
+				closeAllShowingDialog();
+				objArrItems = JSON.parse(jsonstring)[0];
+				j.each(objArrItems, function(key, value) {
+					if (key == "Camera.WhiteBalance") {
+						g_objABStatusDlg.userData.ShowDialog(false);
+					}
+					if (key == "Camera.BlackBalance") {
+						g_objABStatusDlg.userData.ShowDialog(false);
+					}
+				});
+			} else if (event.name == "Notify.Process.Aborted") {
+				objArrItems = JSON.parse(jsonstring)[0];
+				j.each(objArrItems, function(key, value) {
+					if (key == "Camera.WhiteBalance") {
+						g_objABStatusDlg.userData.SetTitle("Auto White");
+						g_objABStatusDlg.userData.SetText("Auto White Balance", "Cancelled");
+						g_objABStatusDlg.userData.ShowDialog();
+					}
+					if (key == "Camera.BlackBalance") {
+						g_objABStatusDlg.userData.SetTitle("Auto Black");
+						g_objABStatusDlg.userData.SetText("Auto Black Balance", "Cancelled");
+						g_objABStatusDlg.userData.ShowDialog();
+					}
+				});
+			}
+		}
+		
+		function connectionStateHandler(e){
+			if (e.type == "connected") {
+				$("TEXT_WIFI_STATUS").innerHTML = "Connected";
+				$("DIV_WIFI_STATUS_C").style.display = "inline-block";
+				$("DIV_WIFI_STATUS_D").style.display = "none";
+				g_RmtTimerId = setInterval(connect, 5000);
+				Reconnect();
+			} else {
+				$("TEXT_WIFI_STATUS").innerHTML = "Disconnected";
+				$("DIV_WIFI_STATUS_C").style.display = "none";
+				$("DIV_WIFI_STATUS_D").style.display = "inline-block";
+
+				if (g_OldObject) {
+					g_OldObject.userData[1].ShowDialog(false);
+					g_OldObject = null;
+					return;
+				}
+			}
+		}
+		
+		function initClicker(){
+			var clicker = 0; //щёлкатель
+			j('html').on('click', '#rec', function(){
+				j.ajax({
+					type: "GET",
+					url: "http://127.0.0.1:55555/api/cam/rec?cmd=trig",				
+					dataType: 'json',
+					success: function(msg) {									
+						console.log(msg);					
+					}
+				});
+				
+				if(clicker == 0) {
+					//g_objRecStart.click();
+					RecordCtrl.RecorderStartRecord();
+					clicker = 1;
+					console.log('запись');
+				} else {
+					//g_objRecStop.click();
+					RecordCtrl.RecorderStopRecord();
+					clicker = 0;
+					console.log('стоп');
+				}				
+			});
+		}
+		
+		function initCanon(){
+			var xhr;
+			xhr = new XMLHttpRequest();
+			xhr.withCredentials = true;
+			xhr.open('POST', 'http://127.0.0.1:55555', true)
+			xhr.send();			
+			if (xhr.status != 200) {			  
+				console.log( xhr.status + ': ' + xhr.statusText );
+				var xhr_two;
+				xhr_two = new XMLHttpRequest();
+				xhr_two.withCredentials = true;
+				xhr_two.open('POST', 'http://127.0.0.1:55555/api/cam/lv?cmd=start&sz=l', true)
+				xhr_two.send();			
+				if (xhr_two.status != 200) {			  
+					j('#ID1258').click();
+					console.log( xhr_two.status + ': ' + xhr_two.statusText );
+					
+					var interRand = 0;
+					var viewSpeed = 200;
+					setInterval(function() { 						
+						interRand = Math.random();						
+						j('#ID1200').delay(viewSpeed).css('backgroundImage', 'url(http://127.0.0.1:55555/api/cam/lvgetimg?baba=' + interRand + ')');
+						j('#liveview').attr('src', 'http://127.0.0.1:55555/api/cam/lvgetimg?baba=' + interRand);
+					}, viewSpeed)			
+				} else {			  
+					console.log( xhr_two.responseText );
+				}
+			} else {			  
+				console.log( xhr.responseText );
+			}		
+		}
+		
+		function connect() {
+			if (client.state() !== 'disconnected') return
+			client.connect();			
+		}
+		
+		function connect_two() {
+			if (client_two.state() !== 'disconnected') return
+			client_two.connect();			
+		}
+
+		function Reconnect() {
+			connect();			
+			connect_two();
+			GetValue();
+			GetStatus();
+		}
+
+		function NotifySubscribe() {
+			names = ["Notify.Properties", "Notify.Process", "Notify.Property"];
+			var id = client.notify.Subscribe({
+				params: names,
+				onresponse: function(resp) {}
+			});
+			id = client_two.notify.Subscribe({
+				params: names,
+				onresponse: function(resp) {}
+			});
+		}
+
+
+
+		function InitMainData() {
+			//Rec Button   
+			g_objRecStop.userData = new RecButtonCtrl(g_objRecStop, CBButtonClickRec, "URL(images/RecStop_Pressed.png)", "URL(images/RecStop_Normal.png)");
+			g_objRecStart.userData = new RecButtonCtrl(g_objRecStart, CBButtonClickRec, "URL(images/RecStart_Pressed.png)", "URL(images/RecStart_Normal.png)");
+		}
+
+		function GetValue() {
+			//Assign
+			AssignCtrl.GetValue();
+
+			//Main
+			SQFPSCtrl.GetValue();
+			ShutterCtrl.GetValue();
+			WhiteCtrl.GetValue();
+			GammaCtrl.GetValue();
+			MLUTCtrl.GetValue();
+			AutoIrisCtrl.GetValue();
+			AutoShutterCtrl.GetValue();
+			AGCCtrl.GetValue();
+			ATWCtrl.GetValue();
+			GainCtrl.GetValue();
+			ColorBarsCtrl.GetValue();
+			RecordCtrl.GetValue();
+			GetAudioValue();
+			GetClipProperties()
+			GetMainFileValue();
+			GetCardValue();
+			GetMainBtteryValue();
+			LensMountCtrl.GetValue();
+			IrisCtrl.GetValue();
+			FocusCtrl.GetValue();
+			ZoomCtrl.GetValue();
+			GetShootModeValue();
+			ClipNameCtrl.GetValue();
+		}
+
+		function GetStatus() {
+			//Main
+			SQFPSCtrl.GetStatus();
+			ShutterCtrl.GetStatus();
+			WhiteCtrl.GetStatus();
+			GammaCtrl.GetStatus();
+			MLUTCtrl.GetStatus();
+			AutoIrisCtrl.GetStatus();
+			AutoShutterCtrl.GetStatus();
+			AGCCtrl.GetStatus();
+			ATWCtrl.GetStatus();
+			GainCtrl.GetStatus();
+			ColorBarsCtrl.GetStatus();
+			AWBCtrl.GetStatus();
+			ABBCtrl.GetStatus();
+			IrisCtrl.GetStatus();
+			ZoomCtrl.GetStatus();
+			FocusCtrl.GetStatus();
+			ShutterCtrl.GetShutterValueStatus();
+		}
+
+		function CBButtonClickRec(objSrc) {
+		console.log("rec");
+			if ("DIV_REC_STOP" == objSrc.id) RecordCtrl.RecorderStopRecord()
+			if ("DIV_REC_START" == objSrc.id) RecordCtrl.RecorderStartRecord()
+		}
+
+	</script>
+
+	
+
+	
+</body>
+</html>

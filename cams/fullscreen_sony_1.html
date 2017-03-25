@@ -1,0 +1,368 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<title>Canon</title>
+	<meta name="keywords" content="Главная"/>
+	<meta name="description" content="Главная"/>
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=EDGE" /> 
+	<meta http-equiv="X-Frame-Options" content="deny">
+	
+	<link rel="stylesheet" href="tpl/css_/styles.min.css" media="all"/>
+	<link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&amp;subset=cyrillic-ext" rel="stylesheet">		
+</head>
+<body class="i-fullscreen">
+	<div class="container">
+		<div id="" class="camerabox camerabox-enabled col-md-10 valign-bottom">
+			<div class="camerabox_title">
+				<div class="camerabox_title__left">
+					Камера поста №1
+					<span class="camerabox_title__left-indicator"></span>
+				</div>	<!-- /.camerabox_title__left -->
+				
+				<div class="camerabox_title__right">
+					<a class="camerabox_title__right-icon i-exitfullscreen" href="#"></a>
+					<a class="camerabox_title__right-icon i-playlist" href="#"></a>
+					<a class="camerabox_title__right-icon i-settings" href="#"></a>
+				</div>	<!-- /.camerabox_title__right -->
+			</div>	<!-- /.camerabox_title -->
+			<div class="camerabox_inner">
+				<OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921"
+					 codebase="http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab"
+					 width="740" height="480" id="vlc" events="True">
+				   <param name="Src" value="rtp://192.168.0.251:5678" />
+				   <param name="ShowDisplay" value="True" />
+				   <param name="AutoLoop" value="False" />
+				   <param name="AutoPlay" value="True" />
+				   <embed id="vlcEmb"  type="application/x-google-vlc-plugin" version="VideoLAN.VLCPlugin.2" autoplay="yes" loop="no" width="740" height="480"
+					 target="rtp://192.168.0.251:5678" ></embed>
+				</OBJECT>
+
+
+				<div class="containernew" style="display: none;">
+					<div class="status">
+						<div id="DIV_WIFI_STATUS_D" class="status-icon status-icon--d"></div>
+						<div id="DIV_WIFI_STATUS_C" class="status-icon status-icon--c"></div>
+						<div id="TEXT_WIFI_STATUS" class="status-label">Disconnected</div>
+					</div>
+
+					<div class="rec-control">
+						<div id="DIV_REC_STOP" class="rec-btn rec-stop"></div>
+						<div id="DIV_REC_START" class="rec-btn rec-start"></div>
+					</div>
+
+					<div class="clear"></div>
+				</div>	
+			</div>	<!-- /.camerabox_inner -->
+		</div>	<!-- /.camerabox -->
+			
+		<div class="col-md-2 text-center">
+			<ul class="control">
+				<li class="control">
+					<a class="control_btn control-play" href="#">Воспроизведение</a>
+				</li>
+				<li class="control">
+					<a class="control_btn control-pc" href="#">Контроль</a>
+				</li>
+				<li class="control">
+					<a id="rec" class="control_btn control-stop" href="#">Старт/стоп</a>
+				</li>
+			</ul>			
+		</div>
+	</div>	<!-- /.container -->
+	
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+	<!--script src="tpl/js/jquery-1.11.2.min.js"></script-->
+	<script src="tpl/js/main.js"></script>
+
+	<!--SONY-->
+	
+	<script type="text/javascript" src="js/savona.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/button.js"></script>
+	<script type="text/javascript" src="js/click.js"></script>
+	<script type="text/javascript" src="js/commmonDefine.js"></script>
+	<script type="text/javascript" src="js/rec_button.js"></script>
+	<script type="text/javascript" src="js/record_connection.js"></script>
+	<script type="text/javascript" src="js/audio_connection.js"></script>
+	<script type="text/javascript" src="js/assign_connection.js"></script>
+	<script type="text/javascript" src="js/mainfile_connection.js"></script>
+	<script type="text/javascript" src="js/SQFPS_connection.js"></script>
+	<script type="text/javascript" src="js/mainbttery_connection.js"></script>
+	<script type="text/javascript" src="js/meidacard_connection.js"></script>
+	<script type="text/javascript" src="js/shutter_connection.js"></script>
+	<script type="text/javascript" src="js/presetwhite_connection.js"></script>
+	<script type="text/javascript" src="js/gamma_connection.js"></script>
+	<script type="text/javascript" src="js/autoShutter_connection.js"></script>
+	<script type="text/javascript" src="js/autoIris_connection.js"></script>
+	<script type="text/javascript" src="js/ATW_connection.js"></script>
+	<script type="text/javascript" src="js/AGC_connection.js"></script>
+	<script type="text/javascript" src="js/colorbars_connection.js"></script>
+	<script type="text/javascript" src="js/iris_connection.js"></script>
+	<script type="text/javascript" src="js/focus_connection.js"></script>
+	<script type="text/javascript" src="js/zoom_connection.js"></script>
+	<script type="text/javascript" src="js/autoWhiteBalance_connection.js"></script>
+	<script type="text/javascript" src="js/autoBlackBalance_connection.js"></script>
+	<script type="text/javascript" src="js/ClipInfo_connection.js"></script>
+	<script type="text/javascript" src="js/GrayedInfo_connection.js"></script>
+	<script type="text/javascript" src="js/Gain_connection.js"></script>
+	<script type="text/javascript" src="js/MLUT_connection.js"></script>
+	<script type="text/javascript" src="js/hashtable.js"></script>
+	<script type="text/javascript" src="js/clipname_connection.js"></script>
+	<script type="text/javascript" src="js/white_connection.js"></script>
+	<script type="text/javascript" src="js/LensMount_connection.js"></script>
+	
+
+
+	
+	
+	<script type="text/javascript">
+		var j = jQuery.noConflict();
+
+		var client = new savona.client();
+
+		var g_OldObject = null;
+		var g_objABStatusDlg = $("DIV_BALANCE_STATUS_DLG");
+
+		var g_objRecStop = $("DIV_REC_STOP");
+		var g_objRecStart = $("DIV_REC_START");		
+		
+		j('.control_btn').each(function(){
+			j(this).click(function(e){
+				e.preventDefault();
+				j(this).toggleClass('active');
+				j(this).next('.control_cameras').toggle();
+			});
+		});
+		
+		j(document).ready(function() {			
+			
+			var clicker = 0; //щёлкатель
+			j('html').on('click', '#rec', function(){
+				
+				if(clicker == 0) {
+					g_objRecStart.click();
+					//RecordCtrl.RecorderStartRecord();
+					clicker = 1;
+					console.log('запись');
+				} else {
+					g_objRecStop.click();
+					//RecordCtrl.RecorderStopRecord();
+					clicker = 0;
+					console.log('стоп');
+				}				
+			});
+		});
+		
+		
+		
+		
+
+
+		window.onload = Init
+
+		client.onconnect = client.ondisconnect = function(e) {
+			if (e.type == "connected") {
+				$("TEXT_WIFI_STATUS").innerHTML = "Connected";
+				$("DIV_WIFI_STATUS_C").style.display = "inline-block";
+				$("DIV_WIFI_STATUS_D").style.display = "none";
+				g_RmtTimerId = setInterval(connect, 5000);
+				Reconnect();
+			} else {
+				$("TEXT_WIFI_STATUS").innerHTML = "Disconnected";
+				$("DIV_WIFI_STATUS_C").style.display = "none";
+				$("DIV_WIFI_STATUS_D").style.display = "inline-block";
+
+				if (g_OldObject) {
+					g_OldObject.userData[1].ShowDialog(false);
+					g_OldObject = null;
+					return;
+				}
+			}
+		};
+
+		function connect() {
+			if (client.state() !== 'disconnected') return
+			client.connect();
+		}
+
+		function Reconnect() {
+			connect();
+			GetValue();
+			GetStatus();
+		}
+
+		function NotifySubscribe() {
+			names = ["Notify.Properties", "Notify.Process", "Notify.Property"];
+			var id = client.notify.Subscribe({
+				params: names,
+				onresponse: function(resp) {}
+			});
+		}
+
+		client.onnotify = function(event) {
+			var jsonstring;
+			var objArrItems;
+			if (typeof JSON !== 'undefined') {
+				jsonstring = JSON.stringify(event.data);
+			} else { // sorry, IE does not have JSON.stringify
+				jsonstring = event.data;
+			}
+			if (event.name == "Notify.Property.Value.Changed") {
+				objArrItems = JSON.parse(jsonstring)[0];
+				ShutterCtrl.NotifySetShutterData(objArrItems);
+				RecordCtrl.NotifySetRecorderData(objArrItems);
+				AssignCtrl.NotifySetAssignData(objArrItems);
+				ColorBarsCtrl.NotifySetColorBarsData(objArrItems);
+				SQFPSCtrl.NotifySetSQFPSData(objArrItems);
+				WhiteCtrl.NotifySetClrTempData(objArrItems);
+				GammaCtrl.NotifySetGammaData(objArrItems);
+				MLUTCtrl.NotifySetMLUTData(objArrItems);
+				SetCardNotifyData(objArrItems); //Card Notify
+				MainBtteryNotifyData(objArrItems); //MainBattery Notify
+				SetAudioNotifyData(objArrItems); //Audio
+				SetClipNotifyData(objArrItems); //Clip number
+				AutoIrisCtrl.NotifySetAutoIrisData(objArrItems);
+				AutoShutterCtrl.NotifySetAutoShutterData(objArrItems);
+				AGCCtrl.NotifySetAGCData(objArrItems);
+				ATWCtrl.NotifySetATWData(objArrItems);
+				GainCtrl.NotifySetGainData(objArrItems);
+				AWBCtrl.NotifySetAWBData(objArrItems);
+				ABBCtrl.NotifySetABBData(objArrItems);
+				LensMountCtrl.NotifySetLensMountData(objArrItems);
+				FocusCtrl.NotifySetFocusData(objArrItems);
+				ZoomCtrl.NotifySetZoomData(objArrItems);
+				IrisCtrl.NotifySetIrisData(objArrItems);
+				MainFileNotifyData(objArrItems); //Main File
+				SetShootModeNotifyData(objArrItems); //Shooting Mode Notify
+				ClipNameCtrl.NotifySetClipNameData(objArrItems);
+			} else if (event.name == "Notify.Property.Status.Changed") {
+				objArrItems = JSON.parse(jsonstring)[0];
+				NotifyMessagePopupProperties(objArrItems);
+				ShutterCtrl.NotifyShutterStatusData(objArrItems);
+			} else if (event.name == "Notify.Process.ErrorOccurred") {
+				objArrItems = JSON.parse(jsonstring)[0];
+				if (objArrItems == "Camera.WhiteBalance") {
+					g_objABStatusDlg.userData.SetTitle("Auto White");
+					g_objABStatusDlg.userData.SetText("Auto White Balance", "NG");
+					g_objABStatusDlg.userData.ShowDialog();
+				}
+				if (objArrItems == "Camera.BlackBalance") {
+					g_objABStatusDlg.userData.SetTitle("Auto Black");
+					g_objABStatusDlg.userData.SetText("Auto Black Balance", "NG");
+					g_objABStatusDlg.userData.ShowDialog();
+				}
+			} else if (event.name == "Notify.Process.Completed") {
+				objArrItems = JSON.parse(jsonstring)[0];
+				if (objArrItems == "Camera.WhiteBalance") {
+					g_objABStatusDlg.userData.SetTitle("Auto White");
+					g_objABStatusDlg.userData.SetText("Auto White Balance", "OK");
+					g_objABStatusDlg.userData.ShowDialog();
+				}
+				if (objArrItems == "Camera.BlackBalance") {
+					g_objABStatusDlg.userData.SetTitle("Auto Black");
+					g_objABStatusDlg.userData.SetText("Auto Black Balance", "OK");
+					g_objABStatusDlg.userData.ShowDialog();
+				}
+			} else if (event.name == "Notify.Process.Started") {
+				closeAllShowingDialog();
+				objArrItems = JSON.parse(jsonstring)[0];
+				j.each(objArrItems, function(key, value) {
+					if (key == "Camera.WhiteBalance") {
+						g_objABStatusDlg.userData.ShowDialog(false);
+					}
+					if (key == "Camera.BlackBalance") {
+						g_objABStatusDlg.userData.ShowDialog(false);
+					}
+				});
+			} else if (event.name == "Notify.Process.Aborted") {
+
+				objArrItems = JSON.parse(jsonstring)[0];
+				j.each(objArrItems, function(key, value) {
+					if (key == "Camera.WhiteBalance") {
+						g_objABStatusDlg.userData.SetTitle("Auto White");
+						g_objABStatusDlg.userData.SetText("Auto White Balance", "Cancelled");
+						g_objABStatusDlg.userData.ShowDialog();
+					}
+					if (key == "Camera.BlackBalance") {
+						g_objABStatusDlg.userData.SetTitle("Auto Black");
+						g_objABStatusDlg.userData.SetText("Auto Black Balance", "Cancelled");
+						g_objABStatusDlg.userData.ShowDialog();
+					}
+				});
+			}
+		};
+
+		function Init() {
+			InitMainData();
+			connect();
+		}
+
+		function InitMainData() {
+			//Rec Button   
+			g_objRecStop.userData = new RecButtonCtrl(g_objRecStop, CBButtonClickRec, "URL(images/RecStop_Pressed.png)", "URL(images/RecStop_Normal.png)");
+			g_objRecStart.userData = new RecButtonCtrl(g_objRecStart, CBButtonClickRec, "URL(images/RecStart_Pressed.png)", "URL(images/RecStart_Normal.png)");
+		}
+
+		function GetValue() {
+			//Assign
+			AssignCtrl.GetValue();
+
+			//Main
+			SQFPSCtrl.GetValue();
+			ShutterCtrl.GetValue();
+			WhiteCtrl.GetValue();
+			GammaCtrl.GetValue();
+			MLUTCtrl.GetValue();
+			AutoIrisCtrl.GetValue();
+			AutoShutterCtrl.GetValue();
+			AGCCtrl.GetValue();
+			ATWCtrl.GetValue();
+			GainCtrl.GetValue();
+			ColorBarsCtrl.GetValue();
+			RecordCtrl.GetValue();
+			GetAudioValue();
+			GetClipProperties()
+			GetMainFileValue();
+			GetCardValue();
+			GetMainBtteryValue();
+			LensMountCtrl.GetValue();
+			IrisCtrl.GetValue();
+			FocusCtrl.GetValue();
+			ZoomCtrl.GetValue();
+			GetShootModeValue();
+			ClipNameCtrl.GetValue();
+		}
+
+		function GetStatus() {
+			//Main
+			SQFPSCtrl.GetStatus();
+			ShutterCtrl.GetStatus();
+			WhiteCtrl.GetStatus();
+			GammaCtrl.GetStatus();
+			MLUTCtrl.GetStatus();
+			AutoIrisCtrl.GetStatus();
+			AutoShutterCtrl.GetStatus();
+			AGCCtrl.GetStatus();
+			ATWCtrl.GetStatus();
+			GainCtrl.GetStatus();
+			ColorBarsCtrl.GetStatus();
+			AWBCtrl.GetStatus();
+			ABBCtrl.GetStatus();
+			IrisCtrl.GetStatus();
+			ZoomCtrl.GetStatus();
+			FocusCtrl.GetStatus();
+			ShutterCtrl.GetShutterValueStatus();
+		}
+
+		function CBButtonClickRec(objSrc) {
+			if ("DIV_REC_STOP" == objSrc.id) RecordCtrl.RecorderStopRecord()
+			if ("DIV_REC_START" == objSrc.id) RecordCtrl.RecorderStartRecord()
+		}
+		// END_SONY
+	</script>
+</body>
+</html>
