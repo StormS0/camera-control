@@ -121,8 +121,7 @@ baseCommon.prototype = {
         a.style.display = "none"
     },
     getCssStyle: function(a) {
-        return a.currentStyle || document.defaultView.getComputedStyle(a,
-            null)
+        return a.currentStyle || document.defaultView.getComputedStyle(a, null)
     },
     getSize: function(a, c) {
         var b = common.get(a);

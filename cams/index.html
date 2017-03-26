@@ -1,209 +1,189 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-	<meta charset="utf-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-	<title>Управление камерами</title>
-	<meta name="keywords" content="Главная"/>
-	<meta name="description" content="Главная"/>
-	
-	<meta http-equiv="X-UA-Compatible" content="IE=EDGE" /> 
-	<meta http-equiv="X-Frame-Options" content="deny">
-	
-	<link rel="stylesheet" href="tpl/css/styles.min.css" media="all"/>
-	<link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&amp;subset=cyrillic-ext" rel="stylesheet"> 
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Управление камерами</title>
+    
+    <meta name="keywords" content="Главная"/>
+    <meta name="description" content="Главная"/>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE"/>
+    <meta http-equiv="X-Frame-Options" content="deny">
+
+    <link rel="stylesheet" href="styles/template.css" media="all"/>
+    <link rel="stylesheet" href="styles/advanced.css" media="all"/>
+    <!--<link rel="stylesheet" href="styles/canon.css" media="all"/>-->
 </head>
 <body>
-	<div class="container">
-		<div class="camerabox camerabox-enabled col-lg-6">
-			<div class="camerabox_title">
-				<div class="camerabox_title__left">
-					Камера поста №1
-					<span class="camerabox_title__left-indicator"></span>
-				</div>	<!-- /.camerabox_title__left -->
+<div class="container">
 
-				<div class="camerabox_title__right">
-					<a class="camerabox_title__right-fullscreen" href="fullscreen_canon.html" target="_blank"></a>
-					<a class="camerabox_title__right-settings" href="#"></a>
-				</div>	<!-- /.camerabox_title__right -->
-			</div>	<!-- /.camerabox_title -->
-			<div class="camerabox_inner">
-				<!--div id="ID1200" style="width: 600px; height: 400px;"></div-->
-				<div id="ID1200" style="width: 600px; height: 400px; background-size: contain; background-repeat: no-repeat;"><img id="liveview" src="" width="100%"></div>
-				<canvas id="ID1202" style="visibility: hidden; display: none;"></canvas>
-				<canvas id="ID1203" style="visibility: hidden; display: none;"></canvas>
+    <div class="camerabox camerabox-enabled col-lg-6">
+        <div class="camerabox_title">
+            <div class="camerabox_title__left">
+                Камера поста №1
+                <span class="camerabox_title__left-indicator"></span>
+            </div>
 
-				<!-- /.CANON HIDE CONTROL -->
-				<div style="display: none;">
-					<div class="message-box" style="visibility: visible; display: block; width: auto; left: 349px; top: 329px;"></div>
-					<div id="ID_Control" style="visibility: visible; display: block;">
-						<div id="ID_Menu"></div>
-						<div id="ID_LiveView">
-							<img id="ID1250" class="fstr" width="35" height="10" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FNearCn.gif" style="visibility: visible; display: block;"></img>
-							<img id="ID1251" class="fstr" width="43" height="10" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FChn.gif" style="visibility: visible; display: block;"></img>
-							<img id="ID1252" class="fstr" width="25" height="10" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FFarCn.gif" style="visibility: visible; display: block;"></img>
-							<img id="ID1211" class="fbtn" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FNear3n.gif" style="visibility: visible; display: block;"></img>
-							<img id="ID1212" class="fbtn" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FNear2n.gif" style="visibility: visible; display: block;"></img>
-							<img id="ID1213" class="fbtn" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FNear1n.gif" style="visibility: visible; display: block;"></img>
-							<img id="ID1214" class="fbtn" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FFar1n.gif" style="visibility: visible; display: block;"></img>
-							<img id="ID1215" class="fbtn" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FFar2n.gif" style="visibility: visible; display: block;"></img>
-							<img id="ID1216" class="fbtn" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FFar3n.gif" style="visibility: visible; display: block;"></img>
-							<div id="ID9100" class="layer" style="visibility: hidden; display: none;"></div>
-							<img id="ID1253" width="56" height="10" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/IrCn.gif" style="visibility: visible; display: block;"></img>
-							<img id="ID1217" class="ibtn" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/IrMn.gif" style="visibility: visible; display: block;"></img>
-							<img id="ID1218" class="ibtn" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/IrPn.gif" style="visibility: visible; display: block;"></img>
-							<div id="ID9101" class="layer" style="visibility: hidden; display: none;"></div>
-							<img id="ID1258" width="127" height="10" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/LvCn.gif" style="visibility: visible; display: block;"></img>
-							<img id="ID1223" class="vbtn" width="100" height="32" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/Butt_n.gif" style="visibility: visible; display: block;"></img>
-							<div id="ID9102" class="vbtn layer" style="visibility: hidden; display: none;"></div>
-							<img id="ID1259" width="88" height="10" src="./images/StStCn.gif" style="visibility: visible; display: block;"></img>
-							<img id="ID1224" width="80" height="80" src="./images/StStn.gif" style="visibility: visible; display: block;"></img>
-						</div>
-						<div id="ID_Status_Setting"></div>
-						<div id="ID_Copyright"></div>
-					</div>
-					<div id="ID_Lang" class="layer"></div>
-				</div>
-				<!-- /.END CANON HIDE CONTROL -->
+            <div class="camerabox_title__right">
+                <a class="camerabox_title__right-fullscreen" href="fullscreen_canon.html" target="_blank"></a>
+                <a class="camerabox_title__right-settings" href="#"></a>
+            </div>
+        </div>
+        <div class="camerabox_inner">
 
-			</div>	<!-- /.camerabox_inner -->
-		</div>	<!-- /.camerabox -->
-		
-		<div class="camerabox camerabox-disabled col-lg-6">
-			<div class="camerabox_title">
-				<div class="camerabox_title__left">
-					Камера поста №2
-					<span class="camerabox_title__left-indicator"></span>
-				</div>	<!-- /.camerabox_title__left -->
-				
-				<div class="camerabox_title__right">
-					<a class="camerabox_title__right-fullscreen" href="fullscreen_sony_1.html" target="_blank"></a>
-					<a class="camerabox_title__right-settings" href="#"></a>
-				</div>	<!-- /.camerabox_title__right -->
-			</div>	<!-- /.camerabox_title -->
-			<div class="camerabox_inner">
-				<OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921"
-					 codebase="http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab"
-					 width="600" height="400" id="vlc" events="True">
-				   <param name="Src" value="rtp://192.168.111.79:5678" />
-				   <param name="ShowDisplay" value="True" />
-				   <param name="AutoLoop" value="False" />
-				   <param name="AutoPlay" value="True" />
-				   <embed id="vlcEmb"  type="application/x-google-vlc-plugin" version="VideoLAN.VLCPlugin.2" autoplay="yes" loop="no" width="600" height="400"
-					 target="rtp://192.168.111.79:5678" ></embed>
-				</OBJECT>
+            <div id="ID1200" style="width: 320px; height: 240px; background-size: contain; background-repeat: no-repeat;">
+                <img id="liveview" src="" width="100%">
+            </div>
 
+            <canvas id="ID1202" class="hidden"></canvas>
+            <canvas id="ID1203" class="hidden"></canvas>
 
-				<div class="containernew" style="display: none;">
-					<div class="status">
-						<div id="DIV_WIFI_STATUS_D" class="status-icon status-icon--d"></div>
-						<div id="DIV_WIFI_STATUS_C" class="status-icon status-icon--c"></div>
-						<div id="TEXT_WIFI_STATUS" class="status-label">Disconnected</div>
-					</div>
+            <!-- /.CANON HIDE CONTROL -->
+            <div style="display: none;">
+                <div class="message-box visible" style="width: auto; left: 349px; top: 329px;"></div>
+                <div id="ID_Control" class="visible">
+                    <div id="ID_Menu"></div>
+                    <div id="ID_LiveView">
+                        <img id="ID1250" class="fstr visible" width="35" height="10" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FNearCn.gif"/>
+                        <img id="ID1251" class="fstr visible" width="43" height="10" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FChn.gif"/>
+                        <img id="ID1252" class="fstr visible" width="25" height="10" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FFarCn.gif"/>
+                        <img id="ID1211" class="fbtn visible" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FNear3n.gif"/>
+                        <img id="ID1212" class="fbtn visible" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FNear2n.gif"/>
+                        <img id="ID1213" class="fbtn visible" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FNear1n.gif"/>
+                        <img id="ID1214" class="fbtn visible" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FFar1n.gif"/>
+                        <img id="ID1215" class="fbtn visible" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FFar2n.gif"/>
+                        <img id="ID1216" class="fbtn visible" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FFar3n.gif"/>
+                        <div id="ID9100" class="layer hidden"></div>
+                        <img id="ID1253" width="56" height="10" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/IrCn.gif" class="visible"/>
+                        <img id="ID1217" class="ibtn visible" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/IrMn.gif"/>
+                        <img id="ID1218" class="ibtn visible" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/IrPn.gif"/>
+                        <div id="ID9101" class="layer hidden"></div>
+                        <img id="ID1258" width="127" height="10" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/LvCn.gif" class="visible"/>
+                        <img id="ID1223" class="vbtn visible" width="100" height="32" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/Butt_n.gif"/>
+                        <div id="ID9102" class="vbtn layer hidden"></div>
+                        <img id="ID1259" width="88" height="10" src="./images/StStCn.gif" class="visible"/>
+                        <img id="ID1224" width="80" height="80" src="./images/StStn.gif" class="visible"/>
+                    </div>
+                    <div id="ID_Status_Setting"></div>
+                    <div id="ID_Copyright"></div>
+                </div>
+                <div id="ID_Lang" class="layer"></div>
+            </div>
+            <!-- /.END CANON HIDE CONTROL -->
 
-					<div class="rec-control">
-						<div id="DIV_REC_STOP" class="rec-btn rec-stop" style="width:100px;"></div>
-						<div id="DIV_REC_START" class="rec-btn rec-start" style="width:100px;"></div>
-					</div>
+        </div>
+    </div>
 
-					<div class="clear"></div>
-				</div>				
-			</div>	<!-- /.camerabox_inner -->
-		</div>	<!-- /.camerabox -->
-		
-		<div class="camerabox camerabox-recorded col-lg-6">
-			<div class="camerabox_title">
-				<div class="camerabox_title__left">
-					Камера поста №3
-					<span class="camerabox_title__left-indicator"></span>
-				</div>	<!-- /.camerabox_title__left -->
-				
-				<div class="camerabox_title__right">
-					<a class="camerabox_title__right-fullscreen" href="fullscreen_sony_2.html" target="_blank"></a>
-					<a class="camerabox_title__right-settings" href="#"></a>
-				</div>	<!-- /.camerabox_title__right -->
-			</div>	<!-- /.camerabox_title -->
-			<div class="camerabox_inner">
-				<OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921"
-					 codebase="http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab"
-					 width="600" height="400" id="vlc1" events="True">
-				   <param name="Src" value="rtp://192.168.111.79:1234" />
-				   <param name="ShowDisplay" value="True" />
-				   <param name="AutoLoop" value="False" />
-				   <param name="AutoPlay" value="True" />
-				   <embed id="vlcEmb1"  type="application/x-google-vlc-plugin" version="VideoLAN.VLCPlugin.2" autoplay="yes" loop="no" width="600" height="400"
-					 target="rtp://192.168.111.79:1234" ></embed>
-				</OBJECT>
-			</div>	<!-- /.camerabox_inner -->
-		</div>	<!-- /.camerabox -->
-		
-		<ul class="col-lg-6">
-			<li class="control">
-				<a class="control_btn control-settings" href="#">Интерфейс</a>
-				<div class="control_cameras">
-					<a class="control_cameras__link enabled" href="#">Камера поста №1</a>
-					<a class="control_cameras__link enabled" href="#">Камера поста №2</a>
-					<a class="control_cameras__link" href="#">Камера поста №3</a>
-				</div>
-			</li>
-			<li class="control">
-				<a class="control_btn control-pc" href="#">Контроль</a>
-			</li>
-			<li class="control">
-				<a id="rec" class="control_btn control-stop" href="#">Старт/стоп</a>
-			</li>
-		</ul>
-	</div>	<!-- /.container -->
-	
-	<div>
-		<script type="text/javascript" src="js/sony/jquery-1.8.3.min.js"></script>
+    <div class="camerabox camerabox-disabled col-lg-6">
+        <div class="camerabox_title">
+            <div class="camerabox_title__left">
+                Камера поста №2
+                <span class="camerabox_title__left-indicator"></span>
+            </div>
 
-		<script type="text/javascript" src="js/sony/savona.min.js"></script>
-		<script type="text/javascript" src="js/sony/savona_two.min.js"></script>
-		<script type="text/javascript" src="js/sony/common.js"></script>
-		<script type="text/javascript" src="js/sony/button.js"></script>
-		<script type="text/javascript" src="js/sony/click.js"></script>
-		<script type="text/javascript" src="js/sony/commmonDefine.js"></script>
-		<script type="text/javascript" src="js/sony/rec_button.js"></script>
-		<script type="text/javascript" src="js/sony/record_connection.js"></script>
-		<!--<script type="text/javascript" src="js/sony/audio_connection.js"></script>-->
-		<!--<script type="text/javascript" src="js/sony/assign_connection.js"></script>-->
-		<!--<script type="text/javascript" src="js/sony/mainfile_connection.js"></script>-->
-		<!--<script type="text/javascript" src="js/sony/SQFPS_connection.js"></script>-->
-		<!--<script type="text/javascript" src="js/sony/mainbttery_connection.js"></script>-->
-		<!--<script type="text/javascript" src="js/sony/meidacard_connection.js"></script>-->
-		<!--<script type="text/javascript" src="js/sony/shutter_connection.js"></script>-->
-		<!--<script type="text/javascript" src="js/sony/presetwhite_connection.js"></script>-->
-		<!--<script type="text/javascript" src="js/sony/gamma_connection.js"></script>-->
-		<!--<script type="text/javascript" src="js/sony/autoShutter_connection.js"></script>-->
-		<!--<script type="text/javascript" src="js/sony/autoIris_connection.js"></script>-->
-		<!--<script type="text/javascript" src="js/sony/ATW_connection.js"></script>-->
-		<!--<script type="text/javascript" src="js/sony/AGC_connection.js"></script>-->
-		<!--<script type="text/javascript" src="js/sony/colorbars_connection.js"></script>-->
-		<!--<script type="text/javascript" src="js/sony/iris_connection.js"></script>-->
-		<!--<script type="text/javascript" src="js/sony/focus_connection.js"></script>-->
-		<!--<script type="text/javascript" src="js/sony/zoom_connection.js"></script>-->
-		<!--<script type="text/javascript" src="js/sony/autoWhiteBalance_connection.js"></script>-->
-		<!--<script type="text/javascript" src="js/sony/autoBlackBalance_connection.js"></script>-->
-		<!--<script type="text/javascript" src="js/sony/ClipInfo_connection.js"></script>-->
-		<!--<script type="text/javascript" src="js/sony/GrayedInfo_connection.js"></script>-->
-		<!--<script type="text/javascript" src="js/sony/Gain_connection.js"></script>-->
-		<!--<script type="text/javascript" src="js/sony/MLUT_connection.js"></script>-->
-		<script type="text/javascript" src="js/sony/hashtable.js"></script>
-		<!--<script type="text/javascript" src="js/sony/clipname_connection.js"></script>-->
-		<!--<script type="text/javascript" src="js/sony/white_connection.js"></script>-->
-		<!--<script type="text/javascript" src="js/sony/LensMount_connection.js"></script>-->
+            <div class="camerabox_title__right">
+                <a class="camerabox_title__right-fullscreen" href="fullscreen_sony_1.html" target="_blank"></a>
+                <a class="camerabox_title__right-settings" href="#"></a>
+            </div>
+        </div>
+        <div class="camerabox_inner">
+            <OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921"
+                    codebase="http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab"
+                    width="320" height="240" id="vlc" events="True">
+
+                <param name="Src" value="rtp://192.168.111.79:5678"/>
+                <param name="ShowDisplay" value="True"/>
+                <param name="AutoLoop" value="False"/>
+                <param name="AutoPlay" value="True"/>
+
+                <embed id="vlcEmb" autoplay="yes" loop="no"
+                       type="application/x-google-vlc-plugin"
+                       version="VideoLAN.VLCPlugin.2"
+                       width="320" height="240"
+                       target="rtp://192.168.111.79:5678">
+                </embed>
+            </OBJECT>
+        </div>
+    </div>
+
+    <div class="camerabox camerabox-recorded col-lg-6">
+        <div class="camerabox_title">
+            <div class="camerabox_title__left">
+                Камера поста №3
+                <span class="camerabox_title__left-indicator"></span>
+            </div>
+
+            <div class="camerabox_title__right">
+                <a class="camerabox_title__right-fullscreen" href="fullscreen_sony_2.html" target="_blank"></a>
+                <a class="camerabox_title__right-settings" href="#"></a>
+            </div>
+        </div>
+        <div class="camerabox_inner">
+            <OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921"
+                    codebase="http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab"
+                    width="320" height="240" id="vlc1" events="True">
+
+                <param name="Src" value="rtp://192.168.111.79:1234"/>
+                <param name="ShowDisplay" value="True"/>
+                <param name="AutoLoop" value="False"/>
+                <param name="AutoPlay" value="True"/>
+
+                <embed id="vlcEmb1" autoplay="yes" loop="no"
+                       type="application/x-google-vlc-plugin"
+                       version="VideoLAN.VLCPlugin.2"
+                       width="320" height="240"
+                       target="rtp://192.168.111.79:1234">
+                </embed>
+            </OBJECT>
+        </div>
+    </div>
+
+    <ul class="col-lg-6">
+        <li class="control">
+            <a class="control_btn control-settings" href="#">Интерфейс</a>
+            <div class="control_cameras">
+                <a class="control_cameras__link enabled" href="#">Камера поста №1</a>
+                <a class="control_cameras__link enabled" href="#">Камера поста №2</a>
+                <a class="control_cameras__link" href="#">Камера поста №3</a>
+            </div>
+        </li>
+        <li class="control">
+            <a class="control_btn control-pc" href="#">Контроль</a>
+        </li>
+        <li class="control">
+            <a id="rec" class="control_btn control-stop" href="#">Старт/стоп</a>
+        </li>
+    </ul>
+
+</div>
+
+<div>
+    <script type="text/javascript" src="scripts/jquery-1.8.3.min.js"></script>
+
+    <script type="text/javascript" src="scripts/sony/savona.min.js"></script>
+    <script type="text/javascript" src="scripts/sony/savona_two.min.js"></script>
+
+    <!--<script type="text/javascript" src="scripts/sony/common.js"></script>-->
+    <!--<script type="text/javascript" src="scripts/sony/button.js"></script>-->
+    <!--<script type="text/javascript" src="scripts/sony/click.js"></script>-->
+    <!--<script type="text/javascript" src="scripts/sony/commmonDefine.js"></script>-->
+    <!--<script type="text/javascript" src="scripts/sony/rec_button.js"></script>-->
+    <!--<script type="text/javascript" src="scripts/sony/record_connection.js"></script>-->
+
+    <!--<script src="scripts/canon/cmn.js" type="text/javascript"></script>-->
+    <!--<script src="scripts/canon/advanced.js" type="text/javascript"></script>-->
+    <!--<script src="scripts/canon/rccommon.js" type="text/javascript"></script>-->
+    <!--<script src="scripts/canon/control.js" type="text/javascript"></script>-->
+    <!--<script src="scripts/canon/status.js" type="text/javascript"></script>-->
+    <!--<script src="scripts/canon/view.js" type="text/javascript"></script>-->
 
 
-		<script src="js/canon/cmn.js" type="text/javascript"></script>
-		<script src="js/canon/advanced.js" type="text/javascript"></script>
-		<script src="js/canon/rccommon.js" type="text/javascript"></script>
-		<script src="js/canon/control.js" type="text/javascript"></script>
-		<script src="js/canon/status.js" type="text/javascript"></script>
-		<script src="js/canon/view.js" type="text/javascript"></script>
+    <script src="scripts/canon.js" type="text/javascript"></script>
+    <script src="scripts/sony.js" type="text/javascript"></script>
+    <script src="scripts/main.js" type="text/javascript"></script>
+</div>
 
-		<script src="js/main.js" type="text/javascript"></script>
-	</div>
 </body>
 </html>

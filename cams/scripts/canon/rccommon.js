@@ -689,7 +689,7 @@ var LANG_DATA = [{
         msgMinute: "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043c\u0438\u043d\u0443\u0442 \u043e\u0442 0 \u0434\u043e 59.",
         msgSecond: "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0441\u0435\u043a\u0443\u043d\u0434 \u043e\u0442 0 \u0434\u043e 59,9."
     }],
-    lang = {
+        lang = {
         current: 0,
         change: function(a) {
             lang.current = a;
