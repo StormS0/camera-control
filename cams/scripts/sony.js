@@ -5,22 +5,12 @@ var Sony = (function () {
             var connection = {
 
                 id: id,
-
                 client: client,
-
-                reconnect: function () {
-                    console.log("reconnect " + id);
-                    if (client.state() === 'disconnected') {
-                        client.connect();
-                    }
-                },
+                reconnect: reconnect.bind(null, client),
+                updateStatus: updateStatus.bind(null, client),
 
                 setRecording: function (isStart) {
-                    if (isStart) {
-                        client.clip.recorder.Start([], function(response) {});
-                    } else {
-                        client.clip.recorder.Stop([], function(response) {});
-                    }
+                    setRecording(client, isStart);
                 }
             };
 
@@ -35,6 +25,32 @@ var Sony = (function () {
             return connection;
         }
     };
+
+    function reconnect(client) {
+        if (client.state() === 'disconnected') {
+            client.connect();
+            updateStatus(client);
+        }
+    }
+
+    function setRecording(client, isStart) {
+        if (isStart) {
+            client.clip.recorder.Start([], function(response) {});
+        } else {
+            client.clip.recorder.Stop([], function(response) {});
+        }
+    }
+
+    function updateStatus(client) {
+        client.property.GetValue({params: {
+            "P.Clip.Mediabox.Status": null,
+            "P.Clip.Mediabox.TimeCode": null
+        }, onresponse: function(resp) {
+            resp = JSON.stringify(resp.error || resp.result);
+            resp = JSON.parse(resp);
+            console.log(resp);
+        }});
+    }
 
     function sonyConnectionNotifyHandler(event, connection) {
         var jsonstring  = JSON.stringify(event.data);
@@ -62,6 +78,5 @@ var Sony = (function () {
 
         }
     }
-
 
 })();

@@ -4,6 +4,15 @@ var sony1_connection = Sony.createConnection(new savona.client(), "sony1");
 var sony2_connection = Sony.createConnection(new savona_two.client(), "sony2");
 var canon_connection = Canon.createConnection();
 
+sony1_connection.reconnect();
+sony2_connection.reconnect();
+canon_connection.reconnect();
+
+setInterval(function () {
+    sony1_connection.updateStatus();
+    sony2_connection.updateStatus();
+}, 1000);
+
 j('.control_btn').each(function(){
     j(this).click(function() {
         j(this).toggleClass('active');
@@ -20,8 +29,3 @@ j('html').on('click', '#rec', function(){
     sony2_connection.setRecording(recording);
     canon_connection.setRecording(recording);
 });
-
-sony1_connection.reconnect();
-sony2_connection.reconnect();
-canon_connection.reconnect();
-
