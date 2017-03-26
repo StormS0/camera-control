@@ -400,10 +400,6 @@ a:hover {
     display: none
 }
 
-.control {
-    padding: 0 35px 0 0
-}
-
 .control_btn, .control_btn:focus, .control_btn:hover {
     display: inline-block;
     vertical-align: top;
@@ -490,4 +486,9 @@ a:hover {
 
 .control_cameras__link.enabled:before {
     color: #89e900
+}
+
+.control {
+    float: left;
+    padding: 40px 20px 20px;
 }
