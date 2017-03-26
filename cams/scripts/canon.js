@@ -2,21 +2,16 @@ var Canon = (function () {
 
     return {
         createConnection: function () {
-
-            var connection = {id: "canon"};
+            var connection = Connection.create("canon");
             connection.reconnect = reconnect.bind(null, connection);
             connection.updateStatus = updateStatus.bind(null, connection);
             connection.setRecording = function (isRecording) {
                 setRecording(connection, isRecording);
             };
-
-            initSettings(connection);
             connection.reconnect();
-
             return connection;
         }
     };
-
 
     function updateStatus(connection) {
 

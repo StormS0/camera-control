@@ -2,7 +2,8 @@ var Sony = (function () {
     return {
         createConnection: function (client, id) {
 
-            var connection = {id: id, client: client};
+            var connection = Connection.create(id);
+            connection.client = client;
             connection.reconnect = reconnect.bind(null, connection);
             connection.updateStatus = updateStatus.bind(null, connection);
 
@@ -18,7 +19,6 @@ var Sony = (function () {
                 sonyConnectionNotifyHandler(e, connection);
             };
 
-            initSettings(connection);
             connection.reconnect();
 
             return connection;
