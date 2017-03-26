@@ -57,7 +57,19 @@ textarea {
     }
 }
 
-.camerabox_title__right-fullscreen:before, .camerabox_title__right-fullscreen:focus:before, .camerabox_title__right-fullscreen:hover:before, .camerabox_title__right-settings:before, .camerabox_title__right-settings:focus:before, .camerabox_title__right-settings:hover:before, .control_btn:before, .control_btn:focus:before, .control_btn:hover:before, .control_cameras__link:before, .control_cameras__link:focus:before, .control_cameras__link:hover:before, .fi:before {
+.camerabox_title__right-fullscreen:before,
+.camerabox_title__right-fullscreen:focus:before,
+.camerabox_title__right-fullscreen:hover:before,
+.camerabox_title__right-settings:before,
+.camerabox_title__right-settings:focus:before,
+.camerabox_title__right-settings:hover:before,
+.control_btn:before,
+.control_btn:focus:before,
+.control_btn:hover:before,
+.control_cameras__link:before,
+.control_cameras__link:focus:before,
+.control_cameras__link:hover:before,
+.fi:before {
     display: inline-block;
     font-family: Flaticon;
     font-style: normal;
@@ -72,7 +84,10 @@ textarea {
     font-smoothing: antialiased
 }
 
-.control_cameras__link:before, .control_cameras__link:focus:before, .control_cameras__link:hover:before, .flaticon-delete:before {
+.control_cameras__link:before,
+.control_cameras__link:focus:before,
+.control_cameras__link:hover:before,
+.flaticon-delete:before {
     content: "\f100"
 }
 
@@ -88,7 +103,8 @@ textarea {
     content: "\f103"
 }
 
-.control_cameras__link.enabled:before, .flaticon-shapes:before {
+.control_cameras__link.enabled:before,
+.flaticon-shapes:before {
     content: "\f104"
 }
 
@@ -350,7 +366,7 @@ a:hover {
 }
 
 .camerabox_title {
-    margin: 0 0 25px
+    margin: 0 0 15px
 }
 
 .camerabox_title__left, .camerabox_title__right {
@@ -468,8 +484,8 @@ a:hover {
 .control_cameras__link, .control_cameras__link:focus, .control_cameras__link:hover {
     font-size: 20px;
     color: #000;
-    display: block;
-    margin: 0 0 12px
+    /*display: block;*/
+    /*margin: 0 0 12px*/
 }
 
 .control_cameras__link:last-child {
@@ -477,7 +493,7 @@ a:hover {
 }
 
 .control_cameras__link:before, .control_cameras__link:focus:before, .control_cameras__link:hover:before {
-    position: absolute;
+    /*position: absolute;*/
     top: 0;
     left: auto;
     right: 0;
@@ -491,4 +507,8 @@ a:hover {
 .control {
     float: left;
     padding: 40px 20px 20px;
+}
+
+.control_cameras__link {
+    display: inline-block;
 }

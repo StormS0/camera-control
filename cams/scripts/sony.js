@@ -2,16 +2,12 @@ var Sony = (function () {
     return {
         createConnection: function (client, id) {
 
-            var connection = {
+            var connection = {id: id, client: client};
+            connection.reconnect = reconnect.bind(null, connection);
+            connection.updateStatus = updateStatus.bind(null, connection);
 
-                id: id,
-                client: client,
-                reconnect: reconnect.bind(null, client, id),
-                updateStatus: updateStatus.bind(null, client, id),
-
-                setRecording: function (isStart) {
-                    setRecording(client, isStart);
-                }
+            connection.setRecording = function (isRecording) {
+                setRecording(connection, isRecording);
             };
 
             client.onconnect = client.ondisconnect = function (e) {
@@ -22,22 +18,29 @@ var Sony = (function () {
                 sonyConnectionNotifyHandler(e, connection);
             };
 
+            initSettings(connection);
+            connection.reconnect();
+
             return connection;
         }
     };
 
-    function reconnect(client, id) {
-        if (client.state() === 'disconnected') {
-            client.connect();
-            updateStatus(client, id);
+    function reconnect(connection) {
+        if (connection.client.state() === 'disconnected') {
+            connection.client.connect();
+            updateStatus(connection);
         }
     }
 
-    function setRecording(client, isStart) {
-        if (isStart) {
-            client.clip.recorder.Start([], function(response) {});
+    function setRecording(connection, isRecording) {
+        if (!connection.enabled) {
+            return;
+        }
+        console.log(connection.id + " recording: " + isRecording);
+        if (isRecording) {
+            connection.client.clip.recorder.Start([], function(response) {});
         } else {
-            client.clip.recorder.Stop([], function(response) {});
+            connection.client.clip.recorder.Stop([], function(response) {});
         }
     }
 
@@ -49,14 +52,14 @@ var Sony = (function () {
         return 'camerabox-disabled';
     }
 
-    function updateStatus(client, id) {
+    function updateStatus(connection) {
         var key = "P.Clip.Mediabox.Status";
         var params = {};
         params[key] = null;
-        client.property.GetValue({params: params, onresponse: function(resp) {
+        connection.client.property.GetValue({params: params, onresponse: function(resp) {
             resp = JSON.stringify(resp.error || resp.result);
             resp = JSON.parse(resp);
-            var classes = document.querySelector("#camerabox_" + id).classList;
+            var classes = document.querySelector("#camerabox_" + connection.id).classList;
             classes.remove('camerabox-recorded');
             classes.remove('camerabox-enabled');
             classes.remove('camerabox-disabled');
@@ -84,7 +87,7 @@ var Sony = (function () {
         console.log("state from " + connection.id);
 
         if (event.type != "connected") { // was ==
-            setInterval(connection.reconnect, 5000);
+            // setInterval(connection.reconnect, 5000);
             connection.reconnect();
         } else {
 

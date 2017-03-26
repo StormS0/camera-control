@@ -1,20 +1,32 @@
 var Canon = (function () {
 
-    var enabled = false;
-
     return {
         createConnection: function () {
-            return {
-                id: "canon",
-                reconnect: reconnect,
-                setRecording: setRecording
+
+            var connection = {id: "canon"};
+            connection.reconnect = reconnect.bind(null, connection);
+            connection.updateStatus = updateStatus.bind(null, connection);
+            connection.setRecording = function (isRecording) {
+                setRecording(connection, isRecording);
             };
+
+            initSettings(connection);
+            connection.reconnect();
+
+            return connection;
         }
     };
 
-    function setRecording() {
-        if (!enabled) return;
 
+    function updateStatus(connection) {
+
+    }
+
+    function setRecording(connection, isRecording) {
+        if (!connection.enabled) {
+            return;
+        }
+        console.log("canon recording: " + isRecording);
         j.ajax({
             type: "GET",
             url: "http://127.0.0.1:55555/api/cam/rec?cmd=trig",
@@ -25,9 +37,9 @@ var Canon = (function () {
         });
     }
 
-    function reconnect() {
-        console.log("reconnect canon");
-        if (!enabled) return;
+    function reconnect(connection) {
+        if (!connection.enabled)
+            return;
 
         var xhr = post('http://127.0.0.1:55555');
 
