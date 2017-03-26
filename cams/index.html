@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
+
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -19,7 +20,7 @@
 <body>
 <div class="container">
 
-    <div class="camerabox camerabox-enabled col-lg-6">
+    <div id="camerabox_canon" class="camerabox camerabox-disabled col-lg-6">
         <div class="camerabox_title">
             <div class="camerabox_title__left">
                 Камера поста №1
@@ -76,7 +77,7 @@
         </div>
     </div>
 
-    <div class="camerabox camerabox-disabled col-lg-6">
+    <div id="camerabox_sony1" class="camerabox camerabox-disabled col-lg-6">
         <div class="camerabox_title">
             <div class="camerabox_title__left">
                 Камера поста №2
@@ -91,14 +92,14 @@
         <div class="camerabox_inner">
             <OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921"
                     codebase="http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab"
-                    width="320" height="240" id="vlc" events="True">
+                    width="320" height="240" id="vlc1" events="True">
 
                 <param name="Src" value="rtp://192.168.111.79:5678"/>
                 <param name="ShowDisplay" value="True"/>
                 <param name="AutoLoop" value="False"/>
                 <param name="AutoPlay" value="True"/>
 
-                <embed id="vlcEmb" autoplay="yes" loop="no"
+                <embed id="vlcEmb1" autoplay="yes" loop="no"
                        type="application/x-google-vlc-plugin"
                        version="VideoLAN.VLCPlugin.2"
                        width="320" height="240"
@@ -108,7 +109,7 @@
         </div>
     </div>
 
-    <div class="camerabox camerabox-recorded col-lg-6">
+    <div id="camerabox_sony2" class="camerabox camerabox-disabled col-lg-6">
         <div class="camerabox_title">
             <div class="camerabox_title__left">
                 Камера поста №3
@@ -123,14 +124,14 @@
         <div class="camerabox_inner">
             <OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921"
                     codebase="http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab"
-                    width="320" height="240" id="vlc1" events="True">
+                    width="320" height="240" id="vlc2" events="True">
 
                 <param name="Src" value="rtp://192.168.111.79:1234"/>
                 <param name="ShowDisplay" value="True"/>
                 <param name="AutoLoop" value="False"/>
                 <param name="AutoPlay" value="True"/>
 
-                <embed id="vlcEmb1" autoplay="yes" loop="no"
+                <embed id="vlcEmb2" autoplay="yes" loop="no"
                        type="application/x-google-vlc-plugin"
                        version="VideoLAN.VLCPlugin.2"
                        width="320" height="240"
@@ -165,20 +166,12 @@
     <script type="text/javascript" src="scripts/sony/savona.min.js"></script>
     <script type="text/javascript" src="scripts/sony/savona_two.min.js"></script>
 
-    <!--<script type="text/javascript" src="scripts/sony/common.js"></script>-->
-    <!--<script type="text/javascript" src="scripts/sony/button.js"></script>-->
-    <!--<script type="text/javascript" src="scripts/sony/click.js"></script>-->
-    <!--<script type="text/javascript" src="scripts/sony/commmonDefine.js"></script>-->
-    <!--<script type="text/javascript" src="scripts/sony/rec_button.js"></script>-->
-    <!--<script type="text/javascript" src="scripts/sony/record_connection.js"></script>-->
-
     <!--<script src="scripts/canon/cmn.js" type="text/javascript"></script>-->
     <!--<script src="scripts/canon/advanced.js" type="text/javascript"></script>-->
     <!--<script src="scripts/canon/rccommon.js" type="text/javascript"></script>-->
     <!--<script src="scripts/canon/control.js" type="text/javascript"></script>-->
     <!--<script src="scripts/canon/status.js" type="text/javascript"></script>-->
     <!--<script src="scripts/canon/view.js" type="text/javascript"></script>-->
-
 
     <script src="scripts/canon.js" type="text/javascript"></script>
     <script src="scripts/sony.js" type="text/javascript"></script>

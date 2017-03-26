@@ -1,3 +1,5 @@
+var debugMode = false;
+
 var j = jQuery.noConflict();
 
 var sony1_connection = Sony.createConnection(new savona.client(), "sony1");
@@ -11,7 +13,7 @@ canon_connection.reconnect();
 setInterval(function () {
     sony1_connection.updateStatus();
     sony2_connection.updateStatus();
-}, 1000);
+}, 3000);
 
 j('.control_btn').each(function(){
     j(this).click(function() {

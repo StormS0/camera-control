@@ -6,8 +6,8 @@ var Sony = (function () {
 
                 id: id,
                 client: client,
-                reconnect: reconnect.bind(null, client),
-                updateStatus: updateStatus.bind(null, client),
+                reconnect: reconnect.bind(null, client, id),
+                updateStatus: updateStatus.bind(null, client, id),
 
                 setRecording: function (isStart) {
                     setRecording(client, isStart);
@@ -26,10 +26,10 @@ var Sony = (function () {
         }
     };
 
-    function reconnect(client) {
+    function reconnect(client, id) {
         if (client.state() === 'disconnected') {
             client.connect();
-            updateStatus(client);
+            updateStatus(client, id);
         }
     }
 
@@ -41,14 +41,26 @@ var Sony = (function () {
         }
     }
 
-    function updateStatus(client) {
-        client.property.GetValue({params: {
-            "P.Clip.Mediabox.Status": null,
-            "P.Clip.Mediabox.TimeCode": null
-        }, onresponse: function(resp) {
+    function classForStatus(status) {
+        if (status == "Recording")
+            return 'camerabox-recorded';
+        if (status == "Standby")
+            return 'camerabox-enabled';
+        return 'camerabox-disabled';
+    }
+
+    function updateStatus(client, id) {
+        var key = "P.Clip.Mediabox.Status";
+        var params = {};
+        params[key] = null;
+        client.property.GetValue({params: params, onresponse: function(resp) {
             resp = JSON.stringify(resp.error || resp.result);
             resp = JSON.parse(resp);
-            console.log(resp);
+            var classes = document.querySelector("#camerabox_" + id).classList;
+            classes.remove('camerabox-recorded');
+            classes.remove('camerabox-enabled');
+            classes.remove('camerabox-disabled');
+            classes.add(classForStatus(resp[key]));
         }});
     }
 
