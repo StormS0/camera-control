@@ -69,7 +69,7 @@ div.tab.selected {
 }
 
 #map {
-    background-image: url(scheme.jpg);
+    background-image: url(scheme/scheme.jpg);
     background-size: cover;
     margin: 20px;
 }

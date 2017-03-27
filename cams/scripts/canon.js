@@ -60,10 +60,7 @@ var Canon = (function () {
         //     j('#ID1200').delay(viewSpeed).css('backgroundImage', 'url(http://127.0.0.1:55555/api/cam/lvgetimg?baba=' + interRand + ')');
         //     j('#liveview').attr('src', 'http://127.0.0.1:55555/api/cam/lvgetimg?baba=' + interRand);
         // }, viewSpeed)
-
-
     }
-
 
     function post(url) {
         var xhr;
