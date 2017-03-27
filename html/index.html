@@ -139,6 +139,35 @@
         </div>
     </div>
 
+    <div id="scheme" class="hidden">
+        <div id="map">
+            <svg viewbox="0 0 2000 770" >
+                <circle ip="192.168.0.1" cx="200" cy="180" title="Арм управления и обработки"/>
+                <circle ip="192.168.0.2" cx="200" cy="450" title="Арм управления, обработки и анализа"/>
+                <circle ip="192.168.0.3" cx="771" cy="300" title="Радиомодем с всенаправленной антенной"/>
+
+                <!-- Пост 1 -->
+                <circle ip="192.168.0.4" cx="1240" cy="200" title="Точка доступа"/>
+                <circle ip="192.168.0.5" cx="1430" cy="60" title="GPS модуль"/>
+                <circle ip="192.168.0.6" cx="1430" cy="200" title="Роутер Wi-Fi"/>
+                <circle ip="192.168.0.7" cx="1900" cy="60" title="Камера Sony PXW с блоком A100"/>
+
+                <!-- Пост 2 -->
+                <circle ip="192.168.0.8" cx="1240" cy="460" title="Точка доступа"/>
+                <circle ip="192.168.0.9" cx="1430" cy="320" title="GPS модуль"/>
+                <circle ip="192.168.0.10" cx="1430" cy="460" title="Роутер Wi-Fi"/>
+                <circle ip="192.168.0.11" cx="1900" cy="320" title="Камера Sony PXW с блоком A100"/>
+
+                <!-- Пост 3 -->
+                <circle ip="192.168.0.12" cx="1240" cy="720" title="Точка доступа"/>
+                <circle ip="192.168.0.13" cx="1430" cy="580" title="GPS модуль"/>
+                <circle ip="192.168.0.14" cx="1430" cy="720" title="Роутер Wi-Fi"/>
+                <circle ip="192.168.0.15" cx="1900" cy="580" title="Камера Canon XC10"/>
+            </svg>
+        </div>
+        <div id='status'></div>
+    </div>
+
     <ul class="col-lg-6">
         <!--<li class="control">-->
             <!--<a class="control_btn control-settings" href="#">Интерфейс</a>-->
@@ -149,10 +178,10 @@
             <!--</div>-->
         <!--</li>-->
         <li class="control">
-            <a class="control_btn control-pc" href="#">Контроль</a>
+            <a id="button_map" class="control_btn control-pc" href="#">Контроль</a>
         </li>
         <li class="control">
-            <a id="rec" class="control_btn control-stop" href="#">Старт/стоп</a>
+            <a id="button_rec" class="control_btn control-stop" href="#">Старт/стоп</a>
         </li>
     </ul>
 

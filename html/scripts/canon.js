@@ -1,5 +1,7 @@
 var Canon = (function () {
 
+    var j = jQuery.noConflict();
+
     return {
         createConnection: function () {
             var connection = Connection.create("canon");

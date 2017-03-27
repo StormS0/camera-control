@@ -13,6 +13,12 @@ iframe {
     background-color: #eeeeee;
 }
 
+#map {
+    background-image: url(scheme/scheme.jpg);
+    background-size: cover;
+    margin: 20px;
+}
+
 circle {
     r: 15;
 }
@@ -68,11 +74,7 @@ div.tab.selected {
     margin: 5px 10px;
 }
 
-#map {
-    background-image: url(scheme/scheme.jpg);
-    background-size: cover;
-    margin: 20px;
-}
+
 
 div.button {
     display: inline-block;

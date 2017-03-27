@@ -512,3 +512,13 @@ a:hover {
 .control_cameras__link {
     display: inline-block;
 }
+
+#map {
+    background-image: url(../images/scheme.jpg);
+    background-size: cover;
+    margin: 20px;
+}
+
+circle {
+    r: 15;
+}
