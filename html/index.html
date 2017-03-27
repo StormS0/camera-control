@@ -19,18 +19,20 @@
 <body>
 <div class="container">
 
-    <div id="camerabox_canon" class="camerabox camerabox-disabled col-lg-6">
+    <div id="cameras">
+
+        <div id="camerabox_canon" class="camerabox camerabox-disabled col-lg-6">
         <div class="camerabox_title">
             <div class="camerabox_title__left">
                 Камера поста №1
                 <span class="camerabox_title__left-indicator"></span>
             </div>
 
-            <div class="camerabox_title__right">
-                <a class="control_cameras__link enabled" href="#"></a>
+            <!--<div class="camerabox_title__right">-->
+                <!--<a class="control_cameras__link enabled" href="#"></a>-->
                 <!--<a class="camerabox_title__right-fullscreen" href="fullscreen_canon.html" target="_blank"></a>-->
                 <!--<a class="camerabox_title__right-settings" href="#"></a>-->
-            </div>
+            <!--</div>-->
         </div>
         <div class="camerabox_inner">
 
@@ -77,18 +79,18 @@
         </div>
     </div>
 
-    <div id="camerabox_sony1" class="camerabox camerabox-disabled col-lg-6">
+        <div id="camerabox_sony1" class="camerabox camerabox-disabled col-lg-6">
         <div class="camerabox_title">
             <div class="camerabox_title__left">
                 Камера поста №2
                 <span class="camerabox_title__left-indicator"></span>
             </div>
 
-            <div class="camerabox_title__right">
-                <a class="control_cameras__link enabled" href="#"></a>
+            <!--<div class="camerabox_title__right">-->
+                <!--<a class="control_cameras__link enabled" href="#"></a>-->
                 <!--<a class="camerabox_title__right-fullscreen" href="fullscreen_sony_1.html" target="_blank"></a>-->
                 <!--<a class="camerabox_title__right-settings" href="#"></a>-->
-            </div>
+            <!--</div>-->
         </div>
         <div class="camerabox_inner">
             <!--<object classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921"-->
@@ -108,18 +110,18 @@
         </div>
     </div>
 
-    <div id="camerabox_sony2" class="camerabox camerabox-disabled col-lg-6">
+        <div id="camerabox_sony2" class="camerabox camerabox-disabled col-lg-6">
         <div class="camerabox_title">
             <div class="camerabox_title__left">
                 Камера поста №3
                 <span class="camerabox_title__left-indicator"></span>
             </div>
 
-            <div class="camerabox_title__right">
-                <a class="control_cameras__link enabled" href="#"></a>
+            <!--<div class="camerabox_title__right">-->
+                <!--<a class="control_cameras__link enabled" href="#"></a>-->
                 <!--<a class="camerabox_title__right-fullscreen" href="fullscreen_sony_2.html" target="_blank"></a>-->
                 <!--<a class="camerabox_title__right-settings" href="#"></a>-->
-            </div>
+            <!--</div>-->
         </div>
         <div class="camerabox_inner">
             <!--<object classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921"-->
@@ -139,52 +141,55 @@
         </div>
     </div>
 
+    </div>
+
     <div id="scheme" class="hidden">
         <div id="map">
             <svg viewbox="0 0 2000 770" >
-                <circle ip="192.168.0.1" cx="200" cy="180" title="Арм управления и обработки"/>
-                <circle ip="192.168.0.2" cx="200" cy="450" title="Арм управления, обработки и анализа"/>
-                <circle ip="192.168.0.3" cx="771" cy="300" title="Радиомодем с всенаправленной антенной"/>
+                <circle ip="192.168.0.1" r="15" cx="200" cy="180" title="Арм управления и обработки"/>
+                <circle ip="192.168.0.2" r="15" cx="200" cy="450" title="Арм управления, обработки и анализа"/>
+                <circle ip="192.168.0.3" r="15" cx="771" cy="300" title="Радиомодем с всенаправленной антенной"/>
 
                 <!-- Пост 1 -->
-                <circle ip="192.168.0.4" cx="1240" cy="200" title="Точка доступа"/>
-                <circle ip="192.168.0.5" cx="1430" cy="60" title="GPS модуль"/>
-                <circle ip="192.168.0.6" cx="1430" cy="200" title="Роутер Wi-Fi"/>
-                <circle ip="192.168.0.7" cx="1900" cy="60" title="Камера Sony PXW с блоком A100"/>
+                <circle ip="192.168.0.4" r="15" cx="1240" cy="200" title="Точка доступа"/>
+                <circle ip="192.168.0.5" r="15" cx="1430" cy="60" title="GPS модуль"/>
+                <circle ip="192.168.0.6" r="15" cx="1430" cy="200" title="Роутер Wi-Fi"/>
+                <circle ip="192.168.0.7" r="15" cx="1900" cy="60" title="Камера Sony PXW с блоком A100"/>
 
                 <!-- Пост 2 -->
-                <circle ip="192.168.0.8" cx="1240" cy="460" title="Точка доступа"/>
-                <circle ip="192.168.0.9" cx="1430" cy="320" title="GPS модуль"/>
-                <circle ip="192.168.0.10" cx="1430" cy="460" title="Роутер Wi-Fi"/>
-                <circle ip="192.168.0.11" cx="1900" cy="320" title="Камера Sony PXW с блоком A100"/>
+                <circle ip="192.168.0.8" r="15" cx="1240" cy="460" title="Точка доступа"/>
+                <circle ip="192.168.0.9" r="15" cx="1430" cy="320" title="GPS модуль"/>
+                <circle ip="192.168.0.10" r="15" cx="1430" cy="460" title="Роутер Wi-Fi"/>
+                <circle ip="192.168.0.11" r="15" cx="1900" cy="320" title="Камера Sony PXW с блоком A100"/>
 
                 <!-- Пост 3 -->
-                <circle ip="192.168.0.12" cx="1240" cy="720" title="Точка доступа"/>
-                <circle ip="192.168.0.13" cx="1430" cy="580" title="GPS модуль"/>
-                <circle ip="192.168.0.14" cx="1430" cy="720" title="Роутер Wi-Fi"/>
-                <circle ip="192.168.0.15" cx="1900" cy="580" title="Камера Canon XC10"/>
+                <circle ip="192.168.0.12" r="15" cx="1240" cy="720" title="Точка доступа"/>
+                <circle ip="192.168.0.13" r="15" cx="1430" cy="580" title="GPS модуль"/>
+                <circle ip="192.168.0.14" r="15" cx="1430" cy="720" title="Роутер Wi-Fi"/>
+                <circle ip="192.168.0.15" r="15" cx="1900" cy="580" title="Камера Canon XC10"/>
             </svg>
         </div>
         <div id='status'></div>
     </div>
 
-    <ul class="col-lg-6">
-        <!--<li class="control">-->
-            <!--<a class="control_btn control-settings" href="#">Интерфейс</a>-->
-            <!--<div class="control_cameras">-->
-                <!--<a class="control_cameras__link enabled" href="#">Камера поста №1</a>-->
-                <!--<a class="control_cameras__link enabled" href="#">Камера поста №2</a>-->
-                <!--<a class="control_cameras__link" href="#">Камера поста №3</a>-->
-            <!--</div>-->
-        <!--</li>-->
-        <li class="control">
-            <a id="button_map" class="control_btn control-pc" href="#">Контроль</a>
-        </li>
-        <li class="control">
-            <a id="button_rec" class="control_btn control-stop" href="#">Старт/стоп</a>
-        </li>
-    </ul>
-
+    <div id="buttons">
+        <ul>
+            <li class="control">
+                <a id="button_settings" class="control_btn control-settings" href="#">Интерфейс</a>
+                <div class="control_cameras hidden">
+                    <a class="control_cameras__link enabled canon" href="#">Камера поста №1 </a>
+                    <a class="control_cameras__link enabled sony1" href="#">Камера поста №2 </a>
+                    <a class="control_cameras__link enabled sony2" href="#">Камера поста №3 </a>
+                </div>
+            </li>
+            <li class="control">
+                <a id="button_map" class="control_btn control-pc" href="#">Контроль</a>
+            </li>
+            <li class="control">
+                <a id="button_record" class="control_btn control-stop" href="#">Старт/стоп</a>
+            </li>
+        </ul>
+    </div>
 </div>
 
 <div>

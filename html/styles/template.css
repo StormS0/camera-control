@@ -66,9 +66,9 @@ textarea {
 .control_btn:before,
 .control_btn:focus:before,
 .control_btn:hover:before,
-.control_cameras__link:before,
-.control_cameras__link:focus:before,
-.control_cameras__link:hover:before,
+.control_cameras__link:after,
+.control_cameras__link:focus:after,
+.control_cameras__link:hover:after,
 .fi:before {
     display: inline-block;
     font-family: Flaticon;
@@ -84,31 +84,40 @@ textarea {
     font-smoothing: antialiased
 }
 
-.control_cameras__link:before,
-.control_cameras__link:focus:before,
-.control_cameras__link:hover:before,
+.control_cameras__link:after,
+.control_cameras__link:focus:after,
+.control_cameras__link:hover:after,
 .flaticon-delete:before {
     content: "\f100"
 }
 
-.camerabox_title__right-fullscreen:before, .camerabox_title__right-fullscreen:focus:before, .camerabox_title__right-fullscreen:hover:before, .flaticon-focus-selector:before {
+.camerabox_title__right-fullscreen:before,
+.camerabox_title__right-fullscreen:focus:before,
+.camerabox_title__right-fullscreen:hover:before,
+.flaticon-focus-selector:before {
     content: "\f101"
 }
 
-.camerabox_title__right-settings:before, .camerabox_title__right-settings:focus:before, .camerabox_title__right-settings:hover:before, .control_btn.control-settings:before, .flaticon-gear:before {
+.camerabox_title__right-settings:before,
+.camerabox_title__right-settings:focus:before,
+.camerabox_title__right-settings:hover:before,
+.control_btn.control-settings:before,
+.flaticon-gear:before {
     content: "\f102"
 }
 
-.control_btn.control-pc:before, .flaticon-pc-with-monitor:before {
+.control_btn.control-pc:before,
+.flaticon-pc-with-monitor:before {
     content: "\f103"
 }
 
-.control_cameras__link.enabled:before,
-.flaticon-shapes:before {
+.control_cameras__link.enabled:after,
+.flaticon-shapes:after {
     content: "\f104"
 }
 
-.control_btn.control-stop:before, .flaticon-video-player-stop-button:before {
+.control_btn.control-stop:before,
+.flaticon-video-player-stop-button:before {
     content: "\f105"
 }
 
@@ -119,11 +128,16 @@ body {
     padding: 25px 0
 }
 
-address, ol, ul {
+address,
+ol,
+ul {
     margin-bottom: 0
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     margin: 0;
     font-family: "PT Sans", Arial, Helvetica, sans-serif;
     color: #000
@@ -133,7 +147,9 @@ p {
     line-height: 16px
 }
 
-a, a:focus, a:hover {
+a,
+a:focus,
+a:hover {
     color: #415f8f;
     outline: 0;
     border-width: 0;
@@ -144,7 +160,19 @@ a:hover {
     text-decoration: none
 }
 
-.i-btn, .i-btn:active, .i-btn:focus, .i-btn:hover, button, button:active, button:focus, input, input:focus, input:hover, textarea, textarea:focus, textarea:hover {
+.i-btn,
+.i-btn:active,
+.i-btn:focus,
+.i-btn:hover,
+button,
+button:active,
+button:focus,
+input,
+input:focus,
+input:hover,
+textarea,
+textarea:focus,
+textarea:hover {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     -ms-box-shadow: none;
@@ -167,7 +195,11 @@ a:hover {
     -o-transition: top .5s ease 0s
 }
 
-.camerabox.camerabox-disabled .camerabox_inner:before, .control_btn:after, .control_btn:focus:after, .control_btn:hover:after, .empty-content {
+.camerabox.camerabox-disabled .camerabox_inner:before,
+.control_btn:after,
+.control_btn:focus:after,
+.control_btn:hover:after,
+.empty-content {
     content: ''
 }
 
@@ -175,7 +207,15 @@ a:hover {
     position: static
 }
 
-.camerabox_inner, .control, .control_btn, .control_btn:focus, .control_btn:hover, .control_cameras__link, .control_cameras__link:focus, .control_cameras__link:hover, .pos-rel {
+.camerabox_inner,
+.control,
+.control_btn,
+.control_btn:focus,
+.control_btn:hover,
+.control_cameras__link,
+.control_cameras__link:focus,
+.control_cameras__link:hover,
+.pos-rel {
     position: relative
 }
 
@@ -191,11 +231,27 @@ a:hover {
     overflow: visible
 }
 
-.camerabox_title__right-fullscreen, .camerabox_title__right-fullscreen:focus, .camerabox_title__right-fullscreen:hover, .camerabox_title__right-settings, .camerabox_title__right-settings:focus, .camerabox_title__right-settings:hover, .control_btn, .control_btn:focus, .control_btn:hover, .control_cameras__link, .control_cameras__link:focus, .control_cameras__link:hover, .no-dec, .no-dec:focus, .no-dec:hover {
+.camerabox_title__right-fullscreen,
+.camerabox_title__right-fullscreen:focus,
+.camerabox_title__right-fullscreen:hover,
+.camerabox_title__right-settings,
+.camerabox_title__right-settings:focus,
+.camerabox_title__right-settings:hover,
+.control_btn,
+.control_btn:focus,
+.control_btn:hover,
+.control_cameras__link,
+.control_cameras__link:focus,
+.control_cameras__link:hover,
+.no-dec,
+.no-dec:focus,
+.no-dec:hover {
     text-decoration: none
 }
 
-.text-underline, .text-underline:focus, .text-underline:hover {
+.text-underline,
+.text-underline:focus,
+.text-underline:hover {
     text-decoration: underline
 }
 
@@ -208,7 +264,9 @@ a:hover {
     padding: 0 10px
 }
 
-.i-btn, .i-btn:focus, .i-btn:hover {
+.i-btn,
+.i-btn:focus,
+.i-btn:hover {
     display: inline-block;
     vertical-align: top;
     font-size: 16px;
@@ -223,7 +281,8 @@ a:hover {
     text-decoration: underline
 }
 
-.i-btn:focus, .i-btn:hover {
+.i-btn:focus,
+.i-btn:hover {
     background: #004277
 }
 
@@ -235,15 +294,24 @@ a:hover {
     display: block
 }
 
-.control_cameras, .text-left {
+.control_cameras,
+.text-left {
     text-align: left
 }
 
-.camerabox_title__right, .control, .text-right {
+.camerabox_title__right,
+.control,
+.text-right {
     text-align: right
 }
 
-.control_btn, .control_btn:focus, .control_btn:hover, .i-btn, .i-btn:focus, .i-btn:hover, .text-center {
+.control_btn,
+.control_btn:focus,
+.control_btn:hover,
+.i-btn,
+.i-btn:focus,
+.i-btn:hover,
+.text-center {
     text-align: center
 }
 
@@ -259,7 +327,12 @@ a:hover {
     float: right
 }
 
-.border-box, .camerabox_title__left, .camerabox_title__right, .container, .control_cameras, [class*=col-] {
+.border-box,
+.camerabox_title__left,
+.camerabox_title__right,
+.container,
+.control_cameras,
+[class*=col-] {
     box-sizing: border-box
 }
 
@@ -369,7 +442,8 @@ a:hover {
     margin: 0 0 15px
 }
 
-.camerabox_title__left, .camerabox_title__right {
+.camerabox_title__left,
+.camerabox_title__right {
     display: inline-block;
     vertical-align: top
 }
@@ -395,18 +469,27 @@ a:hover {
     margin: 0 0 0 -4px
 }
 
-.camerabox_title__right-fullscreen, .camerabox_title__right-fullscreen:focus, .camerabox_title__right-fullscreen:hover, .camerabox_title__right-settings, .camerabox_title__right-settings:focus, .camerabox_title__right-settings:hover {
+.camerabox_title__right-fullscreen,
+.camerabox_title__right-fullscreen:focus,
+.camerabox_title__right-fullscreen:hover,
+.camerabox_title__right-settings,
+.camerabox_title__right-settings:focus,
+.camerabox_title__right-settings:hover {
     display: inline-block;
     vertical-align: top;
     margin: 0 12px 0 0
 }
 
-.camerabox_title__right-fullscreen, .camerabox_title__right-fullscreen:focus, .camerabox_title__right-fullscreen:hover {
+.camerabox_title__right-fullscreen,
+.camerabox_title__right-fullscreen:focus,
+.camerabox_title__right-fullscreen:hover {
     font-size: 22px;
     color: #000
 }
 
-.camerabox_title__right-settings, .camerabox_title__right-settings:focus, .camerabox_title__right-settings:hover {
+.camerabox_title__right-settings,
+.camerabox_title__right-settings:focus,
+.camerabox_title__right-settings:hover {
     font-size: 21px;
     color: #c1c0c0;
     margin-right: 0
@@ -416,7 +499,9 @@ a:hover {
     display: none
 }
 
-.control_btn, .control_btn:focus, .control_btn:hover {
+.control_btn,
+.control_btn:focus,
+.control_btn:hover {
     display: inline-block;
     vertical-align: top;
     font-size: 20px;
@@ -426,7 +511,9 @@ a:hover {
     width: 115px
 }
 
-.control_btn:after, .control_btn:focus:after, .control_btn:hover:after {
+.control_btn:after,
+.control_btn:focus:after,
+.control_btn:hover:after {
     position: absolute;
     top: 0;
     left: 50%;
@@ -442,7 +529,9 @@ a:hover {
     box-shadow: 0 0 7px 0 rgba(255, 255, 255, .75), 0 5px 1px 0 rgba(0, 0, 0, .1) inset
 }
 
-.control_btn:before, .control_btn:focus:before, .control_btn:hover:before {
+.control_btn:before,
+.control_btn:focus:before,
+.control_btn:hover:before {
     position: absolute;
     top: 13px;
     left: 50%;
@@ -470,29 +559,35 @@ a:hover {
 
 .control_cameras {
     width: 330px;
-    height: 115px;
+    /*height: 115px;*/
     position: absolute;
     top: 0;
     left: auto;
-    right: 92px;
-    padding: 15px 75px 15px 25px;
+    right: -320px;
+    margin-top: 40px;
+    padding: 0 75px 50px 25px;
     border-radius: 3px;
     background: #f1f1f3;
-    display: none
+    z-index: 1000;
+    /*display: none*/
 }
 
-.control_cameras__link, .control_cameras__link:focus, .control_cameras__link:hover {
+.control_cameras__link,
+.control_cameras__link:focus,
+.control_cameras__link:hover {
     font-size: 20px;
     color: #000;
-    /*display: block;*/
-    /*margin: 0 0 12px*/
+    display: block;
+    margin: 0 0 20px
 }
 
 .control_cameras__link:last-child {
     margin-bottom: 0
 }
 
-.control_cameras__link:before, .control_cameras__link:focus:before, .control_cameras__link:hover:before {
+.control_cameras__link:after,
+.control_cameras__link:focus:after,
+.control_cameras__link:hover:after {
     /*position: absolute;*/
     top: 0;
     left: auto;
@@ -500,7 +595,7 @@ a:hover {
     color: #e90000
 }
 
-.control_cameras__link.enabled:before {
+.control_cameras__link.enabled:after {
     color: #89e900
 }
 
@@ -519,6 +614,11 @@ a:hover {
     margin: 20px;
 }
 
-circle {
-    r: 15;
+#buttons {
+    /*clear: both;*/
+    position: relative;
+    float: right;
+    /*display: block !important;*/
+    bottom: 0;
+    right: 0;
 }
