@@ -1,43 +1,40 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
+    <title>Управление камерами</title>
 
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Управление камерами</title>
-    
     <meta name="keywords" content="Главная"/>
     <meta name="description" content="Главная"/>
-
     <meta http-equiv="X-UA-Compatible" content="IE=EDGE"/>
 
     <link rel="stylesheet" href="styles/template.css" media="all"/>
-    <link rel="stylesheet" href="styles/advanced.css" media="all"/>
+    <link rel="stylesheet" href="styles/main.css" media="all"/>
 </head>
 <body>
+
 <div class="container">
 
     <div id="cameras">
-
         <div id="camerabox_canon" class="camerabox camerabox-disabled col-lg-6">
-        <div class="camerabox_title">
-            <div class="camerabox_title__left">
-                Камера поста №1
-                <span class="camerabox_title__left-indicator"></span>
+            <div class="camerabox_title">
+                <div class="camerabox_title__left">
+                    Камера поста №1
+                    <span class="camerabox_title__left-indicator"></span>
+                </div>
             </div>
-        </div>
-        <div class="camerabox_inner">
+            <div class="camerabox_inner">
 
-            <div id="ID1200" style="width: 320px; height: 240px; background-size: contain; background-repeat: no-repeat;">
+                <div id="ID1200" style="width: 320px; height: 240px; background-size: contain; background-repeat: no-repeat;">
                 <img id="liveview" src="" width="100%">
             </div>
 
-            <canvas id="ID1202" class="hidden"></canvas>
-            <canvas id="ID1203" class="hidden"></canvas>
+                <canvas id="ID1202" class="hidden"></canvas>
+                <canvas id="ID1203" class="hidden"></canvas>
 
-            <!-- /.CANON HIDE CONTROL -->
-            <div style="display: none;">
+                <!-- /.CANON HIDE CONTROL -->
+                <div style="display: none;">
                 <div class="message-box visible" style="width: auto; left: 349px; top: 329px;"></div>
                 <div id="ID_Control" class="visible">
                     <div id="ID_Menu"></div>
@@ -67,45 +64,44 @@
                 </div>
                 <div id="ID_Lang" class="layer"></div>
             </div>
-            <!-- /.END CANON HIDE CONTROL -->
+                <!-- /.END CANON HIDE CONTROL -->
 
+            </div>
         </div>
-    </div>
 
         <div id="camerabox_sony1" class="camerabox camerabox-disabled col-lg-6">
-        <div class="camerabox_title">
-            <div class="camerabox_title__left">
-                Камера поста №2
-                <span class="camerabox_title__left-indicator"></span>
+            <div class="camerabox_title">
+                <div class="camerabox_title__left">
+                    Камера поста №2
+                    <span class="camerabox_title__left-indicator"></span>
+                </div>
+            </div>
+            <div class="camerabox_inner">
+                <embed id="vlcEmb1" autoplay="yes" loop="no"
+                        type="application/x-google-vlc-plugin"
+                        version="VideoLAN.VLCPlugin.2"
+                        width="320" height="240"
+                        target="rtp://192.168.111.79:5678">
+                </embed>
             </div>
         </div>
-        <div class="camerabox_inner">
-            <embed id="vlcEmb1" autoplay="yes" loop="no"
-                   type="application/x-google-vlc-plugin"
-                   version="VideoLAN.VLCPlugin.2"
-                   width="320" height="240"
-                   target="rtp://192.168.111.79:5678">
-            </embed>
-        </div>
-    </div>
 
         <div id="camerabox_sony2" class="camerabox camerabox-disabled col-lg-6">
-        <div class="camerabox_title">
-            <div class="camerabox_title__left">
-                Камера поста №3
-                <span class="camerabox_title__left-indicator"></span>
+            <div class="camerabox_title">
+                <div class="camerabox_title__left">
+                    Камера поста №3
+                    <span class="camerabox_title__left-indicator"></span>
+                </div>
             </div>
-        </div>
-        <div class="camerabox_inner">
-            <embed id="vlcEmb2" autoplay="yes" loop="no"
+            <div class="camerabox_inner">
+                <embed id="vlcEmb2" autoplay="yes" loop="no"
                    type="application/x-google-vlc-plugin"
                    version="VideoLAN.VLCPlugin.2"
                    width="320" height="240"
                    target="rtp://192.168.111.79:1234">
-            </embed>
+                </embed>
+            </div>
         </div>
-    </div>
-
     </div>
 
     <div id="scheme" class="hidden">
@@ -155,6 +151,7 @@
             </li>
         </ul>
     </div>
+
 </div>
 
 <div>

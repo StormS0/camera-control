@@ -1,0 +1,61 @@
+body {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	overflow: hidden;
+}
+
+#cameras {
+	height: 620px;
+}
+
+#scheme {
+	height: 620px;
+}
+
+
+.container {
+	width: 1024px;
+	height: 100%;
+	margin: 20px auto;
+}
+
+.camerabox {
+	padding: 0;
+	display: inline-table;
+
+}
+
+.hidden {
+	visibility: hidden;
+	display: none;
+}
+
+.visible {
+	visibility: visible;
+	display: block;
+}
+
+#buttons {
+	width: 470px;
+	position: relative;
+	bottom: 240px;
+	float: right;
+}
+
+.control {
+	float: left;
+	padding: 40px 20px 20px;
+}
+
+.control_cameras__link {
+	display: inline-block;
+}
+
+#map {
+	background-image: url(../images/scheme.jpg);
+	background-size: cover;
+}
+
+
+
