@@ -1,30 +1,38 @@
+// global scope variables
 var debugMode = false;
 
-var sony1_connection = Sony.createConnection(new savona.client(), "sony1");
-var sony2_connection = Sony.createConnection(new savona_two.client(), "sony2");
-var canon_connection = Canon.createConnection();
+(function() {
 
-setInterval(function () {
-    sony1_connection.updateStatus();
-    sony2_connection.updateStatus();
-    canon_connection.updateStatus();
-}, 1000);
+    var connections = [
+        Sony.createConnection("192.168.111.41", "sony1"),
+        Sony.createConnection("192.168.111.42", "sony2"),
+        Canon.createConnection()
+    ];
 
-document.querySelector("#button_record").onclick = function () {
-    this.classList.toggle('active');
-    var recording = this.classList.contains('active');
-    sony1_connection.setRecording(recording);
-    sony2_connection.setRecording(recording);
-    canon_connection.setRecording(recording);
-};
+    document.querySelector("#button_record").onclick = toggleRecording;
+    document.querySelector("#button_map").onclick = toggleHidden.bind(null, ['#cameras', '#scheme']);
+    document.querySelector("#button_settings").onclick = toggleHidden.bind(null, ['.control_cameras']);
 
-document.querySelector("#button_map").onclick = function () {
-    document.querySelector('#cameras').classList.toggle('hidden');
-    document.querySelector('#scheme').classList.toggle('hidden');
-};
+    setInterval(updateStatus, 1000);
 
-document.querySelector("#button_settings").onclick = function () {
-    document.querySelector('.control_cameras').classList.toggle('hidden');
-};
+    function updateStatus() {
+        connections.forEach(function (conn) {
+            conn.updateStatus();
+        });
+    }
 
+    function toggleRecording() {
+        this.classList.toggle('active');
+        var recording = this.classList.contains('active');
+        connections.forEach(function (conn) {
+            conn.setRecording(recording);
+        });
+    }
 
+    function toggleHidden(selectors) {
+        selectors.forEach(function (selector) {
+            document.querySelector(selector).classList.toggle('hidden');
+        });
+    }
+
+})();

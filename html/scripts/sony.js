@@ -1,36 +1,41 @@
 var Sony = (function () {
     return {
-        createConnection: function (client, id) {
+        createConnection: function (ip, id) {
 
             var connection = Connection.create(id);
-            connection.client = client;
-            connection.reconnect = reconnect.bind(null, connection);
+            connection.camera = Savona.create(ip, 80);
+            connection.encoder = Savona.create(ip, 8080);
+
             connection.updateStatus = updateStatus.bind(null, connection);
 
             connection.setRecording = function (isRecording) {
                 setRecording(connection, isRecording);
             };
 
-            client.onconnect = client.ondisconnect = function (e) {
-                sonyConnectionStateHandler(e, connection);
+            connection.camera.ondisconnect = function (e) {
+                sonyConnectionStateHandler(e, connection.camera, connection);
             };
 
-            client.onnotify = function (e) {
-                sonyConnectionNotifyHandler(e, connection);
+            connection.encoder.ondisconnect = function (e) {
+                sonyConnectionStateHandler(e, connection.encoder, connection);
             };
 
-            connection.reconnect();
+            connection.reconnect = function () {
+                connection.camera.reconnect();
+                connection.encoder.reconnect();
+            };
+
+            if (connection.enabled) {
+                connection.reconnect();
+            }
+
+            connection.updateStatus();
 
             return connection;
         }
     };
 
-    function reconnect(connection) {
-        if (connection.client.state() === 'disconnected') {
-            connection.client.connect();
-            updateStatus(connection);
-        }
-    }
+
 
     function setRecording(connection, isRecording) {
         if (!connection.enabled) {
@@ -38,9 +43,9 @@ var Sony = (function () {
         }
         console.log(connection.id + " recording: " + isRecording);
         if (isRecording) {
-            connection.client.clip.recorder.Start([], function(response) {});
+            connection.camera.clip.recorder.Start([], function(response) {});
         } else {
-            connection.client.clip.recorder.Stop([], function(response) {});
+            connection.camera.clip.recorder.Stop([], function(response) {});
         }
     }
 
@@ -56,7 +61,7 @@ var Sony = (function () {
         var key = "P.Clip.Mediabox.Status";
         var params = {};
         params[key] = null;
-        connection.client.property.GetValue({params: params, onresponse: function(resp) {
+        connection.camera.property.GetValue({params: params, onresponse: function(resp) {
             resp = JSON.stringify(resp.error || resp.result);
             resp = JSON.parse(resp);
             var classes = document.querySelector("#camerabox_" + connection.id).classList;
@@ -67,30 +72,10 @@ var Sony = (function () {
         }});
     }
 
-    function sonyConnectionNotifyHandler(event, connection) {
-        var jsonstring  = JSON.stringify(event.data);
-        var objArrItems = JSON.parse(jsonstring)[0];
-        if (event.name == "Notify.Property.Value.Changed") {
-
-        } else if (event.name == "Notify.Property.Status.Changed") {
-
-        } else {
-
-        }
-
-        console.log("event " + event.name + " from " + connection.id);
-    }
-
-    function sonyConnectionStateHandler(event, connection) {
-
+    function sonyConnectionStateHandler(event, client, connection) {
         console.log(event);
-        console.log("state from " + connection.id);
-
-        if (event.type != "connected") { // was ==
-            // setInterval(connection.reconnect, 5000);
-            connection.reconnect();
-        } else {
-
+        if (event.type != "connected" && connection.enabled) {
+            setTimeout(client.reconnect, 5000);
         }
     }
 
