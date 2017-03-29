@@ -25,6 +25,11 @@ var Sony = (function () {
                 connection.encoder.reconnect();
             };
 
+            connection.disconnect = function () {
+                connection.camera.disconnect();
+                connection.encoder.disconnect();
+            };
+
             if (connection.enabled) {
                 connection.reconnect();
             }

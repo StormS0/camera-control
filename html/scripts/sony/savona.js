@@ -2,20 +2,16 @@ var Savona = (function () {
 
 	return {
 		create: function (host, port) {
+
 			var holder = {};
 
-            var transports = {
-                host: host,
-                port: port
-            };
-
             createSavona(holder);
-
             createLinear(holder);
-
             createMsgpack(holder);
 
-            var client = new holder.savona.client({transports: transports});
+            var client = new holder.savona.client({transports: {
+                host: host, port: port
+            }});
 
             client.reconnect = function () {
                 if (client.state() === 'disconnected') {
@@ -354,7 +350,7 @@ var Savona = (function () {
     function createLinear(holder) {
         holder.linear = function() {};
         holder.linear.todouble = function(a) {
-            return new msgpack.todouble(a)
+            return new holder.msgpack.todouble(a)
         };
         holder.linear.base64 = function() {
             var a = function(a) {
@@ -425,7 +421,7 @@ var Savona = (function () {
             return holder.linear.extend(holder.linear.codec, this)
         };
         holder.linear.codec.msgpack.prototype.encode = function(a) {
-            return msgpack.pack(a)
+            return holder.msgpack.pack(a)
         };
         holder.linear.codec.msgpack.prototype.decode = function(a) {
             var b = [];

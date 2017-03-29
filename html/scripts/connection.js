@@ -32,6 +32,7 @@ var Connection = (function () {
             } else {
                 toggle.classList.remove('enabled');
                 camera.classList.add('hidden');
+                connection.disconnect && connection.disconnect();
             }
         }
     }
