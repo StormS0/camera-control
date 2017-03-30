@@ -413,7 +413,7 @@ textarea:hover {
     vertical-align: top;
     padding-right: 15px;
     padding-left: 15px;
-    margin-left: -4px
+    /*margin-left: -4px*/
 }
 
 [class*=col-]:first-child {

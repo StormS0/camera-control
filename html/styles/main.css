@@ -23,7 +23,11 @@ body {
 .camerabox {
 	padding: 0;
 	display: inline-table;
+}
 
+.camerabox_inner {
+	height: 240px;
+	width: 510px;
 }
 
 .hidden {
@@ -39,7 +43,7 @@ body {
 #buttons {
 	width: 470px;
 	position: relative;
-	bottom: 240px;
+	bottom: 250px;
 	float: right;
 }
 

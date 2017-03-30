@@ -4,7 +4,6 @@ var Sony = (function () {
 
             var connection = Connection.create(id);
             connection.camera = Savona.create(ip, 80);
-            connection.encoder = Savona.create(ip, 8080);
 
             connection.updateStatus = updateStatus.bind(null, connection);
 
@@ -13,21 +12,15 @@ var Sony = (function () {
             };
 
             connection.camera.ondisconnect = function (e) {
-                sonyConnectionStateHandler(e, connection.camera, connection);
-            };
-
-            connection.encoder.ondisconnect = function (e) {
-                sonyConnectionStateHandler(e, connection.encoder, connection);
+                sonyConnectionStateHandler(e, connection);
             };
 
             connection.reconnect = function () {
                 connection.camera.reconnect();
-                connection.encoder.reconnect();
             };
 
             connection.disconnect = function () {
                 connection.camera.disconnect();
-                connection.encoder.disconnect();
             };
 
             if (connection.enabled) {
@@ -39,8 +32,6 @@ var Sony = (function () {
             return connection;
         }
     };
-
-
 
     function setRecording(connection, isRecording) {
         if (!connection.enabled) {
@@ -77,10 +68,10 @@ var Sony = (function () {
         }});
     }
 
-    function sonyConnectionStateHandler(event, client, connection) {
+    function sonyConnectionStateHandler(event, connection) {
         console.log(event);
         if (event.type != "connected" && connection.enabled) {
-            setTimeout(client.reconnect, 5000);
+            setTimeout(connection.reconnect, 5000);
         }
     }
 
