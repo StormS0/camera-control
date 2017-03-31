@@ -17,6 +17,6 @@ set STATUS=../logs/status.log
   rem       count ICMP pool timeout file_with_hosts
   fping.exe -n1   -i   -p   -w4000  -H "../conf/hosts.list">> %STATUS%
   cd ../logs && type status.log > ../temp/status.txt
-  sleep 5 > nul
+  timeout 5 > nul
   cd ../bin
 goto loop
