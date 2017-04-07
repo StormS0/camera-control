@@ -15,13 +15,16 @@
 <body>
 
 <div class="container">
-
+    <a id='back' class="hidden">Назад</a>
     <div id="cameras">
         <div id="camerabox_canon" class="camerabox camerabox-disabled">
             <div class="camerabox_title">
                 <div class="camerabox_title__left">
                     Камера поста №1
                     <span class="camerabox_title__left-indicator"></span>
+                </div>
+                <div class="camerabox_title__right">
+                    <a class="camerabox_title__right-settings" href="#"></a>
                 </div>
             </div>
             <div class="camerabox_inner">
@@ -75,6 +78,9 @@
                     Камера поста №2
                     <span class="camerabox_title__left-indicator"></span>
                 </div>
+                <div class="camerabox_title__right">
+                    <a class="camerabox_title__right-settings" href="#"></a>
+                </div>
             </div>
             <div class="camerabox_inner">
                 <embed id="vlcEmb1" autoplay="yes" loop="no"
@@ -91,6 +97,9 @@
                 <div class="camerabox_title__left">
                     Камера поста №3
                     <span class="camerabox_title__left-indicator"></span>
+                </div>
+                <div class="camerabox_title__right">
+                    <a class="camerabox_title__right-settings" href="#"></a>
                 </div>
             </div>
             <div class="camerabox_inner">
@@ -131,6 +140,18 @@
             </svg>
         </div>
         <div id='status'></div>
+    </div>
+
+    <div id="camerabox_sony1_settings" class="settings_page hidden">
+        <iframe src="http://192.168.111.41:80/" width="1024" height="100%"></iframe>
+    </div>
+
+    <div id="camerabox_sony2_settings" class="settings_page hidden">
+        <iframe src="http://192.168.111.42:80/" width="1024" height="100%"></iframe>
+    </div>
+
+    <div id="camerabox_canon_settings" class="settings_page hidden">
+        <iframe src="http://localhost:80/" width="1024" height="100%"></iframe>
     </div>
 
     <div id="buttons">

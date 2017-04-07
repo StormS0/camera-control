@@ -13,6 +13,30 @@ var debugMode = false;
     forEachSelector('circle', initCircle);
     setInterval(update, 1000);
 
+    forEachSelector('.camerabox', function(box) {
+        box.querySelector('.camerabox_title__right-settings').onclick = function() {
+            hideAll([
+                '#cameras',
+                '#scheme',
+                '#camerabox_sony1_settings',
+                '#camerabox_sony2_settings',
+                '#camerabox_canon_settings'
+            ]);
+            showAll(['#' + box.id + "_settings", '#back']);
+        };
+    });
+
+    document.querySelector('#back').onclick = function(){
+        showAll(['#cameras']);
+        hideAll([
+            '#back',
+            '#camerabox_sony1_settings',
+            '#camerabox_sony2_settings',
+            '#camerabox_canon_settings'
+        ]);
+    };
+
+
     function initButtons() {
         document.querySelector("#button_record").onclick = toggleRecording;
         document.querySelector("#button_map").onclick = toggleHidden.bind(null, ['#cameras', '#scheme']);
@@ -37,6 +61,18 @@ var debugMode = false;
     function toggleHidden(selectors) {
         selectors.forEach(function (selector) {
             document.querySelector(selector).classList.toggle('hidden');
+        });
+    }
+
+    function hideAll(selectors) {
+        selectors.forEach(function (selector) {
+            document.querySelector(selector).classList.add('hidden');
+        });
+    }
+
+    function showAll(selectors) {
+        selectors.forEach(function (selector) {
+            document.querySelector(selector).classList.remove('hidden');
         });
     }
 

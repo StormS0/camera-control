@@ -61,5 +61,16 @@ body {
 	background-size: cover;
 }
 
+.settings_page,
+.fullscreen {
+	position: absolute;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+}
 
+#back {
+	cursor: pointer;
+	margin-bottom: -5px;
+}
 
