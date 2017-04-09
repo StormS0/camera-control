@@ -1,12 +1,13 @@
 // global scope variables
-var debugMode = false;
+var debugMode = true;
+var offline = true;
 
 (function() {
 
     var connections = [
         Sony.createConnection("192.168.111.41", "sony1")
-         , Sony.createConnection("192.168.111.42", "sony2")
-         , Canon.createConnection()
+        , Sony.createConnection("192.168.111.42", "sony2")
+        , Canon.createConnection()
     ];
 
     initButtons();
@@ -15,27 +16,23 @@ var debugMode = false;
 
     forEachSelector('.camerabox', function(box) {
         box.querySelector('.camerabox_title__right-settings').onclick = function() {
-            hideAll([
-                '#cameras',
-                '#scheme',
-                '#camerabox_sony1_settings',
-                '#camerabox_sony2_settings',
-                '#camerabox_canon_settings'
-            ]);
-            showAll(['#' + box.id + "_settings", '#back']);
+            var camerasPageElements = ['#buttons'];
+            connections.forEach(function (connection) {
+                if (connection.enabled) {
+                    camerasPageElements.push('#camerabox_' + connection.id);
+                }
+            });
+            var settingsPageElements = ['.settings_page', '#' + box.id];
+
+            var settings = document.querySelector('.settings_page');
+            var hidden = settings.classList.contains('hidden');
+            hideAll(hidden ? camerasPageElements : settingsPageElements);
+            showAll(hidden ? settingsPageElements : camerasPageElements);
+            if (hidden) {
+                settings.querySelector('iframe').src = 'http://' + box.ip + ':8080/';
+            }
         };
     });
-
-    document.querySelector('#back').onclick = function(){
-        showAll(['#cameras']);
-        hideAll([
-            '#back',
-            '#camerabox_sony1_settings',
-            '#camerabox_sony2_settings',
-            '#camerabox_canon_settings'
-        ]);
-    };
-
 
     function initButtons() {
         document.querySelector("#button_record").onclick = toggleRecording;
@@ -77,6 +74,8 @@ var debugMode = false;
     }
 
     function updateScheme() {
+        if (offline) return;
+
         var xhr = new XMLHttpRequest();
         xhr.open('GET', '/status', true);
         xhr.onreadystatechange = onReply;

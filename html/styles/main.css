@@ -7,6 +7,8 @@ body {
 
 #cameras {
 	height: 620px;
+	float: left;
+	width: 1024px;
 }
 
 #scheme {
@@ -15,9 +17,13 @@ body {
 
 
 .container {
+	left: 50%;
+	top: 50%;
+	margin-top: -310px;
+	margin-left: -512px;
+	position: absolute;
 	width: 1024px;
-	height: 100%;
-	margin: 20px auto;
+	height: 620px;
 }
 
 .camerabox {
@@ -27,7 +33,7 @@ body {
 
 .camerabox_inner {
 	height: 240px;
-	width: 510px;
+	width: 509px;
 }
 
 .hidden {
@@ -41,15 +47,21 @@ body {
 }
 
 #buttons {
-	width: 470px;
-	position: relative;
-	bottom: 250px;
-	float: right;
+	position: absolute;
+	height: 280px;
+	width: 485px;
+	/*float: right;*/
+	bottom: 0;
+	right: 0;
+}
+
+#buttons ul {
+	bottom: 0;
 }
 
 .control {
 	float: left;
-	padding: 40px 20px 20px;
+	padding: 80px 20px 20px;
 }
 
 .control_cameras__link {
@@ -61,7 +73,6 @@ body {
 	background-size: cover;
 }
 
-.settings_page,
 .fullscreen {
 	position: absolute;
 	margin: 0;
@@ -69,7 +80,16 @@ body {
 	height: 100%;
 }
 
+.settings_page {
+	position: absolute;
+	margin: 0;
+	width: 512px;
+	top: 0;
+	height: 620px;
+	right:0 ;
+	border: 1px solid black;
+}
+
 #back {
 	cursor: pointer;
 }
-

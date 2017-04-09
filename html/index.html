@@ -15,7 +15,6 @@
 <body>
 
 <div class="container">
-    <a id='back' class="hidden">Назад</a>
     <div id="cameras">
         <div id="camerabox_canon" class="camerabox camerabox-disabled">
             <div class="camerabox_title">
@@ -30,44 +29,11 @@
             <div class="camerabox_inner">
 
                 <div id="ID1200" style="width: 320px; height: 240px; background-size: contain; background-repeat: no-repeat;">
-                <img id="liveview" src="" width="100%">
-            </div>
+                    <img id="liveview" src="" width="100%">
+                </div>
 
                 <canvas id="ID1202" class="hidden"></canvas>
                 <canvas id="ID1203" class="hidden"></canvas>
-
-                <!-- /.CANON HIDE CONTROL -->
-                <div style="display: none;">
-                <div class="message-box visible" style="width: auto; left: 349px; top: 329px;"></div>
-                <div id="ID_Control" class="visible">
-                    <div id="ID_Menu"></div>
-                    <div id="ID_LiveView">
-                        <img id="ID1250" class="fstr visible" width="35" height="10" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FNearCn.gif"/>
-                        <img id="ID1251" class="fstr visible" width="43" height="10" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FChn.gif"/>
-                        <img id="ID1252" class="fstr visible" width="25" height="10" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FFarCn.gif"/>
-                        <img id="ID1211" class="fbtn visible" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FNear3n.gif"/>
-                        <img id="ID1212" class="fbtn visible" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FNear2n.gif"/>
-                        <img id="ID1213" class="fbtn visible" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FNear1n.gif"/>
-                        <img id="ID1214" class="fbtn visible" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FFar1n.gif"/>
-                        <img id="ID1215" class="fbtn visible" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FFar2n.gif"/>
-                        <img id="ID1216" class="fbtn visible" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/FFar3n.gif"/>
-                        <div id="ID9100" class="layer hidden"></div>
-                        <img id="ID1253" width="56" height="10" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/IrCn.gif" class="visible"/>
-                        <img id="ID1217" class="ibtn visible" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/IrMn.gif"/>
-                        <img id="ID1218" class="ibtn visible" width="64" height="36" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/IrPn.gif"/>
-                        <div id="ID9101" class="layer hidden"></div>
-                        <img id="ID1258" width="127" height="10" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/LvCn.gif" class="visible"/>
-                        <img id="ID1223" class="vbtn visible" width="100" height="32" src="http://127.0.0.1:55555/wpd/VLAX01/rc/images/Butt_n.gif"/>
-                        <div id="ID9102" class="vbtn layer hidden"></div>
-                        <img id="ID1259" width="88" height="10" src="images/StStCn.gif" class="visible"/>
-                        <img id="ID1224" width="80" height="80" src="images/StStn.gif" class="visible"/>
-                    </div>
-                    <div id="ID_Status_Setting"></div>
-                    <div id="ID_Copyright"></div>
-                </div>
-                <div id="ID_Lang" class="layer"></div>
-            </div>
-                <!-- /.END CANON HIDE CONTROL -->
 
             </div>
         </div>
@@ -142,16 +108,8 @@
         <div id='status'></div>
     </div>
 
-    <div id="camerabox_sony1_settings" class="settings_page hidden">
-        <iframe src="http://192.168.111.41:80/" width="1024" height="100%"></iframe>
-    </div>
-
-    <div id="camerabox_sony2_settings" class="settings_page hidden">
-        <iframe src="http://192.168.111.42:80/" width="1024" height="100%"></iframe>
-    </div>
-
-    <div id="camerabox_canon_settings" class="settings_page hidden">
-        <iframe src="http://localhost:8080/" width="1024" height="100%"></iframe>
+    <div class="settings_page hidden">
+        <iframe src="" width="512" height="100%"></iframe>
     </div>
 
     <div id="buttons">

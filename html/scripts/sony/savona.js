@@ -693,7 +693,7 @@ var Savona = (function () {
             if ("connected" === this.state && "function" === typeof this.onmessage) this.onmessage(a)
         };
         holder.linear.transport.prototype.disconnect = function() {
-            "disconnected" !== this.state && (this.state = "disconnecting", this.sendbuffer = [], "function" === typeof this.raw.disconnect && this.raw.disconnect())
+            "disconnected" !== this.state && this.raw && (this.state = "disconnecting", this.sendbuffer = [], "function" === typeof this.raw.disconnect && this.raw.disconnect())
         };
         holder.linear.transport.prototype.send = function(a) {
             var c, f = Object.prototype.toString.call(a);

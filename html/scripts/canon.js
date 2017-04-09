@@ -4,7 +4,7 @@ var Canon = (function () {
 
     return {
         createConnection: function () {
-            var connection = Connection.create("canon");
+            var connection = Connection.create("canon", "127.0.0.1");
             connection.reconnect = reconnect.bind(null, connection);
             connection.updateStatus = updateStatus.bind(null, connection);
             connection.setRecording = function (isRecording) {
@@ -16,7 +16,8 @@ var Canon = (function () {
     };
 
     function updateStatus(connection) {
-
+        if (!connection.enabled || offline)
+            return;
     }
 
     function setRecording(connection, isRecording) {
@@ -35,7 +36,7 @@ var Canon = (function () {
     }
 
     function reconnect(connection) {
-        if (!connection.enabled)
+        if (!connection.enabled || offline)
             return;
 
         var xhr = post('http://127.0.0.1:55555');
