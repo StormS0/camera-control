@@ -5,8 +5,8 @@ var offline = false;
 (function() {
 
     var connections = [
-        // Sony.createConnection("192.168.111.41", "sony1"),
-        // Sony.createConnection("192.168.111.42", "sony2"),
+        Sony.createConnection("192.168.111.41", "sony1"),
+        Sony.createConnection("192.168.111.42", "sony2"),
         Canon.createConnection()
     ];
 
