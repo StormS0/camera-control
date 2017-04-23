@@ -1,7 +1,7 @@
 @echo off
 
 echo Stopping web server ...
-taskkill /im nginx.exe /f
+c:\windows\system32\taskkill /im nginx.exe /f
 
 echo Starting web server ...
 mkdir temp > nul 2> nul
