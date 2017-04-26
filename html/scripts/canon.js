@@ -44,9 +44,34 @@ var Canon = (function () {
         if (!connection.enabled || offline)
             return;
 
-        imageUpdateInterval = setInterval(function() {
-            j('#liveview').attr('src', 'http://127.0.0.1:55555/api/cam/lvgetimg?d=' + new Date().getTime());
-        }, 1000);
+        post('http://127.0.0.1:55555', loginCallback);
+
+        function loginCallback(result) {
+            console.log(result);
+            post("http://127.0.0.1:55555/api/cam/lv?cmd=start&sz=l", startedCallback)
+        }
+
+        function startedCallback(result) {
+            console.log(result);
+
+            imageUpdateInterval = setInterval(function() {
+                j('#liveview').attr('src', 'http://127.0.0.1:55555/api/cam/lvgetimg?time=' + new Date().getTime());
+            }, 1000);
+        }
+
+    }
+
+    function post(url, callback) {
+        j.ajax({
+            url: url,
+            type: 'POST',
+            async: false,
+            crossDomain: true,
+            xhrFields: {
+                withCredentials: true
+            },
+            success: callback
+        });
     }
 
 })();
