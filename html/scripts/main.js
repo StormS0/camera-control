@@ -5,14 +5,17 @@ var offline = false;
 (function() {
 
     var connections = [
-        Sony.createConnection("192.168.111.41", "sony1"),
-        Sony.createConnection("192.168.111.42", "sony2"),
         Canon.createConnection()
     ];
 
+    if (!debugMode && !offline) {
+        connections.push(Sony.createConnection("192.168.111.41", "sony1"));
+        connections.push(Sony.createConnection("192.168.111.42", "sony2"));
+    }
+
     initButtons();
     forEachSelector('circle', initCircle);
-    setInterval(update, 1000);
+    setInterval(update, debugMode ? 10000 : 1000);
 
     forEachSelector('.camerabox', function(box) {
         box.querySelector('.camerabox_title__right-settings').onclick = function() {

@@ -1,7 +1,12 @@
 var Canon = (function () {
 
-    var j = jQuery.noConflict();
+    var CANON_URL = 'http://127.0.0.1:55555';
+    var START_RECORDING = CANON_URL + '/api/cam/rec?cmd=trig';
+    var START_STREAMING = CANON_URL + '/api/cam/lv?cmd=start&sz=l';
+    var CURRENT_IMAGE ='http://127.0.0.1:55555/api/cam/lvgetimg?time=';
 
+    var j = jQuery.noConflict();
+    var imageHolder = j('#liveview');
     var imageUpdateInterval;
 
     return {
@@ -29,49 +34,32 @@ var Canon = (function () {
             return;
         }
         console.log("canon recording: " + isRecording);
-        j.ajax({
-            type: "GET",
-            url: "http://127.0.0.1:55555/api/cam/rec?cmd=trig",
-            dataType: 'json',
-            success: function (msg) {
-                console.log(msg);
-            }
+        post(START_RECORDING, function (msg) {
+            console.log(msg);
         });
+
     }
 
     function reconnect(connection) {
-
         if (!connection.enabled || offline)
             return;
+        post(CANON_URL, loginCallback);
+    }
 
-        post('http://127.0.0.1:55555', loginCallback);
+    function loginCallback(result) {
+        console.log(result);
+        post(START_STREAMING, startedCallback)
+    }
 
-        function loginCallback(result) {
-            console.log(result);
-            post("http://127.0.0.1:55555/api/cam/lv?cmd=start&sz=l", startedCallback)
-        }
+    function startedCallback(result) {
+        console.log(result);
 
-        function startedCallback(result) {
-            console.log(result);
-
-            imageUpdateInterval = setInterval(function() {
-                j('#liveview').attr('src', 'http://127.0.0.1:55555/api/cam/lvgetimg?time=' + new Date().getTime());
-            }, 1000);
-        }
-
+        imageUpdateInterval = setInterval(function() {
+            imageHolder.attr('src', CURRENT_IMAGE + new Date().getTime());
+        }, debugMode ? 10000 : 1000);
     }
 
     function post(url, callback) {
-        j.ajax({
-            url: url,
-            type: 'POST',
-            async: false,
-            crossDomain: true,
-            xhrFields: {
-                withCredentials: true
-            },
-            success: callback
-        });
+        j.ajax({url: url, type: 'POST', dataType: 'json', success: callback});
     }
-
 })();
