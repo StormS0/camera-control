@@ -107,3 +107,7 @@ body {
 .camerabox_title__left {
 	cursor: default;
 }
+
+.camerabox_title__right-settings.activated:before {
+	content: "\f100";
+}

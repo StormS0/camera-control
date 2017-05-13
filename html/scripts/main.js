@@ -16,6 +16,8 @@ window.forEachSelector = function (selector, func) {
 
 (function() {
 
+    var recordButton = document.querySelector("#button_record");
+
     var connections = [
         Sony.createConnection("192.168.111.41", "sony1"),
         Sony.createConnection("192.168.111.42", "sony2"),
@@ -27,7 +29,9 @@ window.forEachSelector = function (selector, func) {
     setInterval(update, pollingInterval);
 
     forEachSelector('.camerabox', function(box) {
-        box.querySelector('.camerabox_title__right-settings').onclick = function() {
+        var settingsButton = box.querySelector('.camerabox_title__right-settings');
+        settingsButton.title = 'Настройки';
+        settingsButton.onclick = function() {
 
             var camerasPageElements = ['#buttons'];
             connections.forEach(function (connection) {
@@ -44,12 +48,17 @@ window.forEachSelector = function (selector, func) {
             showAll(hidden ? settingsPageElements : camerasPageElements);
             if (hidden) {
                 settings.querySelector('iframe').src = box.settingsPageUrl;
+                settingsButton.classList.add('activated');
+                settingsButton.title = 'Закрыть настройки';
+            } else {
+                settingsButton.classList.remove('activated');
+                settingsButton.title = 'Настройки';
             }
         };
     });
 
     function initButtons() {
-        document.querySelector("#button_record").onclick = toggleRecording;
+        recordButton.onclick = toggleRecording;
         document.querySelector("#button_map").onclick = toggleHidden.bind(null, ['#cameras', '#scheme']);
         document.querySelector("#button_settings").onclick = toggleHidden.bind(null, ['.control_cameras']);
     }
@@ -67,6 +76,7 @@ window.forEachSelector = function (selector, func) {
         connections.forEach(function (conn) {
             conn.setRecording(recording);
         });
+        recordButton.innerHTML = recording ? 'Стоп' : 'Старт';
     }
 
     function toggleHidden(selectors) {
