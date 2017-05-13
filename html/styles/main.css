@@ -3,10 +3,16 @@ body {
 	height: 100%;
 	padding: 0;
 	overflow: hidden;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 #cameras {
-	height: 620px;
+	height: 680px;
 	float: left;
 	width: 1024px;
 }
@@ -19,11 +25,11 @@ body {
 .container {
 	left: 50%;
 	top: 50%;
-	margin-top: -310px;
+	margin-top: -340px;
 	margin-left: -512px;
 	position: absolute;
 	width: 1024px;
-	height: 620px;
+	height: 680px;
 }
 
 .camerabox {
@@ -32,7 +38,7 @@ body {
 }
 
 .camerabox_inner {
-	height: 240px;
+	height: 287px;
 	width: 509px;
 }
 
@@ -92,4 +98,12 @@ body {
 
 #back {
 	cursor: pointer;
+}
+
+.scripts {
+	display: none;
+}
+
+.camerabox_title__left {
+	cursor: default;
 }

@@ -1,9 +1,13 @@
 var Canon = (function () {
 
     var CANON_URL = 'http://127.0.0.1:55555';
-    var START_RECORDING = CANON_URL + '/api/cam/rec?cmd=trig';
-    var START_STREAMING = CANON_URL + '/api/cam/lv?cmd=start&sz=l';
-    var CURRENT_IMAGE ='http://127.0.0.1:55555/api/cam/lvgetimg?time=';
+    var SETTINGS_PAGE = CANON_URL + '/wpd/VLAX01/rc/advanced.htm';
+
+    var API = CANON_URL + '/api/cam/';
+    var START_RECORDING = API + 'rec?cmd=trig';
+    var START_STREAMING = API + 'lv?cmd=start&sz=l';
+    var STATUS_REQUEST = API + 'getcurprop?seq=0';
+    var CURRENT_IMAGE = API + 'lvgetimg?time=';
 
     var j = jQuery.noConflict();
     var imageHolder = j('#liveview');
@@ -11,7 +15,7 @@ var Canon = (function () {
 
     return {
         createConnection: function () {
-            var connection = Connection.create("canon", "127.0.0.1");
+            var connection = Connection.create("canon", CANON_URL, SETTINGS_PAGE);
             connection.reconnect = reconnect.bind(null, connection);
             connection.updateStatus = updateStatus.bind(null, connection);
             connection.setRecording = function (isRecording) {
@@ -23,25 +27,29 @@ var Canon = (function () {
     };
 
     function updateStatus(connection) {
-        if (!connection.enabled || offline)
+        if (!connection.enabled)
             return;
 
-
+        post(STATUS_REQUEST, function(e) {
+            console.log(e);
+        });
     }
 
     function setRecording(connection, isRecording) {
         if (!connection.enabled) {
             return;
         }
+
         console.log("canon recording: " + isRecording);
+
         post(START_RECORDING, function (msg) {
             console.log(msg);
         });
-
+                                       	
     }
 
     function reconnect(connection) {
-        if (!connection.enabled || offline)
+        if (!connection.enabled)
             return;
         post(CANON_URL, loginCallback);
     }
@@ -56,7 +64,7 @@ var Canon = (function () {
 
         imageUpdateInterval = setInterval(function() {
             imageHolder.attr('src', CURRENT_IMAGE + new Date().getTime());
-        }, debugMode ? 10000 : 1000);
+        }, 1000);
     }
 
     function post(url, callback) {

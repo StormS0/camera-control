@@ -2,7 +2,7 @@ var Sony = (function () {
     return {
         createConnection: function (ip, id) {
 
-            var connection = Connection.create(id, ip);
+            var connection = Connection.create(id, ip, 'http://' + ip + ':8080/');
 
             connection.camera = Savona.create(ip, 80);
 
@@ -17,7 +17,6 @@ var Sony = (function () {
             };
 
             connection.reconnect = function () {
-                if (!offline)
                 connection.camera.reconnect();
             };
 
@@ -56,7 +55,7 @@ var Sony = (function () {
     }
 
     function updateStatus(connection) {
-        if (!connection.enabled || offline)
+        if (!connection.enabled)
             return;
 
         var key = "P.Clip.Mediabox.Status";
@@ -74,7 +73,7 @@ var Sony = (function () {
     }
 
     function sonyConnectionStateHandler(event, connection) {
-        console.log(event);
+        // console.log(event);
         if (event.type != "connected" && connection.enabled) {
             setTimeout(connection.reconnect, 5000);
         }

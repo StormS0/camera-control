@@ -1,30 +1,41 @@
 // global scope variables
-var debugMode = true;
-var offline = false;
+var debugMode = false;
+var pollingInterval = 10000;
+
+window.applyClassForSelectors = function (selectors, className, action) {
+    selectors.forEach(function (selector) {
+        forEachSelector(selector, function (node) {
+            node.classList[action](className);
+        })
+    });
+};
+
+window.forEachSelector = function (selector, func) {
+    Array.prototype.forEach.call(document.querySelectorAll(selector), func);
+};
 
 (function() {
 
     var connections = [
+        Sony.createConnection("192.168.111.41", "sony1"),
+        Sony.createConnection("192.168.111.42", "sony2"),
         Canon.createConnection()
     ];
 
-    if (!debugMode && !offline) {
-        connections.push(Sony.createConnection("192.168.111.41", "sony1"));
-        connections.push(Sony.createConnection("192.168.111.42", "sony2"));
-    }
-
+    Scheme.init();
     initButtons();
-    forEachSelector('circle', initCircle);
-    setInterval(update, debugMode ? 10000 : 1000);
+    setInterval(update, pollingInterval);
 
     forEachSelector('.camerabox', function(box) {
         box.querySelector('.camerabox_title__right-settings').onclick = function() {
+
             var camerasPageElements = ['#buttons'];
             connections.forEach(function (connection) {
                 if (connection.enabled) {
                     camerasPageElements.push('#camerabox_' + connection.id);
                 }
             });
+
             var settingsPageElements = ['.settings_page', '#' + box.id];
 
             var settings = document.querySelector('.settings_page');
@@ -32,7 +43,7 @@ var offline = false;
             hideAll(hidden ? camerasPageElements : settingsPageElements);
             showAll(hidden ? settingsPageElements : camerasPageElements);
             if (hidden) {
-                settings.querySelector('iframe').src = 'http://' + box.ip + ':8080/';
+                settings.querySelector('iframe').src = box.settingsPageUrl;
             }
         };
     });
@@ -47,7 +58,7 @@ var offline = false;
         connections.forEach(function (conn) {
             conn.updateStatus();
         });
-        updateScheme();
+        Scheme.update();
     }
 
     function toggleRecording() {
@@ -59,90 +70,16 @@ var offline = false;
     }
 
     function toggleHidden(selectors) {
-        selectors.forEach(function (selector) {
-            document.querySelector(selector).classList.toggle('hidden');
-        });
+        applyClassForSelectors(selectors, 'hidden', 'toggle');
     }
 
     function hideAll(selectors) {
-        selectors.forEach(function (selector) {
-            document.querySelector(selector).classList.add('hidden');
-        });
+        applyClassForSelectors(selectors, 'hidden', 'add');
     }
 
     function showAll(selectors) {
-        selectors.forEach(function (selector) {
-            document.querySelector(selector).classList.remove('hidden');
-        });
+        applyClassForSelectors(selectors, 'hidden', 'remove')
     }
 
-    function updateScheme() {
-        if (offline) return;
-
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', '/status', true);
-        xhr.onreadystatechange = onReply;
-        xhr.send();
-
-        function onReply() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                var lines = xhr.responseText.split('\n');
-                var statusDate = parseDate(lines[0] + lines[1]);
-
-                var delta = new Date().getTime() - statusDate.getTime();
-
-                if (delta > 120000) { // 2 min
-                    console.log("outdated");
-                    return;
-                }
-
-                handleStatusResponse(lines.filter(function (el, i) {
-                    return i > 7 && i < lines.length - 6;
-                }));
-            }
-        }
-    }
-
-    function initCircle(circle) {
-        var title = document.createElementNS("http://www.w3.org/2000/svg", "title");
-        title.innerHTML = circle.getAttribute('title') + " " + circle.getAttribute('ip');
-        circle.appendChild(title);
-    }
-
-    function diffInSeconds(dateString, date1) {
-        var deltaInMs = date1.getTime() - parseDate(dateString).getTime();
-        return deltaInMs / 1000;
-    }
-
-    function parseDate(dateString) {
-        var d = dateString.split(" ").join(".").split(":").join(".").split('.');
-        return new Date(d[2], d[1] - 1, d[0], d[3], d[4]);
-    }
-
-    function forEachSelector(selector, func) {
-        Array.prototype.forEach.call(
-            document.querySelectorAll(selector),
-            func
-        );
-    }
-
-    function handleStatusResponse(lines) {
-        var status = document.querySelector('#status');
-        status.innerHTML = "";
-
-        forEachSelector('circle', function (circle) {
-            var ip = circle.getAttribute('ip');
-            lines.forEach(handleLine);
-
-            function handleLine(line) {
-                if (line.split(": ")[0].split(ip)[1] == "") {
-                    circle.setAttribute('fill', line.indexOf('Reply') > -1 ? 'green' : 'red');
-                }
-            }
-        });
-
-        lines.forEach(function (line) {
-            status.innerHTML += line + '<br>';
-        });
-    }
 })();
+

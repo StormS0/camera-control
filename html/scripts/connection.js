@@ -1,20 +1,23 @@
 var Connection = (function () {
 
     return {
-        create: function (id, ip) {
-            var connection = {id: id};
-            initSettings(connection, ip);
+        create: function (id, ip, settingsPageUrl) {
+            var connection = {
+                id: id,
+                settingsPageUrl: settingsPageUrl
+            };
+            initSettings(connection);
             return connection;
         }
     };
 
-    function initSettings (connection, ip) {
+    function initSettings (connection) {
         var key = "camera-" + connection.id + "-state";
         var state = localStorage.getItem(key);
         var toggle = document.querySelector(".control_cameras__link." + connection.id);
         var camera = document.querySelector("#camerabox_" + connection.id);
 
-        camera.ip = ip;
+        camera.settingsPageUrl = connection.settingsPageUrl;
 
         change(!(state === 'disabled'));
 
