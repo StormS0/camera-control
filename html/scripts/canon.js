@@ -43,14 +43,16 @@ var Canon = (function () {
         console.log("canon recording: " + isRecording);
 
         post(START_RECORDING, function (msg) {
-            console.log(msg);
+            console.log('canon: ' + msg);
         });
                                        	
     }
 
     function reconnect(connection) {
-        if (!connection.enabled)
+        if (!connection.enabled) {
             return;
+        }
+
         post(CANON_URL, loginCallback);
     }
 

@@ -111,3 +111,14 @@ body {
 .camerabox_title__right-settings.activated:before {
 	content: "\f100";
 }
+
+.full_screen {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	opacity: 1;
+	background-color: gray;
+}

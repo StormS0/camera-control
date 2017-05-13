@@ -15,9 +15,6 @@ window.forEachSelector = function (selector, func) {
 };
 
 (function() {
-
-    var recordButton = document.querySelector("#button_record");
-
     var connections = [
         Sony.createConnection("192.168.111.41", "sony1"),
         Sony.createConnection("192.168.111.42", "sony2"),
@@ -25,8 +22,10 @@ window.forEachSelector = function (selector, func) {
     ];
 
     Scheme.init();
-    initButtons();
-    setInterval(update, pollingInterval);
+    var recordButton = document.querySelector("#button_record");
+    recordButton.onclick = toggleRecording;
+    document.querySelector("#button_map").onclick = toggleHidden.bind(null, ['#cameras', '#scheme']);
+    document.querySelector("#button_settings").onclick = toggleHidden.bind(null, ['.control_cameras']);
 
     forEachSelector('.camerabox', function(box) {
         var settingsButton = box.querySelector('.camerabox_title__right-settings');
@@ -57,11 +56,17 @@ window.forEachSelector = function (selector, func) {
         };
     });
 
-    function initButtons() {
-        recordButton.onclick = toggleRecording;
-        document.querySelector("#button_map").onclick = toggleHidden.bind(null, ['#cameras', '#scheme']);
-        document.querySelector("#button_settings").onclick = toggleHidden.bind(null, ['.control_cameras']);
-    }
+
+    var canonVideo = document.querySelector('#camerabox_canon').querySelector('.camerabox_inner');
+    canonVideo.addEventListener('dblclick', function () {
+        canonVideo.classList.toggle('full_screen');
+    }, false);
+
+
+
+    setInterval(update, pollingInterval);
+
+
 
     function update() {
         connections.forEach(function (conn) {
