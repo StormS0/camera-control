@@ -56,6 +56,10 @@ window.forEachSelector = function (selector, func) {
         };
     });
 
+    connections.forEach(function (conn) {
+        if (conn.enabled) conn.reconnect();
+    });
+
 
     var canonVideo = document.querySelector('#camerabox_canon').querySelector('.camerabox_inner');
     canonVideo.addEventListener('dblclick', function () {

@@ -37,7 +37,9 @@ var Canon = (function () {
         if (!connection.enabled)
             return;
 
-        post(STATUS_REQUEST, connection.updateIndicator);
+        post(STATUS_REQUEST, function(status) {
+            connection.updateIndicator(status.rec);
+        });
     }
 
     function setRecording(connection, isRecording) {
