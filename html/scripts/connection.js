@@ -2,14 +2,37 @@ var Connection = (function () {
 
     return {
         create: function (id, ip, settingsPageUrl) {
+
             var connection = {
                 id: id,
-                settingsPageUrl: settingsPageUrl
+                settingsPageUrl: settingsPageUrl,
+                indicator: document.querySelector("#camerabox_" + id),
+                updateIndicator: updateIndicator
             };
+
             initSettings(connection);
+
             return connection;
+
+            function updateIndicator(status) {
+                var classes = connection.indicator.classList;
+                classes.remove('camerabox-recorded');
+                classes.remove('camerabox-enabled');
+                classes.remove('camerabox-disabled');
+                classes.add(classForStatus(status))
+            }
+
+            function classForStatus(status) {
+                if (status === connection.statuses.recording)
+                    return 'camerabox-recorded';
+                if (status === connection.statuses.standby)
+                    return 'camerabox-enabled';
+                return 'camerabox-disabled';
+            }
         }
     };
+
+
 
     function initSettings (connection) {
         var key = "camera-" + connection.id + "-state";

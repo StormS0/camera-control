@@ -1,6 +1,6 @@
 // global scope variables
 var debugMode = false;
-var pollingInterval = 10000;
+var pollingInterval = 1000;
 
 window.applyClassForSelectors = function (selectors, className, action) {
     selectors.forEach(function (selector) {
@@ -63,14 +63,11 @@ window.forEachSelector = function (selector, func) {
     }, false);
 
 
-
     setInterval(update, pollingInterval);
-
-
 
     function update() {
         connections.forEach(function (conn) {
-            conn.updateStatus();
+            if (conn.enabled) conn.updateStatus();
         });
         Scheme.update();
     }
@@ -79,7 +76,7 @@ window.forEachSelector = function (selector, func) {
         this.classList.toggle('active');
         var recording = this.classList.contains('active');
         connections.forEach(function (conn) {
-            conn.setRecording(recording);
+            if (conn.enabled) conn.setRecording(recording);
         });
         recordButton.innerHTML = recording ? 'Стоп' : 'Старт';
     }

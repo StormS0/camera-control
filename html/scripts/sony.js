@@ -24,20 +24,16 @@ var Sony = (function () {
                 connection.camera.disconnect();
             };
 
-            if (connection.enabled) {
-                connection.reconnect();
-            }
-
-            connection.updateStatus();
+            connection.statuses = {
+                recording: 'Recording',
+                standby: 'Standby'
+            };
 
             return connection;
         }
     };
 
     function setRecording(connection, isRecording) {
-        if (!connection.enabled) {
-            return;
-        }
         console.log(connection.id + " recording: " + isRecording);
         if (isRecording) {
             connection.camera.clip.recorder.Start([], function(response) {});
@@ -46,34 +42,18 @@ var Sony = (function () {
         }
     }
 
-    function classForStatus(status) {
-        if (status == "Recording")
-            return 'camerabox-recorded';
-        if (status == "Standby")
-            return 'camerabox-enabled';
-        return 'camerabox-disabled';
-    }
-
     function updateStatus(connection) {
-        if (!connection.enabled)
-            return;
-
         var key = "P.Clip.Mediabox.Status";
         var params = {};
         params[key] = null;
         connection.camera.property.GetValue({params: params, onresponse: function(resp) {
             resp = JSON.stringify(resp.error || resp.result);
             resp = JSON.parse(resp);
-            var classes = document.querySelector("#camerabox_" + connection.id).classList;
-            classes.remove('camerabox-recorded');
-            classes.remove('camerabox-enabled');
-            classes.remove('camerabox-disabled');
-            classes.add(classForStatus(resp[key]));
+            connection.updateIndicator(resp[key]);
         }});
     }
 
     function sonyConnectionStateHandler(event, connection) {
-        // console.log(event);
         if (event.type != "connected" && connection.enabled) {
             setTimeout(connection.reconnect, 5000);
         }

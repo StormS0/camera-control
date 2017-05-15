@@ -16,12 +16,20 @@ var Canon = (function () {
     return {
         createConnection: function () {
             var connection = Connection.create("canon", CANON_URL, SETTINGS_PAGE);
+
             connection.reconnect = reconnect.bind(null, connection);
+
             connection.updateStatus = updateStatus.bind(null, connection);
+
             connection.setRecording = function (isRecording) {
                 setRecording(connection, isRecording);
             };
-            connection.reconnect();
+
+            connection.statuses = {
+                recording: 'Rec',
+                standby: 'Stby'
+            };
+
             return connection;
         }
     };
@@ -30,9 +38,7 @@ var Canon = (function () {
         if (!connection.enabled)
             return;
 
-        post(STATUS_REQUEST, function(e) {
-            console.log(e);
-        });
+        post(STATUS_REQUEST, connection.updateIndicator);
     }
 
     function setRecording(connection, isRecording) {
@@ -66,7 +72,7 @@ var Canon = (function () {
 
         imageUpdateInterval = setInterval(function() {
             imageHolder.attr('src', CURRENT_IMAGE + new Date().getTime());
-        }, 1000);
+        }, 200);
     }
 
     function post(url, callback) {
