@@ -11,7 +11,6 @@ var Canon = (function () {
 
     var j = jQuery.noConflict();
     var imageHolder = j('#liveview');
-    var imageUpdateInterval;
 
     return {
         createConnection: function () {
@@ -70,7 +69,7 @@ var Canon = (function () {
     function startedCallback(result) {
         console.log(result);
 
-        imageUpdateInterval = setInterval(function() {
+        setInterval(function() {
             imageHolder.attr('src', CURRENT_IMAGE + new Date().getTime());
         }, 200);
     }
