@@ -6,7 +6,7 @@ var Canon = (function () {
     var API = CANON_URL + '/api/cam/';
     var START_RECORDING = API + 'rec?cmd=trig';
     var START_STREAMING = API + 'lv?cmd=start&sz=l';
-    var STATUS_REQUEST = API + 'getcurprop?seq=0';
+    var STATUS_REQUEST = API + 'getcurprop?seq=4';
     var CURRENT_IMAGE = API + 'lvgetimg?time=';
 
     var j = jQuery.noConflict();
@@ -22,6 +22,10 @@ var Canon = (function () {
 
             connection.setRecording = function (isRecording) {
                 setRecording(connection, isRecording);
+            };
+
+            connection.openSettings = function () {
+                post(START_STREAMING);
             };
 
             connection.statuses = {

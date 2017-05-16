@@ -7,7 +7,8 @@ var Connection = (function () {
                 id: id,
                 settingsPageUrl: settingsPageUrl,
                 indicator: document.querySelector("#camerabox_" + id),
-                updateIndicator: updateIndicator
+                updateIndicator: updateIndicator,
+                openSettings: function () {}
             };
 
             initSettings(connection);
