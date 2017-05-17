@@ -24,7 +24,7 @@ var Canon = (function () {
                 setRecording(connection, isRecording);
             };
 
-            connection.openSettings = function () {
+            connection.settingsPageLoaded = function () {
                 post(START_STREAMING);
             };
 
@@ -47,23 +47,14 @@ var Canon = (function () {
     }
 
     function setRecording(connection, isRecording) {
-        if (!connection.enabled) {
-            return;
-        }
-
         console.log("canon recording: " + isRecording);
 
         post(START_RECORDING, function (msg) {
             console.log('canon: ' + msg);
         });
-                                       	
     }
 
     function reconnect(connection) {
-        if (!connection.enabled) {
-            return;
-        }
-
         post(CANON_URL, loginCallback);
     }
 

@@ -1,6 +1,6 @@
-// global scope variables
-var debugMode = false;
-var pollingInterval = 1000;
+
+var debugMode = window.location.search.indexOf('debug') > 0;
+var pollingInterval = debugMode ? 10000: 1000;
 
 window.applyClassForSelectors = function (selectors, className, action) {
     selectors.forEach(function (selector) {
@@ -13,6 +13,7 @@ window.applyClassForSelectors = function (selectors, className, action) {
 window.forEachSelector = function (selector, func) {
     Array.prototype.forEach.call(document.querySelectorAll(selector), func);
 };
+
 
 (function() {
     var connections = [
@@ -45,12 +46,18 @@ window.forEachSelector = function (selector, func) {
             var hidden = settings.classList.contains('hidden');
             hideAll(hidden ? camerasPageElements : settingsPageElements);
             showAll(hidden ? settingsPageElements : camerasPageElements);
+
+            var iframe = settings.querySelector('iframe');
             if (hidden) {
-                settings.querySelector('iframe').src = box.settingsPageUrl;
+                iframe.onload = function() {
+                    setTimeout(box.connection.settingsPageLoaded, 1000);
+                };
+                iframe.src = box.settingsPageUrl;
                 settingsButton.classList.add('activated');
                 settingsButton.title = 'Закрыть настройки';
-                box.connection.openSettings();
             } else {
+                iframe.onload = function(){};
+                iframe.src = 'settings.html';
                 settingsButton.classList.remove('activated');
                 settingsButton.title = 'Настройки';
             }

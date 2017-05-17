@@ -4,11 +4,10 @@ var Connection = (function () {
         create: function (id, ip, settingsPageUrl) {
 
             var connection = {
-                id: id,
-                settingsPageUrl: settingsPageUrl,
+                id: id, settingsPageUrl: settingsPageUrl,
                 indicator: document.querySelector("#camerabox_" + id),
                 updateIndicator: updateIndicator,
-                openSettings: function () {}
+                settingsPageLoaded: settingsPageLoaded
             };
 
             initSettings(connection);
@@ -33,7 +32,9 @@ var Connection = (function () {
         }
     };
 
-
+    function settingsPageLoaded() {
+        console.log('settingsPageLoaded must be implemented in concrete connection script');
+    }
 
     function initSettings (connection) {
         var key = "camera-" + connection.id + "-state";
