@@ -49,7 +49,7 @@ window.forEachSelector = function (selector, func) {
                 settings.querySelector('iframe').src = box.settingsPageUrl;
                 settingsButton.classList.add('activated');
                 settingsButton.title = 'Закрыть настройки';
-                connections.openSettings();
+                box.connection.openSettings();
             } else {
                 settingsButton.classList.remove('activated');
                 settingsButton.title = 'Настройки';

@@ -40,7 +40,7 @@ var Connection = (function () {
         var state = localStorage.getItem(key);
         var toggle = document.querySelector(".control_cameras__link." + connection.id);
         var camera = document.querySelector("#camerabox_" + connection.id);
-
+        camera.connection = connection;
         camera.settingsPageUrl = connection.settingsPageUrl;
 
         change(!(state === 'disabled'));
