@@ -2,12 +2,15 @@ var Connection = (function () {
 
     return {
         create: function (id, ip, settingsPageUrl) {
+            var recordButton = document.querySelector("#button_record");
 
             var connection = {
                 id: id, settingsPageUrl: settingsPageUrl,
                 indicator: document.querySelector("#camerabox_" + id),
                 updateIndicator: updateIndicator,
-                settingsPageLoaded: settingsPageLoaded
+                settingsPageLoaded: stub.bind(null, 'settingsPageLoaded'),
+                settingsOpened: stub.bind(null, 'settingsOpened'),
+                settingsClosed: stub.bind(null, 'settingsClosed')
             };
 
             initSettings(connection);
@@ -19,7 +22,26 @@ var Connection = (function () {
                 classes.remove('camerabox-recorded');
                 classes.remove('camerabox-enabled');
                 classes.remove('camerabox-disabled');
-                classes.add(classForStatus(status))
+                var statusClass = classForStatus(status);
+                classes.add(statusClass);
+
+                var classList = recordButton.classList;
+                if ('camerabox-recorded' === statusClass) {
+                    classList.add(connection.id);
+                } else {
+                    classList.remove(connection.id);
+                }
+
+                if (!classList.contains('sony1') &&
+                    !classList.contains('sony1') &&
+                    !classList.contains('canon')) {
+
+                    classList.remove('active');
+                    recordButton.innerHTML = 'Старт';
+                }else {
+                    recordButton.innerHTML = 'Стоп';
+                    classList.add('active');
+                }
             }
 
             function classForStatus(status) {
@@ -32,8 +54,8 @@ var Connection = (function () {
         }
     };
 
-    function settingsPageLoaded() {
-        console.log('settingsPageLoaded must be implemented in concrete connection script');
+    function stub(name) {
+        console.log(name + ' must be implemented in concrete connection script');
     }
 
     function initSettings (connection) {

@@ -14,7 +14,6 @@ window.forEachSelector = function (selector, func) {
     Array.prototype.forEach.call(document.querySelectorAll(selector), func);
 };
 
-
 (function() {
     var connections = [
         Sony.createConnection("192.168.111.41", "sony1"),
@@ -55,11 +54,13 @@ window.forEachSelector = function (selector, func) {
                 iframe.src = box.settingsPageUrl;
                 settingsButton.classList.add('activated');
                 settingsButton.title = 'Закрыть настройки';
+                box.connection.settingsOpened(box);
             } else {
                 iframe.onload = function(){};
                 iframe.src = 'settings.html';
                 settingsButton.classList.remove('activated');
                 settingsButton.title = 'Настройки';
+                box.connection.settingsClosed(box);
             }
         };
     });
@@ -85,12 +86,12 @@ window.forEachSelector = function (selector, func) {
     }
 
     function toggleRecording() {
-        this.classList.toggle('active');
-        var recording = this.classList.contains('active');
+        //this.classList.toggle('active');
+        var recording = !this.classList.contains('active');
         connections.forEach(function (conn) {
             if (conn.enabled) conn.setRecording(recording);
         });
-        recordButton.innerHTML = recording ? 'Стоп' : 'Старт';
+       // recordButton.innerHTML = recording ? 'Стоп' : 'Старт';
     }
 
     function toggleHidden(selectors) {

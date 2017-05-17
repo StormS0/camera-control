@@ -2,6 +2,7 @@ var Canon = (function () {
 
     var CANON_URL = 'http://127.0.0.1:55555';
     var SETTINGS_PAGE = CANON_URL + '/wpd/VLAX01/rc/advanced.htm';
+    //var SETTINGS_PAGE = 'canon.html';
 
     var API = CANON_URL + '/api/cam/';
     var START_RECORDING = API + 'rec?cmd=trig';
@@ -59,16 +60,13 @@ var Canon = (function () {
     }
 
     function loginCallback(result) {
-        console.log(result);
         post(START_STREAMING, startedCallback)
     }
 
     function startedCallback(result) {
-        console.log(result);
-
         setInterval(function() {
             imageHolder.attr('src', CURRENT_IMAGE + new Date().getTime());
-        }, 200);
+        }, 500);
     }
 
     function post(url, callback) {
