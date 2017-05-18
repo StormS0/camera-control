@@ -1,17 +1,18 @@
 var Canon = (function () {
 
     var CANON_URL = 'http://127.0.0.1:55555';
-    var SETTINGS_PAGE = CANON_URL + '/wpd/VLAX01/rc/advanced.htm';
-    //var SETTINGS_PAGE = 'canon.html';
+    // var SETTINGS_PAGE = CANON_URL + '/wpd/VLAX01/rc/advanced.htm';
+    var SETTINGS_PAGE = 'canon.html';
 
     var API = CANON_URL + '/api/cam/';
     var START_RECORDING = API + 'rec?cmd=trig';
     var START_STREAMING = API + 'lv?cmd=start&sz=l';
-    var STATUS_REQUEST = API + 'getcurprop?seq=4';
+    var STATUS_REQUEST = API + 'getcurprop?seq=1';
     var CURRENT_IMAGE = API + 'lvgetimg?time=';
 
     var j = jQuery.noConflict();
     var imageHolder = j('#liveview');
+    var iframe = document.querySelector('iframe');
 
     return {
         createConnection: function () {
@@ -44,6 +45,7 @@ var Canon = (function () {
 
         post(STATUS_REQUEST, function(status) {
             connection.updateIndicator(status.rec);
+            iframe.contentWindow.post && iframe.contentWindow.post(status);
         });
     }
 

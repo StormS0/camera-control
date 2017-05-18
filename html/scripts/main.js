@@ -27,7 +27,19 @@ window.forEachSelector = function (selector, func) {
     document.querySelector("#button_map").onclick = toggleHidden.bind(null, ['#cameras', '#scheme']);
     document.querySelector("#button_settings").onclick = toggleHidden.bind(null, ['.control_cameras']);
 
-    forEachSelector('.camerabox', function(box) {
+    forEachSelector('.camerabox', initCamerabox);
+    setInterval(update, pollingInterval);
+
+    connections.forEach(function (conn) {
+        if (conn.enabled) conn.reconnect();
+    });
+
+    var canonVideo = document.querySelector('#camerabox_canon').querySelector('.camerabox_inner');
+    canonVideo.addEventListener('dblclick', function () {
+        canonVideo.classList.toggle('full_screen');
+    }, false);
+
+    function initCamerabox(box) {
         var settingsButton = box.querySelector('.camerabox_title__right-settings');
         settingsButton.title = 'Настройки';
         settingsButton.onclick = function() {
@@ -63,20 +75,7 @@ window.forEachSelector = function (selector, func) {
                 box.connection.settingsClosed(box);
             }
         };
-    });
-
-    connections.forEach(function (conn) {
-        if (conn.enabled) conn.reconnect();
-    });
-
-
-    var canonVideo = document.querySelector('#camerabox_canon').querySelector('.camerabox_inner');
-    canonVideo.addEventListener('dblclick', function () {
-        canonVideo.classList.toggle('full_screen');
-    }, false);
-
-
-    setInterval(update, pollingInterval);
+    }
 
     function update() {
         connections.forEach(function (conn) {
@@ -86,12 +85,10 @@ window.forEachSelector = function (selector, func) {
     }
 
     function toggleRecording() {
-        //this.classList.toggle('active');
         var recording = !this.classList.contains('active');
         connections.forEach(function (conn) {
             if (conn.enabled) conn.setRecording(recording);
         });
-       // recordButton.innerHTML = recording ? 'Стоп' : 'Старт';
     }
 
     function toggleHidden(selectors) {
