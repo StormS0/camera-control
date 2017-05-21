@@ -89,11 +89,12 @@ body {
 .settings_page {
 	position: absolute;
 	margin: 0;
-	width: 512px;
+	width: 507px;
 	top: 0;
 	height: 720px;
-	right:0 ;
+	left: 0;
 	border: 1px solid black;
+	z-index: 100;
 }
 
 #back {
@@ -118,7 +119,7 @@ body {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	z-index: 100;
+	z-index: 10000;
 	opacity: 1;
 	background-color: gray;
 }

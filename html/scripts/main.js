@@ -6,7 +6,7 @@ window.applyClassForSelectors = function (selectors, className, action) {
     selectors.forEach(function (selector) {
         forEachSelector(selector, function (node) {
             node.classList[action](className);
-        })
+        });
     });
 };
 
@@ -44,14 +44,14 @@ window.forEachSelector = function (selector, func) {
         settingsButton.title = 'Настройки';
         settingsButton.onclick = function() {
 
-            var camerasPageElements = ['#buttons'];
+            var camerasPageElements = [];
             connections.forEach(function (connection) {
                 if (connection.enabled) {
                     camerasPageElements.push('#camerabox_' + connection.id);
                 }
             });
 
-            var settingsPageElements = ['.settings_page', '#' + box.id];
+            var settingsPageElements = ['.camerabox-stub', '.settings_page', '#' + box.id];
 
             var settings = document.querySelector('.settings_page');
             var hidden = settings.classList.contains('hidden');

@@ -4,15 +4,21 @@
     <meta charset="UTF-8">
     <script src="scripts/jquery-1.8.3.min.js" type="text/javascript"></script>
     <style>
+        body {
+            font-family: Arial, sans-serif ;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
         select {
             width: 100px;
         }
         span {
             display: inline-block;
             width: 150px;
-        }
-        .hidden {
-            display: none;
         }
     </style>
 </head>
@@ -22,7 +28,7 @@
 
     var CANON_API_URL = 'http://localhost:55555/api/cam/';
     var j = jQuery.noConflict();
-    var comboboxes = [];
+    var fields = [];
 
     var focusValues = [
         '3.7', '4.0', '4.4', '4.8', '5.2', '5.6', '6.2',
@@ -65,10 +71,14 @@
         kelvinValues.push(i + '00');
     }
 
-    var time = makeField('Записано');
-    var sd = makeField('Осталось');
+    makeText('Настройки Canon XC10');
 
-    makeCombobox('Фокусное расстояние', 'av', focusValues);
+    makeText();
+    makeField('Записано', null, 'tc');
+    makeField('Осталось', 'sd', 'artime');
+
+    makeText();
+    makeCombobox('Диафрагма', 'av', focusValues);
     makeCombobox('Выдержка', 'ssv', ssvValues);
     makeCombobox('ISO / Gain', 'gcm', isoGainValues);
     makeCombobox('ISO', 'gcv', isoValues, 'gcm==iso');
@@ -76,76 +86,96 @@
     makeCombobox('Баланс белого', 'wbm', whiteBalanceValues);
     makeCombobox('Баланс в Кельвинах', 'wbv', kelvinValues, 'wbm==Kelvin');
 
-    makeButton('Фокус', 'sw', 'focus');
+    makeText();
+    makeField('Автофокус', null, 'fbtn');
+    makeButton('Смена режима автофокуса', 'sw', 'focus');
 
+    makeText();
     makeText('Фокус');
-    makeButton('<<<', 'fl', 'near3');
-    makeButton('<<', 'fl', 'near2');
-    makeButton('<', 'fl', 'near1');
-    makeButton('>', 'fl', 'far1');
-    makeButton('>>', 'fl', 'far2');
-    makeButton('>>>', 'fl', 'far3');
+    makeButton('-3', 'fl', 'near3');
+    makeButton('-2', 'fl', 'near2');
+    makeButton('-1', 'fl', 'near1');
+    makeButton('+1', 'fl', 'far1');
+    makeButton('+2', 'fl', 'far2');
+    makeButton('+3', 'fl', 'far3');
 
+    makeText();
     makeText('Диафрагма');
     makeButton('-', 'iris', 'minus');
     makeButton('+', 'iris', 'plus');
 
-    function update(statusData) {
-        comboboxes.forEach(function (cb) {
-            cb.updateStatus(statusData);
+    var ststusField = j('<div>')
+        .css('position', 'fixed')
+        .css('top', '0')
+        .css('right', '0')
+        .appendTo('body');
+
+
+    function update(status) {
+        fields.forEach(function (cb) {
+            cb.update(status);
         });
-        time.html(statusData.tc);
-        sd.html(statusData.Osd.artime);
+        debug(status);
     }
 
-    function makeCombobox(name, id, values, activateExpression) {
-        var container = j('<div>').appendTo('body');
-        j('<span>').html(name).appendTo(container);
+    function formatValue(value) {
+        return '&nbsp;&nbsp;' + value;
+    }
+
+    function makeCombobox(name, id, values, activateConditionExpression) {
+        var container = j('<div>').append(j('<span>').html(name)).appendTo('body');
         var select = j('<select>').appendTo(container);
         var currentValue = j('<span>').appendTo(container);
+        select.update = updateStatus;
+        fields.push(select);
+
         select.on('change', function () {
             postData(CANON_API_URL + 'setprop?' + id + '=' + this.value);
         });
-        select.updateStatus = updateStatus;
-        comboboxes.push(select);
 
-        if (activateExpression) {
-            container.addClass('hidden')
+        values.forEach(function (value) {
+            select.append(new Option(value, value));
+        });
+
+        if (activateConditionExpression) {
+            container.hide();
         }
 
         function updateStatus(data) {
-            var text = getValue(id);
-            !currentValue.html() && init(text);
-            if (values.indexOf('' + text) > -1) {
-                currentValue.html('&nbsp;&nbsp;' + text);
-            }
-            if (activateExpression) {
-                var expr = activateExpression.split('==');
-                var current = getValue(expr[0]);
-                if (current === expr[1]) {
-                    container.removeClass('hidden');
-                } else {
-                    container.addClass('hidden');
-                }
-            }
+            var text = getValue(data, id, 'pv');
+            updateComboboxValue(text);
 
-            function getValue(property) {
-                return data['O' + property].pv;
+            if (activateConditionExpression) {
+                var expr = activateConditionExpression.split('==');
+                var current = getValue(data, expr[0], 'pv');
+                if (current === expr[1]) {
+                    container.show();
+                } else {
+                    container.hide();
+                }
             }
         }
 
-        function init(value) {
-            values.forEach(function (value) {
-                select.append(new Option(value, value));
-            });
+        function updateComboboxValue(value) {
+            if (currentValue.html() === formatValue(value)) {
+                return;
+            }
             select.val(value);
+            if (values.indexOf('' + value) > -1) {
+                currentValue.html(formatValue(value));
+            }
         }
     }
 
-    function makeField(title) {
+    function makeField(title, subobject, property) {
         var container = j('<div>').appendTo('body');
         j('<span>').html(title).appendTo(container);
-        return j('<span>').appendTo(container);
+        var field = j('<span>').appendTo(container);
+        fields.push(field);
+
+        field.update = function (statusData) {
+            field.html(getValue(statusData, subobject, property));
+        };
     }
 
     function makeButton(title, property, value) {
@@ -155,11 +185,38 @@
     }
 
     function makeText(text) {
-        j('<div>').html(text).appendTo('body')
+        j('<div>').html(text || '&nbsp;').appendTo('body')
     }
 
     function postData(url) {
         j.ajax({type: 'POST', dataType: 'json', url: url});
+    }
+
+    function getValue(data, subobject, property) {
+        try {
+            var target = subobject ? data['O' + subobject] : data;
+            return property ? target[property] : target;
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    function debug(status) {
+        var statusObject = JSON.parse(JSON.stringify(status));
+        for (var property in statusObject) {
+            if (statusObject.hasOwnProperty(property)) {
+                if (statusObject[property].pv) {
+                    statusObject[property] = statusObject[property].pv;
+                }
+            }
+        }
+
+        ststusField.html(
+            JSON.stringify(statusObject, null, '<br>')
+                .split('"en": 1').join('')
+                .split('<br></br><br></br>').join('<br>')
+                .split('<br><br>').join('<br>')
+        );
     }
 
 </script>
