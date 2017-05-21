@@ -72,6 +72,10 @@ var Scheme = (function () {
             }
         });
 
+        if (!debugMode) {
+            return;
+        }
+
         lines.forEach(function (line) {
             status.innerHTML += line + '<br>';
         });

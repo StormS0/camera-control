@@ -1,8 +1,7 @@
 var Canon = (function () {
 
     var CANON_URL = 'http://127.0.0.1:55555';
-    // var SETTINGS_PAGE = CANON_URL + '/wpd/VLAX01/rc/advanced.htm';
-    var SETTINGS_PAGE = 'canon.html';
+    var SETTINGS_PAGE = 'canon.html'; //CANON_URL + '/wpd/VLAX01/rc/advanced.htm';
 
     var API = CANON_URL + '/api/cam/';
     var START_RECORDING = API + 'rec?cmd=trig';
@@ -19,7 +18,7 @@ var Canon = (function () {
             var connection = Connection.create("canon", CANON_URL, SETTINGS_PAGE);
             connection.reconnect = post.bind(null, CANON_URL, loginCallback);
             connection.updateStatus = updateStatus.bind(null, connection);
-            connection.settingsPageLoaded = post.bind(null, START_STREAMING);
+            // connection.settingsPageLoaded = post.bind(null, START_STREAMING);
             connection.statuses = {recording: 'Rec', standby: 'Stby'};
             connection.sequenceValue = 0;
             connection.setRecording = function (isRecording) {
@@ -44,9 +43,7 @@ var Canon = (function () {
 
     function setRecording(connection, isRecording) {
         console.log("canon recording: " + isRecording);
-        post(START_RECORDING, function (msg) {
-            console.log('canon: ' + msg);
-        });
+        post(START_RECORDING);
     }
 
     function loginCallback(result) {

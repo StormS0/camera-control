@@ -26,8 +26,6 @@ var debugMode = window.location.search.indexOf('debug') > 0;
         canonVideo.classList.toggle('full_screen');
     }, false);
 
-
-
     function initCamerabox(box) {
         var settingsButton = box.querySelector('.camerabox_title__right-settings');
         if (!settingsButton) return;
@@ -54,15 +52,15 @@ var debugMode = window.location.search.indexOf('debug') > 0;
         var iframe = document.querySelector('iframe');
         if (hidden) {
             iframe.onload = function () {
-                setTimeout(box.connection.settingsPageLoaded, 1000);
+
+                // setTimeout(box.connection.settingsPageLoaded, 1000);
             };
             iframe.src = box.settingsPageUrl;
             settingsButton.classList.add('activated');
             settingsButton.title = 'Закрыть настройки';
             box.connection.settingsOpened(box);
         } else {
-            iframe.onload = function () {
-            };
+            iframe.onload = function () {};
             iframe.src = 'settings.html';
             settingsButton.classList.remove('activated');
             settingsButton.title = 'Настройки';
