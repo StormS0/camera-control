@@ -5,7 +5,7 @@ var Sony = (function () {
 
     return {
         createConnection: function (ip, id) {
-
+            var a = document.querySelector('#camerabox_' + id).querySelector('a');
             var videoframe = document.querySelector('#camerabox_' + id).querySelector('embed');
             var connection = Connection.create(id, ip, 'http://' + ip + ':80/rms.html');
 
@@ -36,11 +36,13 @@ var Sony = (function () {
             connection.settingsOpened = function () {
                 videoframe.width = baseWidth * 1.5;
                 videoframe.height = baseHeight * 1.5;
+                a.classList.add('a_large');
             };
 
             connection.settingsClosed = function () {
                 videoframe.width = baseWidth;
                 videoframe.height = baseHeight;
+                a.classList.remove('a_large');
             };
 
             return connection;

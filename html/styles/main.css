@@ -55,7 +55,7 @@ body {
 #buttons {
 	position: absolute;
 	height: 280px;
-	width: 485px;
+	/*width: 485px;*/
 	/*float: right;*/
 	bottom: 0;
 	right: 0;
@@ -89,9 +89,9 @@ body {
 .settings_page {
 	position: absolute;
 	margin: 0;
-	width: 510px;
+	width: 340px;
 	top: 0;
-	height: 720px;
+	height: 590px;
 	left: 0;
 	/*border: 1px solid black;*/
 	z-index: 100;
@@ -140,4 +140,12 @@ body {
 
 .large_camerabox:before {
 	background: none !important;
+}
+
+.camerabox-stub {
+	width: 350px !important;
+	/*display: block;*/
+}
+.a_large {
+	margin-right: -160px !important;
 }

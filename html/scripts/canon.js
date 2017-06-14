@@ -18,16 +18,19 @@ var Canon = (function () {
         createConnection: function () {
             var videoframe = document.querySelector('#camerabox_canon').querySelector('img');
             var camerabox = document.querySelector('#camerabox_canon').querySelector('.camerabox_inner');
+            var a = document.querySelector('#camerabox_canon').querySelector('a');
             var connection = Connection.create("canon", CANON_URL, SETTINGS_PAGE);
             connection.reconnect = post.bind(null, CANON_URL, loginCallback);
             connection.updateStatus = updateStatus.bind(null, connection);
             connection.settingsOpened = function () {
                 videoframe.classList.add('large');
                 camerabox.classList.add('large_camerabox');
+                a.classList.add('a_large');
             };
             connection.settingsClosed = function () {
                 videoframe.classList.remove('large');
                 camerabox.classList.remove('large_camerabox');
+                a.classList.remove('a_large');
             };
             connection.statuses = {
                 recording: 'Rec',
