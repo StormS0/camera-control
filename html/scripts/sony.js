@@ -2,7 +2,7 @@ var Sony = (function () {
     return {
         createConnection: function (ip, id) {
 
-            var connection = Connection.create(id, ip, 'http://' + ip + ':8080/');
+            var connection = Connection.create(id, ip, 'http://' + ip + ':80/rms.html');
 
             connection.camera = Savona.create(ip, 80);
 

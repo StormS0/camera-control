@@ -33,7 +33,7 @@ var Connection = (function () {
                 }
 
                 if (!classList.contains('sony1') &&
-                    !classList.contains('sony1') &&
+                    !classList.contains('sony2') &&
                     !classList.contains('canon')) {
 
                     classList.remove('active');
