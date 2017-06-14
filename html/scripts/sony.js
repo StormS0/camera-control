@@ -1,11 +1,15 @@
 var Sony = (function () {
+
+    var baseWidth = 509;
+    var baseHeight = 287;
+
     return {
         createConnection: function (ip, id) {
 
+            var videoframe = document.querySelector('#camerabox_' + id).querySelector('embed');
             var connection = Connection.create(id, ip, 'http://' + ip + ':80/rms.html');
 
             connection.camera = Savona.create(ip, 80);
-
             connection.updateStatus = updateStatus.bind(null, connection);
 
             connection.setRecording = function (isRecording) {
@@ -27,6 +31,16 @@ var Sony = (function () {
             connection.statuses = {
                 recording: 'Recording',
                 standby: 'Standby'
+            };
+
+            connection.settingsOpened = function () {
+                videoframe.width = baseWidth * 1.5;
+                videoframe.height = baseHeight * 1.5;
+            };
+
+            connection.settingsClosed = function () {
+                videoframe.width = baseWidth;
+                videoframe.height = baseHeight;
             };
 
             return connection;

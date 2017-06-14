@@ -8,7 +8,6 @@ var Connection = (function () {
                 id: id, settingsPageUrl: settingsPageUrl,
                 indicator: document.querySelector("#camerabox_" + id),
                 updateIndicator: updateIndicator,
-                // settingsPageLoaded: stub.bind(null, 'settingsPageLoaded'),
                 settingsOpened: stub.bind(null, 'settingsOpened'),
                 settingsClosed: stub.bind(null, 'settingsClosed')
             };
